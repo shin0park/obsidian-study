@@ -1,0 +1,175 @@
+{
+  "main": {
+    "id": "2500933724cc5766",
+    "type": "split",
+    "children": [
+      {
+        "id": "1d101e6d85cd842b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7bb59c439a28bb39",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "새 탭"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "f6acd237935b4bef",
+    "type": "split",
+    "children": [
+      {
+        "id": "895f54d19e790a89",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "75d5618a0dca06df",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "파일 탐색기"
+            }
+          },
+          {
+            "id": "7bb1f3a02f2e1080",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "검색"
+            }
+          },
+          {
+            "id": "bed85f808abc215c",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "ccec65e2a1eb1233",
+    "type": "split",
+    "children": [
+      {
+        "id": "abd699966d580cbd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0f1809ae1ba8d145",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "백링크"
+            }
+          },
+          {
+            "id": "a9b306ac0e9ba832",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "나가는 링크"
+            }
+          },
+          {
+            "id": "4b1c06dffe90411f",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "373d5d9c48144f7e",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {},
+              "icon": "lucide-list",
+              "title": "개요"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:퀵 스위처 열기": false,
+      "graph:그래프 뷰 열기": false,
+      "canvas:새 캔버스 만들기": false,
+      "daily-notes:오늘의 데일리 노트 열기": false,
+      "templates:템플릿 삽입": false,
+      "command-palette:명령어 팔레트 열기": false
+    }
+  },
+  "active": "7bb59c439a28bb39",
+  "lastOpenFiles": [
+    "Welcome.md",
+    "Study/ANS/2-VPC-CIDR-RT-IP.md",
+    "Study/ANS/1-vpc-account-region.md",
+    "Study/ANS/11-vpc-traffic-monitor-troubleshooting-Mirroring.md",
+    "Study/ANS/4-NAT.md",
+    "Study/ANS/9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
+    "Study/ANS/12-Reachability_Analyzer-Network_Access_Analyzer.md",
+    "Study/ANS/6-VPC-DNS-DHCP.md",
+    "Study/ANS/5-vpc-secondaryip-ENI-BYOIP.md",
+    "Study/ANS/8-network-performance.md",
+    "Study/ANS/7-VPC DNS Hands on.md",
+    "Study/ANS/3-securitygroup-nacl.md",
+    "Study/ANS/10-network-bandwidth-limits-network-io-credit.md",
+    "Study/ANS",
+    "Study"
+  ]
+}
