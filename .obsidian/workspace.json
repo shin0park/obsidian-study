@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Study/ANS/7-VPC DNS Hands on.md",
+                "file": "ANS/9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "7-VPC DNS Hands on"
+              "title": "9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA"
             }
           }
         ]
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Study/ANS/7-VPC DNS Hands on.md",
+                "file": "ANS/9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "7-VPC DNS Hands on의 백링크"
+              "title": "9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA의 백링크"
             }
           },
           {
@@ -112,12 +112,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Study/ANS/7-VPC DNS Hands on.md",
+                "file": "ANS/9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "7-VPC DNS Hands on의 나가는 링크"
+              "title": "9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA의 나가는 링크"
             }
           },
           {
@@ -139,10 +139,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Study/ANS/7-VPC DNS Hands on.md"
+                "file": "ANS/9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md"
               },
               "icon": "lucide-list",
-              "title": "7-VPC DNS Hands on 개요"
+              "title": "9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA 개요"
             }
           }
         ]
@@ -165,51 +165,50 @@
   },
   "active": "7bb59c439a28bb39",
   "lastOpenFiles": [
-    "Study/ANS/8-network-performance.md",
-    "Study/ANS/9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
-    "Study/ANS/11-vpc-traffic-monitor-troubleshooting-Mirroring.md",
-    "Study/ANS/10-network-bandwidth-limits-network-io-credit.md",
+    "ANS/11-vpc-traffic-monitor-troubleshooting-Mirroring.md",
+    "ANS/images/Pasted image 20250106024157.png",
+    "ANS/images/Pasted image 20250106024037.png",
+    "ANS/images/Pasted image 20250106024019.png",
+    "ANS/images/Pasted image 20250106023950.png",
+    "ANS/images/Pasted image 20250101201912.png",
+    "ANS/images/Pasted image 20250101201903.png",
+    "ANS/images/Pasted image 20250101194704.png",
+    "ANS/images/Pasted image 20241222230233.png",
+    "ANS/images/Pasted image 20241222225912.png",
+    "ANS/images/Pasted image 20241222223009.png",
+    "ANS/9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
+    "ANS/images",
+    "ANS/8-network-performance.md",
+    "ANS/5-vpc-secondaryip-ENI-BYOIP.md",
+    "ANS/6-VPC-DNS-DHCP.md",
+    "ANS/7-VPC DNS Hands on.md",
+    "ANS/4-NAT.md",
+    "ANS/3-securitygroup-nacl.md",
+    "ANS/2-VPC-CIDR-RT-IP.md",
+    "ANS/12-Reachability_Analyzer-Network_Access_Analyzer.md",
+    "ANS/11-vpc-traffic-monitor-troubleshooting-Mirroring.md",
+    "ANS/10-network-bandwidth-limits-network-io-credit.md",
+    "ANS/1-vpc-account-region.md",
+    "ANS",
+    "ANS/9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
+    "ANS/7-VPC DNS Hands on.md",
+    "ANS/8-network-performance.md",
+    "ANS/10-network-bandwidth-limits-network-io-credit.md",
     "README.md",
-    "Study/ANS/1-vpc-account-region.md",
+    "ANS/1-vpc-account-region.md",
     "Study/SRE/부록B-운영서비스를 위한 권장 사례 모음.md",
     "Study/SRE/C8-9-릴리즈엔지니어링-간소화.md",
     "Study/SRE/C7-구글의 발전된 자동화.md",
     "Study/SRE/C6-분산시스템모니터링.md",
     "Study/SRE/C3-5-위험요소수용-SLI-SLO-SLA-삽질이란.md",
     "Study/SRE/C16-Tracking Outages-시스템중단_추적하기.md",
-    "Study/SRE/C15-Postmortem Culture.md",
-    "Study/SRE/C14-장애관리하기.md",
-    "Study/SRE/C13-긴급대응.md",
-    "Study/SRE/C12-효과적인 장애 조치.md",
-    "Study/SRE/C11-비상대기.md",
-    "Study/SRE/C10-시계열데이터에 대한 실용적인 알림.md",
     "Study/SRE",
-    "Study/CKAD/lignten lab.md",
-    "Study/CKAD/9-jobs-cronjob.md",
-    "Study/CKAD/8-label&selector-deployment-rollout.md",
-    "Study/CKAD/7-observability-logging-monitoring.md",
-    "Study/CKAD/6-multiContainerPod.md",
-    "Study/CKAD/5-taints&toleration-nodeSelector-NodeAffinity.md",
-    "Study/CKAD/4-serviceAccount-resourceRequest.md",
-    "Study/CKAD/3-env-configmap-secrets-secuityContext.md",
     "Study/CKAD",
     "Study/CKA",
-    "Study/ANS/images/Pasted image 20250106023950.png",
     "Study",
-    "Study/ANS/images/Pasted image 20241021110002.png",
-    "Study/ANS/images/Pasted image 20241013170459.png",
-    "Study/ANS/images/Pasted image 20241021103701.png",
-    "Study/ANS/images/Pasted image 20241013170447.png",
-    "Study/ANS/images/Pasted image 20241013170440.png",
-    "Study/ANS/images/Pasted image 20241013170425.png",
-    "Study/ANS/images/Pasted image 20241013170411.png",
-    "Study/ANS/images/Pasted image 20241013165841.png",
-    "Study/ANS/images/Pasted image 20241013165614.png",
-    "Study/ANS/images",
-    "Study/ANS",
+    "ANS/images",
+    "ANS",
     "CKAD",
-    "CKA",
-    "SRE",
-    "images"
+    "CKA"
   ]
 }
