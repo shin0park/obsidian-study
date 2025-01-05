@@ -1,5 +1,5 @@
 {
   "useMarkdownLinks": true,
   "newFileLocation": "current",
-  "attachmentFolderPath": "images"
+  "attachmentFolderPath": "./images"
 }

@@ -19,7 +19,7 @@
 	- **45 Gbps 이상**의 대역폭이 필요한 경우, multiple NAT gateways 사용하여 확장 가능
 
 ### EC2 Bandwidth limits
-![[Pasted image 20241222225912.png|400]]
+![400](Pasted%20image%2020241222225912.png)
 - 인스턴스의 **유형(Instance Family)**, **vCPU 개수**, **트래픽의 목적지**에 따라 대역폭이 달라짐.
 - Within the Region  
     • 인스턴스가 제공하는 **전체 네트워크 대역폭**을 사용
@@ -39,7 +39,7 @@
 
 ### VPN and DX Bandwidth
 
-![[Pasted image 20241222230233.png|600]]
+![600](Pasted%20image%2020241222230233.png)
 VPN 대역폭
 - Virtual Private Gateway (VGW)를 사용하는 VPN 연결의 **총 대역폭**: **1.25 Gbps**
 - 동일한 Virtual Private Gateway에 여러 VPN 연결이 있더라도, **총 대역폭은 1.25 Gbps로 제한**

@@ -18,8 +18,7 @@
 
 
 #### Publishing VPC flow logs
-
-![[Pasted image 20250101185029.png|600]]
+![600](images/Pasted%20image%2020250106023950.png)
 - vpc level
 - subnet level
 - eni level
@@ -63,7 +62,7 @@
     - Flow Logs는 **버전 2, 3, 4, 5**를 지원하며, 기본 버전은 **2**
     - 어떤 버전이냐에 따라 다른 포맷을 가질 수 있음
 
-![[Pasted image 20250101185656.png|600]]
+![600](images/Pasted%20image%2020250106024019.png)
 
 ### VPC Flow Logs custom format
 
@@ -83,8 +82,9 @@
     - Egress: 외부로 나가는 트래픽.
 - +more
 
-![[Pasted image 20250101190922.png|300]]
-![[Pasted image 20250101190913.png|600]]
+![300](images/Pasted%20image%2020250106024037.png)
+
+![600](images/Pasted%20image%2020250106024157.png)
 
 srcaddr - s3 public ip
 dstaddr - ec2 instance private ip
@@ -151,7 +151,8 @@ fields @timestamp, @message
 
 
 #### How to troubleshoot SG vs NACL issue?
-![[Pasted image 20250101194704.png|300]]
+![Pasted image 20250101194704|400](./images/Pasted%20image%2020250101194704.png)  
+
 “ACTION” Field
 
 - For incoming requests
@@ -193,8 +194,8 @@ fields @timestamp, @message
     - **네트워크 로드 밸런서(NLB)**:
         - UDP 포트 **4789**를 사용!
 
-![[Pasted image 20250101201903.png|400]]
-![[Pasted image 20250101201912.png|400]]
+![Pasted image 20250101201903|400](./images/Pasted%20image%2020250101201903.png)
+![Pasted image 20250101201912|400](./images/Pasted%20image%2020250101201912.png)
 
 #### VPC Traffic Mirroring filter
 - **filter parameter**로 원하는 트래픽만 캡처
