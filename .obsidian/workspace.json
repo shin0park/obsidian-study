@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Study/ANS/1-vpc-account-region.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1-vpc-account-region"
+              "title": "README"
             }
           }
         ]
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Study/ANS/1-vpc-account-region.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "1-vpc-account-region의 백링크"
+              "title": "README의 백링크"
             }
           },
           {
@@ -112,12 +112,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Study/ANS/1-vpc-account-region.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "1-vpc-account-region의 나가는 링크"
+              "title": "README의 나가는 링크"
             }
           },
           {
@@ -139,10 +139,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Study/ANS/1-vpc-account-region.md"
+                "file": "README.md"
               },
               "icon": "lucide-list",
-              "title": "1-vpc-account-region 개요"
+              "title": "README 개요"
             }
           }
         ]
@@ -165,6 +165,8 @@
   },
   "active": "7bb59c439a28bb39",
   "lastOpenFiles": [
+    "Study/ANS/10-network-bandwidth-limits-network-io-credit.md",
+    "Study/ANS/1-vpc-account-region.md",
     "Study/ANS/11-vpc-traffic-monitor-troubleshooting-Mirroring.md",
     "Study/SRE/부록B-운영서비스를 위한 권장 사례 모음.md",
     "Study/SRE/C8-9-릴리즈엔지니어링-간소화.md",
@@ -190,8 +192,6 @@
     "Study/CKAD/2-command-arg.md",
     "Study/CKAD/15-blue-green-canary-helm.md",
     "Study/CKAD/14-apiVersion-customResourceDefinition-customControllers-OperatorFramework.md",
-    "Study/CKAD/13-admissionControllers-Validating-Mutating-Admission.md",
-    "Study/CKAD/12-Autentication-Authorization-AdmissionControl-KubeConfig-apigroup-authorization-rbac-clusterrole.md",
     "Study/CKAD",
     "Study/CKA",
     "Study/ANS/images/Pasted image 20250106023950.png",
