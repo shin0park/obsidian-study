@@ -1,12 +1,12 @@
 ## VPC Firewal -  Security Group
-![[Pasted image 20241021103701.png|500]]
+![500](Pasted%20image%2020241021103701.png)
 - sg - ec2 인스턴스 level
 - nacl - subnet level
 	- so, inbound traffic은 NACL을 먼저 거치게 된다.
 
 ### Security Group
-![[Pasted image 20241021141604.png|500]]
-![[Pasted image 20241021141905.png|500]]
+![500](Pasted%20image%2020241021141604.png)
+![500](Pasted%20image%2020241021141905.png)
 
 - access to Ports
 - authorised IP ranges - IPv4 IPv6
@@ -19,7 +19,7 @@ sg rule 에 트래픽 반환(return traffic)에 대한 룰까지 추가할 필�
 트래픽 반환은 by default allow
 
 *reference another sg*
-![[Pasted image 20241021143139.png|500]]
+![500](Pasted%20image%2020241021143139.png)
 - inbound를 추가한다고 했을때, ip를 추가하는 대신 다른 ec2에 적용한 sg를 소스로 추가할 수 있다.
 - why? 웹계층과 앱계층이 있다고 했을때, 웹계층에서 어떤 앱계층과도 통신하고 싶다고 하자,
   그렇다면 웹계층의 sg에 앱계층에 있는 모든 인스턴스의 ip를 inbound로 허용해줘야한다. 하지만 reference를 사용하면, 단지 앱계층의 sg만 웹계층의 sg의 소스로 등록하면 앱게층의 모든 앱과만 통신하도록 설정할 수 있게 되는 것이다.
@@ -30,7 +30,7 @@ Security Group
 - 만약 애플리케이션에 connection refused 에러라면, 그건 sg는 허용하지만 에플리케이션 에러나 아직 running state가 아닌 경우일 수 있다.
 - sg를 생성하면 *All inbound traffic is blocked by default*
 - *All outbound traffic is authorised by default*
-![[Pasted image 20241021150349.png|400]]
+![400](Pasted%20image%2020241021150349.png)
 
 
 ## VPC Firewal - Network Access Control List(NACL)
@@ -97,7 +97,7 @@ Security Group
 
 9. Connect to EC2 instance (Public IP) from your desktop/laptop using Putty or terminal (ec2-user)
 
-![[Pasted image 20241021155149.png|500]]
+![500](Pasted%20image%2020241021155149.png)
 1. Create a Private subnet  
 	a. Create subnet (Name: MyVPC-Private,VPC: MyVPC, AZ: Select different AZ (ap-south-1b), CIDR:10.100.1.0/24)
 	

@@ -40,7 +40,7 @@
 대규모로 여러 Amazon VPC에 NAT 게이트웨이 사용
 https://aws.amazon.com/blogs/networking-and-content-delivery/using-nat-gateways-with-multiple-amazon-vpcs-at-scale/
 
-![[Pasted image 20241027193342.png|600]]
+![600](Pasted%20image%2020241027193342.png)
 
 
 Exam Essentials

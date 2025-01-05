@@ -13,16 +13,16 @@
 - Subnet 디자인시, HA(high availability)를 위해 적어도 두 개 이상의 AZ 사용 권장
 
 ### AWS 3 tier architecture
-![[Pasted image 20241007120847.png|500]]
+![500](Pasted%20image%2020241007120847.png)
 - ALB를 통해 Web server에 부하분산 처리
 - HA를 위해 적어도 두 개이상의 리소스 필요. (DB replication)
 - 웹서버에서 인터넷을 통해 패키지 다운 필요하다면? 
 	- 웹서버가 인터넷에 도달해야하는데 현재 위 그림에서는 private subnet에 위치해 있기 때문에 통신할 수 없다. 
 	- 즉 웹서버에서는 인터넷에 도달할 수 있어야 하며, 인터넷에서는 직접 웹서버에 도달할 수 없어야 한다. 이 웹서버에 도달할 수 있는 유일한 방법은 ALB를 통하는 것이여야 한다. 
 	- -> *AWS NAT GW* 네트워크 주소 변환 게이트로 사설 서브넷 인스턴스에서 인터넷으로의 아웃바운드 트래픽은 NAT로 관리된다. 
-	- ![[Pasted image 20241007121838.png|500]]
+	- ![500](Pasted%20image%2020241007121838.png)
 
-![[Pasted image 20241007122813.png|600]]
+![600](Pasted%20image%2020241007122813.png)
 ### VPC간의 통신
 - vpc 내부의 앱과 통신하고 싶지만 인터넷을 거치고 싶지 않은 경우 
 - *VPC Peering* 
@@ -43,7 +43,7 @@
 - vpc endpoint가 없다면 인터넷 게이트웨이를 통해 통신이 될 것이다. -> 추가비용 대기시간 안전성의 단점 존재
 
 
-![[Pasted image 20241007123409.png]]
+![600](Pasted%20image%2020241007123409.png)
 ### PrivateLink
 - 인터넷에 노출하지 않고, vpc와 aws 서비스간의 프라이빗한 연결을 설정.
 - 마치 VPC에 있는 것처럼 서비스에 비공개로 연결하는데 사용할 수 있는 기술.
@@ -81,14 +81,14 @@ how to connect 온프렘
 vpc 는 가상 프라이빗 클라우드일뿐 실제 내부적으로는 물리적으로 구조되어있다.
 igw를 연결하지 않는한 기본적으로 폐쇄망이다.
 
-![[Pasted image 20241007233943.png|500]]
+![500](Pasted%20image%2020241007233943.png)
 
 ### AWS Account -> Region & AZ -> VPC
 ![[Pasted image 20241007234643.png|500]]
 - 자연재해가 발생해도 고가용성을 위해 AZ
 - vpc는 region level
 
-![[Pasted image 20241007234755.png]]
+![600](Pasted%20image%2020241007234755.png)
 - AZ 별로 subnet 생성 필요
 
-![[Pasted image 20241007234927.png]]
+![600](Pasted%20image%2020241007234927.png)
