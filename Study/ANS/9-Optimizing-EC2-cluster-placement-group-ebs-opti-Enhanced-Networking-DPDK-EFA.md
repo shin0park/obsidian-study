@@ -8,7 +8,7 @@
 
 ---
 ### Placement Groups - Cluster
-![400](Pasted%20image%2020241222200648.png)
+![400](images/Pasted%20image%2020241222200648.png)
 - **클러스터 배치 그룹**은 **단일 가용 영역** 내에서 인스턴스를 논리적으로 그룹화하는 방법
 - **물리적으로 가까운 인스턴스를 그룹화**하여 네트워크 지연(Latency)을 최소화하고 대역폭을 최대화할 수 있는 환경을 제공
 - **HPC(고성능 컴퓨팅)**처럼 **낮은 지연 시간**이 요구되는 분산 애플리케이션에 사용
@@ -17,7 +17,7 @@
 tip: 시험에서 ec2인스턴스 간의 최대 네트워크 처리량에 관한 질문 -> ec2 placement group
 
 ### EBS 최적화된 인스턴스
-![400](Pasted%20image%2020241222200904.png)
+![400](images/Pasted%20image%2020241222200904.png)
 - **EBS(Elastic Block Store)**는 물리적인 드라이브가 아닌 **네트워크 드라이브**로, EC2 인스턴스와 네트워크를 통해 통신
 - **네트워크 통신을 통해** 데이터를 처리하기 때문에 약간의 **지연(latency)**이 발생할 수 있음
 - 이로 인해 EBS의 **입출력(I/O)** 성능이 네트워크 성능에 영향을 미칠 수 있음
@@ -53,18 +53,18 @@ tip: 시험에서 ec2인스턴스 간의 최대 네트워크 처리량에 관한
 - **Intel 82599 VF** 인터페이스를 지원하여 **최대 10Gbps** 속도를 제공하는 인스턴스:
     - C3, C4, D2, I2, M4(단, m4.16xlarge 제외), R3 등
 
-![500](Pasted%20image%2020241222214859.png)
+![500](images/Pasted%20image%2020241222214859.png)
 - 기본적으로는 5Gbps 대역폭을 지원
 - 가상레이어를 거쳐 네트워크 트래픽 처리
 
 Intel VF
-![500](Pasted%20image%2020241222214906.png)
+![500](images/Pasted%20image%2020241222214906.png)
 - intel VF는 SR-IOV 기술을 기반으로 하나의 물리적 NIC를 여러개의 가상 vNIC로 분할하여 사용
 - Bypassing virtualization layer: 이 가상 NIC가 하이퍼바이저를 우회하고 직접 guest os 연결된 것 처럼 작동
 - 10Gbps까지 지원가능
 
 ENA
-![500](Pasted%20image%2020241222214915.png)
+![500](images/Pasted%20image%2020241222214915.png)
 - **ENA**는 AWS에서 제공하는 **고성능 네트워크 인터페이스 카드**(NIC)로, 최대 **100Gbps**의 전송 속도를 지원
 - 최대 100Gbps까지 지원가능하나, 단일 Flow만으로는 해당 대역폭을 채우기 어렵다.
 	- flow란, 
@@ -94,11 +94,11 @@ ENA
     - 낮은 CPU 오버헤드
 
 ##### Packet processing without DPDK
-![500](Pasted%20image%2020241222222539.png)
+![500](images/Pasted%20image%2020241222222539.png)
 - DPDK가 없으면 패킷 처리가 운영 체제의 **커널**을 거치게 되며, 이로 인해 **추가적인 오버헤드**와 지연이 발생할 수 있다.
 
 ##### Packet processing with DPDK
-![500](Pasted%20image%2020241222222642.png)
+![500](images/Pasted%20image%2020241222222642.png)
 - Application이 DPDK 라이브러리를 통해 개발되면, 커널을 거치지 않고 패킷 처리 가능.
 
 ---
@@ -110,7 +110,7 @@ ENA
 - EFA는 ENA와 비교해 **더 낮은 지연 시간(Lower Latency)**과 **더 높은 처리량(Higher Throughput)**을 제공
     - 리눅스 환경에서 **운영 체제 커널을 우회(OS Bypass)**하여 네트워크 성능을 극대화
 
-![300](Pasted%20image%2020241222223009.png)
+![300](images/Pasted%20image%2020241222223009.png)
 - **HPC 애플리케이션 지원**
     - **MPI (Message Passing Interface)**를 통해 **Libfabric API**와 상호 작용하여, 
       커널을 우회하고 **EFA 장치와 직접 통신**함으로써 네트워크에 패킷을 전송

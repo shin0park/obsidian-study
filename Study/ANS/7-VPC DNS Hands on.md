@@ -1,4 +1,4 @@
-![500](Pasted%20image%2020241124173342.png)
+![500](images/Pasted%20image%2020241124173342.png)
 - name server는 AmazonProvidedDNS 
 - DHCP option set의 name server를 수정할 필요 없음.
 - (optional) DHCP option set의 Domain name을 `corp.internal` 로 설정하여, vpc와 연결
