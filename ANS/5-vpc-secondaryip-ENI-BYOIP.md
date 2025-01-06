@@ -16,9 +16,9 @@ Secondary IP 설정
   기존 경로 때문에 `10.0.0.0/24` 이상의 CIDR 블록을 연결할 수 없다. 그러나 `10.0.0.0/25` 이하의 보조 CIDR 블록은 연결할 수 있다.
 - VPC에 총 5개의 IPv4와 1개의 IPv6 CIDR 블록을 가질 수 있다.
 
-![400](Pasted%20image%2020241110190003.png)
+![400](images/Pasted%20image%2020241110190003.png)
 
-![600](Pasted%20image%2020241110185744.png)
+![600](images/Pasted%20image%2020241110185744.png)
 
 #### ENI (Elastic Network Interface)
 EC2 인스턴스에 IP 주소가 할당하는것은
@@ -43,7 +43,7 @@ ENI의 구성요소
 - 하나의 Source/Destination Check Flag (ec2의 Source/Destination Check 기능이 ENI로 인해)
 - EC2 인스턴스에 ENI가 얼만큼 붙을 수 있는지는 -> EC2 인스턴스 타입에 따라 다르다.
 
-![400](Pasted%20image%2020241110190935.png)
+![400](images/Pasted%20image%2020241110190935.png)
 
 #### ENI Use Case
 - Requester managed ENIs - AWS가 다른 AWS서비스를 대신에 VPC에 ENI를 생성 (ex. RDS DB instance, Nat gateway)
@@ -58,17 +58,17 @@ ENI의 구성요소
 - Workspaces or Appstream2.0- 관리 컴퓨팅 인스턴스, VDI - Workspaces or Appstream2.0는 AWS managed VPC에 위치하고, 고객은 Customer managed VPC에 ENI 를 생성해서 연결하기 때문에 vpc 안의 애플리케이션과 통신 할 수 있는 것
 - 람다 - 람다 함수는 Lambda Service VPC 내에 생성이 되지만,  ENI는 고객 VPC에 생성이 되어 접근 가능 한 것.
 
-![500](Pasted%20image%2020241110195739.png)
+![500](images/Pasted%20image%2020241110195739.png)
 
-![500](Pasted%20image%2020241110195745.png)
+![500](images/Pasted%20image%2020241110195745.png)
  
 #### Management Network/Dual Home 인스턴스 생성
-![600](Pasted%20image%2020241110195752.png)
+![600](images/Pasted%20image%2020241110195752.png)
 하나는 인터넷 게이트웨이에 연결하여 인터넷 접근 가능
 다른 하나는 프라이빗 서브넷 내의 ENI를 통해 온프렘 네트워크에 연결하여 사내망에서만 온프램 사용가능
 Dual home instance 로 사용가능하다.
 
-![600](Pasted%20image%2020241110195801.png)
+![600](images/Pasted%20image%2020241110195801.png)
 - Primary 인스턴스가 fail되면 hot-standby 인스턴스가 ENI 에 연결
 - Routing, DNS 설정에 변화 없이 가능
 - 순단 연결 손실 (Brief loss of connectivity) 발생 가능

@@ -12,20 +12,20 @@ EC2 인스턴스는 `/etc/resolv.conf`에 설정된 DNS `search domain`에 의�
 따라서 **EC2와 같은 일반적인 컴퓨팅 리소스에서는 DHCP 옵션 세트를 통해 도메인 이름(`domain-name`)을 설정해줘야 질의가 가능하다.**
 
 
-![500](Pasted%20image%2020241124172845.png)
-![500](Pasted%20image%2020241124175734.png)
+![500](images/Pasted%20image%2020241124172845.png)
+![500](images/Pasted%20image%2020241124175734.png)
 - 아마존 DNS 서버를 사용하지 않고 custom dns server 사용
 - DHCP option set 수정 필요 (name server를 custom dns server 주소로 지정해야함)
 - app, db, dns 용 ec2 3대 구축 (dns용 ec2의 경우, dns package 다운)
-![400](Pasted%20image%2020241124180524.png)
-![400](Pasted%20image%2020241124180547.png)
+![400](images/Pasted%20image%2020241124180524.png)
+![400](images/Pasted%20image%2020241124180547.png)
 Restart named service 
 
 - Create new DHCP Option set
 - Reboot DNS server and App server (to update DHCP)
 
 ### Route 53 Resolver Endpoints
-![600](Pasted%20image%2020241124180818.png)
+![600](images/Pasted%20image%2020241124180818.png)
 - 아마존에서 온프렘의 dns server 질의
 - 사내 pc에서 aws dns 질의
 - 양방향, 일부는 aws, 일부는 온프렘
@@ -46,10 +46,10 @@ Restart named service
 [Route 53 Resolver란 무엇인가요?](https://docs.aws.amazon.com/ko_kr/Route53/latest/DeveloperGuide/resolver.html)
 
 
-![600](Pasted%20image%2020241124180856.png)
+![600](images/Pasted%20image%2020241124180856.png)
 - HA를 위해 다중 서브넷에 endpoint 생성
 
-![600](Pasted%20image%2020241124180907.png)
+![600](images/Pasted%20image%2020241124180907.png)
 - conditional forwarding 설정하여 해당하는 질의는 Outbound Endpoint(ENI)를 통해 온프레미스 DNS 서버로 요청을 보냄
 
 

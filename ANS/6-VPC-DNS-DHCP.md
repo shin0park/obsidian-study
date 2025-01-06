@@ -1,5 +1,5 @@
 #### AWS DNS & DHCP
-![500](Pasted%20image%2020241110203009.png)
+![500](images/Pasted%20image%2020241110203009.png)
 - 처음만 위와 같은 통신을 통해 ip를 가져오며, 이후의 연결부터는 캐시된 정보를 사용
 - DNS is the backbone of the internet - DNS 작동이 안되면 인터넷 서버에 연결할 수 없음
 
@@ -24,7 +24,7 @@ Amazon Route 53 Resolver 는
  - 또한 VPC내에서는 가상 ip인 169.254.169.253 으로도 접근가능.(오직 VPC내에서만 가능)
 
 
-![500](Pasted%20image%2020241110221740.png)
+![500](images/Pasted%20image%2020241110221740.png)
 Resolves DNS request from:
 - Route53 Private Hosted Zone 
 	- vpc 내에서만 유효한 도메인 이름을 설정. 내부도메인
@@ -46,7 +46,7 @@ Resolves DNS request from:
 		- s3.ap-south-1.amazonaws.com
 		-> *tip. aws dns에 레코드가 없으면 public dns로 가는것이 아니라, 알맞는 hosted zone이 없을때 public dns 로 나가는 것.*
 
-![500](Pasted%20image%2020241110222700.png)
+![500](images/Pasted%20image%2020241110222700.png)
 so many domain register
 
 #### DHCP Option sets
@@ -65,9 +65,9 @@ so many domain register
 document reference
 https://docs.aws.amazon.com/ko_kr/vpc/latest/userguide/DHCPOptionSetConcepts.html
 
-![600](Pasted%20image%2020241110224734.png)
+![600](images/Pasted%20image%2020241110224734.png)
 
-![600](Pasted%20image%2020241110224842.png)
+![600](images/Pasted%20image%2020241110224842.png)
 nameserver가 vpc +2ip인 10.10.0.2 인 것을 볼 수 있다.
 option set에 보면 name-server=AmazonProvidedDNS 를 사용한다고 나와있으므로
 
@@ -87,7 +87,7 @@ option set에 보면 name-server=AmazonProvidedDNS 를 사용한다고 나와있
     퍼블릭 IP가 할당된 EC2 인스턴스는 외부 DNS 이름을 가질 수 있으며,
     이를 통해 인터넷에서 해당 인스턴스에 접근할 수 있다.
 
-![600](Pasted%20image%2020241110230051.png)
+![600](images/Pasted%20image%2020241110230051.png)
 
 - DHCP Option set는 수정할 수 없으며, 새로운 것을 만들고 VPC와 연결해서 바꿔야한다. (몇시간이 걸린다.)
 - 만약 바로 적용하고 싶다면, os command를 사용하여 직접 DHCP 을 변경.

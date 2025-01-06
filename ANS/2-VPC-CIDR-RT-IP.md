@@ -1,5 +1,5 @@
 ## VPC Building blocks - core components
-![[Pasted image 20241013155837.png|500]]
+![600](images/Pasted%20image%2020241013155837.png)
 #### VPC
 지역 선택 
 -> 사용할 AZ들 선택 
@@ -26,9 +26,9 @@ AWS는 기본적으로 두 가지 방화벽 설치
 - route53
 
 ## VPC Addressing (CIDR)
-![500](Pasted%20image%2020241013160827.png)
+![500](images/Pasted%20image%2020241013160827.png)
 
-![500](Pasted%20image%2020241013161020.png)
+![500](images/Pasted%20image%2020241013161020.png)
 이전에는 Class A, B, C class로 나누어 사용했지만 이는 -> *CIDR로 대체됨*
 
 192.168.0.0/16
@@ -36,7 +36,7 @@ AWS는 기본적으로 두 가지 방화벽 설치
 16비트의 Network Address는 Fixed 되고 나머지 (32-16)비트는 해당 네트워크 내의 Host Address를 할당
 
 
-![500](Pasted%20image%2020241013161037.png)
+![500](images/Pasted%20image%2020241013161037.png)
 
 + subnetting 
 192.168.0.0/16 -> 2^16  = 65536 개의 ip 주소 가능 
@@ -45,12 +45,12 @@ AWS는 기본적으로 두 가지 방화벽 설치
 192.168.0.0/28 
 등등 VPC 보다 더작은 범위로 subnetting 가능
 
-![500](Pasted%20image%2020241013161059.png)
+![500](images/Pasted%20image%2020241013161059.png)
 
 
 ## VPC Route Table
 
-![|500](Pasted%20image%2020241013162913.png)
+![|500](images/Pasted%20image%2020241013162913.png)
 - subnet 내부에 ec2인스터스를 생성하면 subnet ip 범위 내에서 ip를 하나 지정된다.
 - Can these instances communicate with each other? yes
 - 로컬 라우터를 통해 같은 VPC 내라면 통신이 가능하다.
@@ -58,7 +58,7 @@ AWS는 기본적으로 두 가지 방화벽 설치
 - A에서 B로 통신하고자 할때 root route table을 보고 local router를 통해 instance B 로 통신한다.
 - => *VPC 내의 모든 서브넷 사이에서는 항상 네트워크 연결이 되어있다.* (단, 방 화벽 레벨에서 막지 않았다는 조건 하에)
 
-![500](Pasted%20image%2020241013163326.png)
+![500](images/Pasted%20image%2020241013163326.png)
 - igw를 연결하지 않는한 기본적으로 vpc는 폐쇄망이다.
 - *IGW를 생성했다면 인터넷 통신이 가능한가? NO*
 - 기본적으로 instance A에서 인터넷 통신을 원한다면, 일단 private ip(사설IP)만이 아닌 public ip(공용IP)가 필요할 것이다. 오직 private ip만 존재한다면 인터넷 통신을 할 수 없다.
@@ -67,7 +67,7 @@ AWS는 기본적으로 두 가지 방화벽 설치
   -> *0.0.0.0/0 대상으로 iGW로 가는 경로를 추가하고 나서야 인터넷 통신이 가능해질 것 이다.*
 
 #### 하나의 인스턴스만 인터넷 통신이 가능하고, 다른 인스턴스는 불가능하게 하는 경우
-![500](Pasted%20image%2020241013163338.png)
+![500](images/Pasted%20image%2020241013163338.png)
 - 위 처럼 root table에 igw로 가는 경로를 추가하여 인터넷 통신을 가능하게 한다면, 두 인스턴스 모두 인터넷 통신이 가능해진다. *서브넷은 기본값으로 main route table을 따르기 때문이다.*
 - *서브넷 별로 트래픽을 다르게 통제하고 싶다면, public subnet  or private subnet*
 - main route table(기본 라우팅 테이블)을 follow하게 하는거 대신 custom route table(사용자 지정 라우팅 테이블)을 생성하여 사용할 수 있다.
@@ -77,14 +77,14 @@ AWS는 기본적으로 두 가지 방화벽 설치
 - 각각 custom route table을 생성하여 서브넷에 add 한다면 서브넷 별로 route table을 갖게되는 것이고, 각각 트래픽을 통제할 수 있는 것
 - *custome route table 생성도, by default, vpc 대역에 대해 Local로 가는 경로가 자동 추가된다.* 해당 route를 제외하고는 route를 추가하고 제거 할 수 있다.
 
-![500](Pasted%20image%2020241013165431.png)
+![500](images/Pasted%20image%2020241013165431.png)
 
 ### Subnet
-![500](Pasted%20image%2020241013165547.png)
+![500](images/Pasted%20image%2020241013165547.png)
 
-![500](Pasted%20image%2020241013165614.png)
+![500](images/Pasted%20image%2020241013165614.png)
 
-![600](Pasted%20image%2020241013165841.png)
+![600](images/Pasted%20image%2020241013165841.png)
 0 - Network address
 1 - inter vpc for communication
 2- 국가안보부
@@ -105,15 +105,15 @@ AWS는 기본적으로 두 가지 방화벽 설치
 -  EIP: AWS 계정에 위치한 Static Public IP이다. 
   해당 EIP를 배포하지 않는한, 동일한 IP로 instance가 사용할 수 있도록 한다.
 
-![600](Pasted%20image%2020241013170411.png)
-![600](Pasted%20image%2020241013170425.png)
+![600](images/Pasted%20image%2020241013170411.png)
+![600](images/Pasted%20image%2020241013170425.png)
 - EIP 비용: EC2 인스턴스와 연결되어 사용되고 있는한 이에 대한 요금 청구를 하지 않는다. ip주소를 사용하고 있으니,
   하지만, 인스턴스를 stop하면 *ip 주소를 사용하지 않고 낭비하고 있는 것으로 요금을 청구하니 명심.*
   
 
-![500](Pasted%20image%2020241013170447.png)
+![500](images/Pasted%20image%2020241013170447.png)
 
-![600](Pasted%20image%2020241013170459.png)
+![600](images/Pasted%20image%2020241013170459.png)
 
 *IPv6 중요 요소*
 - IPv6는 public ip만 제공한다는 것
