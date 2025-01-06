@@ -2,11 +2,11 @@
 ## VPC Network Analysis
 - Reachability Analyzer
   src, dst 를 입력하면 해당 목적지에 도달 할 수 있는지 알려준다.
-  ![300](Pasted%20image%2020250107001006.png)
+  ![300](images/Pasted%20image%2020250107001006.png)
 - Network Access Analyzer
   src에서 dst로 가는 모든 경로가 존재하는지를 분석 - 해당 경로가 보안 정책에 부합하는지
   모든 경로를 분석하므로, 내가 원하지 않았던 경로가 존재했는지를 체크할 수 있다.
-  ![300](Pasted%20image%2020250107001020.png)
+  ![300](images/Pasted%20image%2020250107001020.png)
 
 ### VPC Reachability Analyzer
 : VPC Reachability Analyzer는 AWS 리소스 간 연결성을 테스트하고 문제를 진단하는 도구
@@ -20,7 +20,7 @@
 2. **구성 변경 자동 검증**: 네트워크 구성 변경 후 연결 상태를 자동으로 확인 가능
 
 
-![500](Pasted%20image%2020250107002220.png)
+![500](images/Pasted%20image%2020250107002220.png)
 #### Supported Source & Destination: 
 • Instance
 • Internet Gateway  
@@ -42,7 +42,7 @@ The source and destination resources (제약 조건)
 - Must be in the same VPC or VPCs connected through a VPC peering or Transit Gateway
 - Can be across AWS accounts in the same AWS organization
 
-![600](Pasted%20image%2020250107002311.png)
+![600](images/Pasted%20image%2020250107002311.png)
 
 
 실습
