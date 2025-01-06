@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ANS/9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
+                "file": "SRE/C17-신뢰성을 위한 테스트.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA"
+              "title": "C17-신뢰성을 위한 테스트"
             }
           }
         ]
@@ -77,7 +77,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "ccec65e2a1eb1233",
@@ -93,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ANS/9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
+                "file": "SRE/C17-신뢰성을 위한 테스트.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA의 백링크"
+              "title": "C17-신뢰성을 위한 테스트의 백링크"
             }
           },
           {
@@ -112,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ANS/9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
+                "file": "SRE/C17-신뢰성을 위한 테스트.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA의 나가는 링크"
+              "title": "C17-신뢰성을 위한 테스트의 나가는 링크"
             }
           },
           {
@@ -139,10 +140,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ANS/9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md"
+                "file": "SRE/C17-신뢰성을 위한 테스트.md"
               },
               "icon": "lucide-list",
-              "title": "9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA 개요"
+              "title": "C17-신뢰성을 위한 테스트 개요"
             }
           }
         ]
@@ -163,8 +164,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "75d5618a0dca06df",
+  "active": "7bb59c439a28bb39",
   "lastOpenFiles": [
+    "ANS/9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
+    "SRE/C17-신뢰성을 위한 테스트.md",
     "ANS/11-vpc-traffic-monitor-troubleshooting-Mirroring.md",
     "ANS/images/Pasted image 20250106024157.png",
     "ANS/images/Pasted image 20250106024037.png",
@@ -176,7 +179,6 @@
     "ANS/images/Pasted image 20241222230233.png",
     "ANS/images/Pasted image 20241222225912.png",
     "ANS/images/Pasted image 20241222223009.png",
-    "ANS/9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
     "ANS/images",
     "ANS/8-network-performance.md",
     "ANS/5-vpc-secondaryip-ENI-BYOIP.md",
@@ -190,7 +192,6 @@
     "ANS/10-network-bandwidth-limits-network-io-credit.md",
     "ANS/1-vpc-account-region.md",
     "ANS",
-    "ANS/9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
     "ANS/7-VPC DNS Hands on.md",
     "ANS/8-network-performance.md",
     "ANS/10-network-bandwidth-limits-network-io-credit.md",
