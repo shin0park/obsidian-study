@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SRE/C17-신뢰성을 위한 테스트.md",
+                "file": "ANS/12-Reachability_Analyzer-Network_Access_Analyzer.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "C17-신뢰성을 위한 테스트"
+              "title": "12-Reachability_Analyzer-Network_Access_Analyzer"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "SRE/C17-신뢰성을 위한 테스트.md",
+                "file": "ANS/12-Reachability_Analyzer-Network_Access_Analyzer.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "C17-신뢰성을 위한 테스트의 백링크"
+              "title": "12-Reachability_Analyzer-Network_Access_Analyzer의 백링크"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "SRE/C17-신뢰성을 위한 테스트.md",
+                "file": "ANS/12-Reachability_Analyzer-Network_Access_Analyzer.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "C17-신뢰성을 위한 테스트의 나가는 링크"
+              "title": "12-Reachability_Analyzer-Network_Access_Analyzer의 나가는 링크"
             }
           },
           {
@@ -140,10 +140,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "SRE/C17-신뢰성을 위한 테스트.md"
+                "file": "ANS/12-Reachability_Analyzer-Network_Access_Analyzer.md"
               },
               "icon": "lucide-list",
-              "title": "C17-신뢰성을 위한 테스트 개요"
+              "title": "12-Reachability_Analyzer-Network_Access_Analyzer 개요"
             }
           }
         ]
@@ -166,8 +166,14 @@
   },
   "active": "7bb59c439a28bb39",
   "lastOpenFiles": [
-    "ANS/9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
+    "ANS/images/Pasted image 20250107002311.png",
+    "ANS/images/Pasted image 20250107002220.png",
+    "ANS/images/Pasted image 20250107001020.png",
+    "ANS/images/Pasted image 20250107001006.png",
+    "ANS/images/Pasted image 20250107000627.png",
     "SRE/C17-신뢰성을 위한 테스트.md",
+    "ANS/무제 파일.md",
+    "ANS/9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
     "ANS/11-vpc-traffic-monitor-troubleshooting-Mirroring.md",
     "ANS/images/Pasted image 20250106024157.png",
     "ANS/images/Pasted image 20250106024037.png",
@@ -175,10 +181,6 @@
     "ANS/images/Pasted image 20250106023950.png",
     "ANS/images/Pasted image 20250101201912.png",
     "ANS/images/Pasted image 20250101201903.png",
-    "ANS/images/Pasted image 20250101194704.png",
-    "ANS/images/Pasted image 20241222230233.png",
-    "ANS/images/Pasted image 20241222225912.png",
-    "ANS/images/Pasted image 20241222223009.png",
     "ANS/images",
     "ANS/8-network-performance.md",
     "ANS/5-vpc-secondaryip-ENI-BYOIP.md",
@@ -202,7 +204,6 @@
     "SRE/C7-구글의 발전된 자동화.md",
     "SRE/C6-분산시스템모니터링.md",
     "SRE/C3-5-위험요소수용-SLI-SLO-SLA-삽질이란.md",
-    "SRE/C16-Tracking Outages-시스템중단_추적하기.md",
     "SRE",
     "CKAD",
     "CKA",
