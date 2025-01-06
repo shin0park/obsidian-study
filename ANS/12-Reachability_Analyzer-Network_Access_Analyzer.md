@@ -6,6 +6,7 @@
 - Network Access Analyzer
   src에서 dst로 가는 모든 경로가 존재하는지를 분석 - 해당 경로가 보안 정책에 부합하는지
   모든 경로를 분석하므로, 내가 원하지 않았던 경로가 존재했는지를 체크할 수 있다.
+  
   ![300](images/Pasted%20image%2020250107001020.png)
 
 ### VPC Reachability Analyzer
