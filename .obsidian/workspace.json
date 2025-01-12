@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SRE/C17-신뢰성을 위한 테스트.md",
+                "file": "SRE/C08-09-릴리즈엔지니어링-간소화.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "C17-신뢰성을 위한 테스트"
+              "title": "C08-09-릴리즈엔지니어링-간소화"
             }
           }
         ]
@@ -77,8 +77,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "ccec65e2a1eb1233",
@@ -166,6 +165,10 @@
   },
   "active": "7bb59c439a28bb39",
   "lastOpenFiles": [
+    "SRE/C07-구글의 발전된 자동화.md",
+    "SRE/C06-분산시스템모니터링.md",
+    "SRE/C03-05-위험요소수용-SLI-SLO-SLA-삽질이란.md",
+    "SRE/C17-신뢰성을 위한 테스트.md",
     "ANS/14-VPC-Endpoints.md",
     "ANS/images/Pasted image 20250112211435.png",
     "ANS/images/Pasted image 20250112211207.png",
@@ -188,7 +191,6 @@
     "ANS/6-VPC-DNS-DHCP.md",
     "ANS/7-VPC DNS Hands on.md",
     "ANS/11-vpc-traffic-monitor-troubleshooting-Mirroring.md",
-    "SRE/C17-신뢰성을 위한 테스트.md",
     "ANS/9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
     "ANS/images",
     "ANS/8-network-performance.md",
@@ -198,10 +200,7 @@
     "ANS/10-network-bandwidth-limits-network-io-credit.md",
     "README.md",
     "SRE/부록B-운영서비스를 위한 권장 사례 모음.md",
-    "SRE/C8-9-릴리즈엔지니어링-간소화.md",
-    "SRE/C7-구글의 발전된 자동화.md",
-    "SRE/C6-분산시스템모니터링.md",
-    "SRE/C3-5-위험요소수용-SLI-SLO-SLA-삽질이란.md",
+    "SRE/C08-09-릴리즈엔지니어링-간소화.md",
     "SRE",
     "CKAD",
     "CKA",
