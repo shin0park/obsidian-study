@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SRE/C08-09-릴리즈엔지니어링-간소화.md",
+                "file": "ANS/09-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "C08-09-릴리즈엔지니어링-간소화"
+              "title": "09-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA"
             }
           }
         ]
@@ -165,6 +165,13 @@
   },
   "active": "7bb59c439a28bb39",
   "lastOpenFiles": [
+    "ANS/08-network-performance.md",
+    "ANS/07-VPC DNS Hands on.md",
+    "ANS/06-VPC-DNS-DHCP.md",
+    "ANS/05-vpc-secondaryip-ENI-BYOIP.md",
+    "ANS/03-securitygroup-nacl.md",
+    "ANS/02-VPC-CIDR-RT-IP.md",
+    "SRE/C08-09-릴리즈엔지니어링-간소화.md",
     "SRE/C07-구글의 발전된 자동화.md",
     "SRE/C06-분산시스템모니터링.md",
     "SRE/C03-05-위험요소수용-SLI-SLO-SLA-삽질이란.md",
@@ -183,24 +190,16 @@
     "ANS/images/Pasted image 20250112202515.png",
     "ANS/12-Reachability_Analyzer-Network_Access_Analyzer.md",
     "CKA/1-core concept.md",
-    "ANS/1-vpc-account-region.md",
-    "ANS/2-VPC-CIDR-RT-IP.md",
-    "ANS/3-securitygroup-nacl.md",
-    "ANS/4-NAT.md",
-    "ANS/5-vpc-secondaryip-ENI-BYOIP.md",
-    "ANS/6-VPC-DNS-DHCP.md",
-    "ANS/7-VPC DNS Hands on.md",
+    "ANS/01-vpc-account-region.md",
+    "ANS/04-NAT.md",
     "ANS/11-vpc-traffic-monitor-troubleshooting-Mirroring.md",
-    "ANS/9-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
+    "ANS/09-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
     "ANS/images",
-    "ANS/8-network-performance.md",
     "ANS/10-network-bandwidth-limits-network-io-credit.md",
     "ANS",
-    "ANS/8-network-performance.md",
     "ANS/10-network-bandwidth-limits-network-io-credit.md",
     "README.md",
     "SRE/부록B-운영서비스를 위한 권장 사례 모음.md",
-    "SRE/C08-09-릴리즈엔지니어링-간소화.md",
     "SRE",
     "CKAD",
     "CKA",
