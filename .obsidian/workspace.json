@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ANS/09-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
+                "file": "SRE/C18-SRE 조직의 소프트웨어 엔지니어링.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "09-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA"
+              "title": "C18-SRE 조직의 소프트웨어 엔지니어링"
             }
           }
         ]
@@ -52,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "#",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -77,7 +77,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "ccec65e2a1eb1233",
@@ -165,6 +166,11 @@
   },
   "active": "7bb59c439a28bb39",
   "lastOpenFiles": [
+    "SRE/images/sre.jpg",
+    "SRE/images",
+    "SRE/C17-신뢰성을 위한 테스트.md",
+    "SRE/C18-SRE 조직의 소프트웨어 엔지니어링.md",
+    "ANS/09-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
     "ANS/08-network-performance.md",
     "ANS/07-VPC DNS Hands on.md",
     "ANS/06-VPC-DNS-DHCP.md",
@@ -175,7 +181,6 @@
     "SRE/C07-구글의 발전된 자동화.md",
     "SRE/C06-분산시스템모니터링.md",
     "SRE/C03-05-위험요소수용-SLI-SLO-SLA-삽질이란.md",
-    "SRE/C17-신뢰성을 위한 테스트.md",
     "ANS/14-VPC-Endpoints.md",
     "ANS/images/Pasted image 20250112211435.png",
     "ANS/images/Pasted image 20250112211207.png",
@@ -193,7 +198,6 @@
     "ANS/01-vpc-account-region.md",
     "ANS/04-NAT.md",
     "ANS/11-vpc-traffic-monitor-troubleshooting-Mirroring.md",
-    "ANS/09-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
     "ANS/images",
     "ANS/10-network-bandwidth-limits-network-io-credit.md",
     "ANS",
@@ -206,7 +210,6 @@
     "Study",
     "ANS/images",
     "ANS",
-    "CKAD",
-    "CKA"
+    "CKAD"
   ]
 }
