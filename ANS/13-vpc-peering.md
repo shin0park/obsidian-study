@@ -23,7 +23,7 @@
 
 ---
 
-### VPC Peering
+### VPC Peering
 
 ![500](images/Pasted%20image%2020250112194857.png)
 #### Feature
@@ -86,18 +86,35 @@ Document: https://docs.aws.amazon.com/ko_kr/vpc/latest/peering/what-is-vpc-peeri
 ### VPC Peering Limitations
 
 1. Must not have overlapping CIDR
-2. VPC Peering connection is not transitive (must be established for each VPC that need to communicate with one another)
+   ![400](images/Pasted%20image%2020250112201340.png)
+   10.10.0.0/16, 10.10.0.0/24 여도 overlap 되기 때문에 불가능
+   
+2. VPC Peering connection is **not transitive** (must be established for each VPC that need to communicate with one another)
 	1. Full Mesh 구조
 	2. 두 VPC 간 1개의 피어링 연결만 설정 가능
 	3. VPC당 최대 125개의 피어링 연결 제한
+	   
+	not transitive 란?  
+	-> A -> B로 연결된 네트워크에서 다시 B -> C로 트래픽을 전송하려고 할 때, A -> C로의 연결이 자동으로 확장되지 않는 것을 의미  
 
 ---
 
 ### VPC Peering Limitations scenarios
 
-1. **VPN 또는 Direct Connect**:
-    - 온프레미스 네트워크 연결 시 사용 불가.
-2. **인터넷 게이트웨이를 통한 트래픽**:
-    - 피어링된 VPC의 인터넷 게이트웨이를 통해 트래픽 라우팅 불가.
+1. **VPN or Direct Connect**:
+    - VPN or Direct Connect connection to on-premises network
+    -  **not transitive**
+    - 오직 VPC A에서 B로만 가는 것 만으로 끝! 더 이상 transitive 하지 않는다.
+    - proxy 를 통해 연결할 수는 있겠지만 아래와 같이 간단한 구조로는 불가능하다. 프록시 서버를 별도 설정해야하고 추가 비용 및 성능 문제 그리고 관리 복잡도가 증가될 것.
+    - VPC A에도 onprem으로 가는 별도의 VPN/DX를 추가로 설정하면 가능
+    - TGW를 사용하면 네트워크를 중앙 집중적으로 관리하기 때문에, transitive하게 연결 가능. 즉, A -> B -> C 가능.
+      ![500](images/Pasted%20image%2020250112201624.png)
+      
+2. IGW를 통한 트래픽**:
+    - 피어링된 VPC의 IGW를 통해 트래픽 라우팅 불가  
+      ![600](images/Pasted%20image%2020250112202515.png)
+      
 3. **S3/DynamoDB**:
-    - 피어링된 VPC의 엔드포인트를 통해 접근 불가.
+    - 피어링된 VPC의 엔드포인트를 통해 접근 불가  
+
+---
