@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SRE/C18-SRE 조직의 소프트웨어 엔지니어링.md",
+                "file": "ANS/15-VPC-Interface-Endpoint-(PrivateLink).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "C18-SRE 조직의 소프트웨어 엔지니어링"
+              "title": "15-VPC-Interface-Endpoint-(PrivateLink)"
             }
           }
         ]
@@ -166,10 +166,19 @@
   },
   "active": "7bb59c439a28bb39",
   "lastOpenFiles": [
+    "ANS/14-VPC-Gateway-Endpoints.md",
+    "ANS/15-VPC-Interface-Endpoint-(PrivateLink).md",
+    "ANS/images/Pasted image 20250119230439.png",
+    "ANS/images/Pasted image 20250119230340.png",
+    "ANS/images/Pasted image 20250119224927.png",
+    "ANS/images/Pasted image 20250119223605.png",
+    "ANS/images/Pasted image 20250119223532.png",
+    "ANS/images/Pasted image 20250119223419.png",
+    "ANS/images/Pasted image 20250119223402.png",
+    "SRE/C18-SRE 조직의 소프트웨어 엔지니어링.md",
     "SRE/images/sre.jpg",
     "SRE/images",
     "SRE/C17-신뢰성을 위한 테스트.md",
-    "SRE/C18-SRE 조직의 소프트웨어 엔지니어링.md",
     "ANS/09-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
     "ANS/08-network-performance.md",
     "ANS/07-VPC DNS Hands on.md",
@@ -181,18 +190,9 @@
     "SRE/C07-구글의 발전된 자동화.md",
     "SRE/C06-분산시스템모니터링.md",
     "SRE/C03-05-위험요소수용-SLI-SLO-SLA-삽질이란.md",
-    "ANS/14-VPC-Endpoints.md",
     "ANS/images/Pasted image 20250112211435.png",
     "ANS/images/Pasted image 20250112211207.png",
-    "ANS/images/Pasted image 20250112211008.png",
-    "ANS/images/Pasted image 20250112210129.png",
-    "ANS/images/Pasted image 20250112210042.png",
-    "ANS/images/Pasted image 20250112204041.png",
-    "ANS/images/Pasted image 20250112203429.png",
-    "ANS/images/Pasted image 20250112203412.png",
-    "ANS/images/Pasted image 20250112203336.png",
     "ANS/13-vpc-peering.md",
-    "ANS/images/Pasted image 20250112202515.png",
     "ANS/12-Reachability_Analyzer-Network_Access_Analyzer.md",
     "CKA/1-core concept.md",
     "ANS/01-vpc-account-region.md",

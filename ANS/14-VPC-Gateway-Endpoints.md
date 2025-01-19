@@ -96,3 +96,58 @@ Document: https://docs.aws.amazon.com/ko_kr/vpc/latest/privatelink/privatelink-a
 5. 프라이빗 서브넷의 Route table 수정 - dest: prefix list, target: vpce. 
 6. 퍼블릭 EC2를 통해 프라이빗 EC2에 SSH로 연결  
 7. S3 업로드/다운로드 테스트  
+
+---
+
+## VPC Gateway endpoint and S3 policies
+
+### VPC Endpoint Policy & S3 bucket policy
+
+**S3 bucket policy may have**:
+- **`aws:sourceVpce`**:
+	- 특정 VPC 엔드포인트(`vpce-1a2b3c4d`)를 통해서만 접근 허용한다. 
+	- 해당 조건을 통해 특정 VPC 엔드포인트에서 오는 요청이 아닐 경우 트래픽을 차단(더 높은 보안 제공)
+- **`aws:sourceVpc`**:
+	- 특정 VPC(`vpc-111bbb22`)를 통해서만 접근 허용한다.
+	- **vpc endpoint**에서만 적용된다. - vpc endpoint를 사용하지 않고 이 조건을 입력하면 적용이 안된다는 것.
+	  ex) ec2가 인터넷 통신하여 s3로 접근할때는 작동하지 않고, vpc endpoint를 사용할때만 적용된다.
+	- 여러 엔드포인트를 사용하는 경우 이를 활용해 모든 엔드포인트에서 S3 버킷 접근을 관리 가능하다
+
+- **`aws:SourceIp`**: S3 버킷 정책은 해당 조건으로 **특정 public IP주소**나 **elastic IP 주소**로 부터 접근 제한 가능하다 -> public 네트워크(인터넷)를 통해 들어올 때 유효한 조건
+- private IP 주소**를 기반으로 접근을 제한할 수는 없다
+- 그러므로, **`aws:SourceIp`** 조건은 VPC endpoint에 대해 적용되지 않는다. 
+  (vpc endpoint 를 통한 요청은 AWS 네트워크 내부에서 처리되며, 인터넷을 거치지 않는다.)
+
+### Example S3 bucket policies
+
+1. **특정 VPC endpoint 에 대한 접근 제한**
+    - 하나의 VPC endpoint를 통해서만 S3 버킷 접근을 허용하는 정책
+      ![500](images/Pasted%20image%2020250119223402.png)
+2. **전체 VPC에 대한 접근 제한**
+    - 특정 VPC에 속한 여러 VPC endpoint에서 S3 버킷에 접근을 허용하는 정책
+      ![500](images/Pasted%20image%2020250119223419.png)
+
+![600](images/Pasted%20image%2020250119223532.png)
+ec2 - check SG outbound- 기본값으로는 outbound allow 지만, custom 한 경우 체크
+
+check vpc DNS settings, DNS resolution must be enabled
+-> 그래야 모든 S3 API 호출이 이 VPC endpoint Gateway를 통해 나가 s3로 갈 수 있으므로
+
+
+### **VPC Gateway endpoint access from remote networks**
+VPC Gateway Endpoint 원격 네트워크로 부터의 접근
+![600](images/Pasted%20image%2020250119223605.png)  
+- **Gateway Endpoint**를 통해 원격 네트워크에서 접근하는 기능은 지원되지 않음
+- Gateway Endpoint는 **VPC 내부의 리소스에서 시작된 트래픽만 허용**하며, 온프레미스 트래픽은 해당 조건을 충족하지 않는다.
+
+#### 이유
+Gateway Endpoint는 보안 및 네트워크 안정성을 유지하기 위해 VPC 내부의 트래픽만 처리하도록 설계되었기 때문.
+외부로 들어오는 트래픽을 허용할 경우, AWS 내부 네트워크로의 접근 경로가 추가되어 보안상 위험이 증가 할 수 있음.
+
+Document: https://docs.aws.amazon.com/ko_kr/vpc/latest/privatelink/vpc-endpoints-s3.html
+![](images/Pasted%20image%2020250119224927.png)
+
+
+Amazon S3용 VPC 엔드포인트 유형
+Document:
+https://docs.aws.amazon.com/ko_kr/AmazonS3/latest/userguide/privatelink-interface-endpoints.html#types-of-vpc-endpoints-for-s3
