@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ANS/15-VPC-Interface-Endpoint-(PrivateLink).md",
+                "file": "SRE/C19-프론트엔드의 로드밸런싱.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "15-VPC-Interface-Endpoint-(PrivateLink)"
+              "title": "C19-프론트엔드의 로드밸런싱"
             }
           },
           {
@@ -180,9 +180,11 @@
   },
   "active": "7bb59c439a28bb39",
   "lastOpenFiles": [
+    "ANS/15-VPC-Interface-Endpoint-(PrivateLink).md",
+    "SRE/C19-프론트엔드의 로드밸런싱.md",
+    "ANS/무제 파일.md",
     "ANS/images/Pasted image 20250120232918.png",
     "ANS/14-VPC-Gateway-Endpoints.md",
-    "ANS/15-VPC-Interface-Endpoint-(PrivateLink).md",
     "ANS/images/Pasted image 20250120231209.png",
     "ANS/images/Pasted image 20250120231158.png",
     "ANS/images/Pasted image 20250120231145.png",
@@ -192,7 +194,6 @@
     "ANS/images/Pasted image 20250120220316.png",
     "ANS/images/Pasted image 20250119230439.png",
     "ANS/images/Pasted image 20250119230340.png",
-    "ANS/images/Pasted image 20250119224927.png",
     "SRE/C18-SRE 조직의 소프트웨어 엔지니어링.md",
     "SRE/images",
     "SRE/C17-신뢰성을 위한 테스트.md",
@@ -218,7 +219,6 @@
     "ANS",
     "ANS/10-network-bandwidth-limits-network-io-credit.md",
     "README.md",
-    "SRE/부록B-운영서비스를 위한 권장 사례 모음.md",
     "SRE",
     "CKAD",
     "CKA",
