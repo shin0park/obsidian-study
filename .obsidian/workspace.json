@@ -13,12 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SRE/C20-데이터센터의 로드밸런싱.md",
+                "file": "ANS/17-TGW-Attachment-DX-Multicast-Centralized traffic inspection.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "C20-데이터센터의 로드밸런싱"
+              "title": "17-TGW-Attachment-DX-Multicast-Centralized traffic inspection"
+            }
+          },
+          {
+            "id": "4e30222e3731bc58",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ANS/16-TGW-AZ affinity-peering.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "16-TGW-AZ affinity-peering"
             }
           }
         ]
@@ -52,7 +66,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "#",
+                "query": "tag:#Single",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -166,19 +180,20 @@
   },
   "active": "7bb59c439a28bb39",
   "lastOpenFiles": [
-    "SRE/images/Pasted image 20250203223710.png",
-    "SRE/images/Pasted image 20250203221720.png",
-    "SRE/images/Pasted image 20250203215935.png",
-    "SRE/images/Pasted image 20250203215930.png",
-    "ANS/16-TGW.md",
+    "ANS/images/Pasted image 20250209230653.png",
+    "ANS/images/Pasted image 20250209230613.png",
+    "ANS/images/Pasted image 20250209230552.png",
+    "ANS/images/Pasted image 20250209230507.png",
+    "ANS/images/Pasted image 20250209225118.png",
+    "ANS/images/Pasted image 20250209225050.png",
+    "ANS/images/Pasted image 20250209225029.png",
+    "ANS/images/Pasted image 20250209224816.png",
+    "ANS/images/Pasted image 20250209222704.png",
+    "ANS/images/Pasted image 20250209222154.png",
+    "ANS/images/Pasted image 20250209221330.png",
+    "ANS/16-TGW-AZ affinity-peering.md",
+    "ANS/17-TGW-Attachment-DX-Multicast-Centralized traffic inspection.md",
     "SRE/C20-데이터센터의 로드밸런싱.md",
-    "ANS/images/Pasted image 20250202225811.png",
-    "ANS/images/Pasted image 20250202225803.png",
-    "ANS/images/Pasted image 20250202221322.png",
-    "ANS/images/Pasted image 20250202221315.png",
-    "ANS/images/Pasted image 20250202221301.png",
-    "ANS/images/Pasted image 20250202221251.png",
-    "ANS/images/Pasted image 20250202221241.png",
     "SRE/C19-프론트엔드의 로드밸런싱.md",
     "ANS/14-VPC-Gateway-Endpoints.md",
     "ANS/15-VPC-Interface-Endpoint-(PrivateLink).md",
@@ -203,7 +218,6 @@
     "ANS/04-NAT.md",
     "ANS/11-vpc-traffic-monitor-troubleshooting-Mirroring.md",
     "ANS/images",
-    "ANS/10-network-bandwidth-limits-network-io-credit.md",
     "ANS",
     "SRE",
     "CKAD",
