@@ -245,7 +245,19 @@ https://en.wikipedia.org/wiki/Multicast
 - **Transit Gateway**를 사용하여 중앙 집중식 라우팅을 구성할 수 있다.
 - 각 가용 영역(AZ)에 NAT Gateway를 배치하여 고가용성과 AZ 간 데이터 전송 비용을 절감할 수 있다.
 - NAT Gateway는 최대 55,000개의 동시 연결을 지원하며, 5Gbps에서 100Gbps까지 확장할 수 있다.
-- Transit Gateway 라우팅 테이블에 black hole를 추가하여 VPC 간 트래픽을 제한할 수 있다.
+
+- Transit Gateway 라우팅 테이블에 **black hole**를 추가하여 VPC 간 트래픽을 제한할 수 있다.
+
+(black hole 제거 했을 경우)
+![](images/Pasted%20image%2020250209230908.png)
+- vpc1 -> vpc2로 갈때
+- vpc1 라우팅 테이블에 10.2.0.0/16 대역에 해당하는 라우트가 0.0.0.0/0 밖에 없으므로, tgw로 전달된 다음 tgw 라우팅 테이블에 의해 egress-vpc-att 로 전달되고 nat gateway로 전달된다음, nat gateway의 라우팅 테이블의 10.0.0.0/8 대역은 tgw으로 가라는 라우트에 의해 다시 tgw로 간다.
+- 그다음 tgw의 돌아오는 테이블에 의해  tgw-att-vpc-2를 타고 vpc2에 도달
+- 매우 비효울적인 루트이다.
+
+![](images/Pasted%20image%2020250209230924.png)
+- 따라서 black hole을 없애면, vpc1, vpc2로 가는 라우트를 tgw에 추가해줘야 바로 vpc1 -> vpc2로의 이동이 가능해진다.
+---
 - 각 AZ에 NAT Gateway를 배치하여 고가용성을 보장하고, 하나의 AZ가 완전히 실패할 경우 다른 AZ의 NAT Gateway를 통해 트래픽을 전달할 수 있다.
 - 이 아키텍처는 VPC당 NAT Gateway 비용(e.g. ~$0.045/hr + ~$0.045/GB) 대신 Transit Gateway Attachment 및 데이터 처리 비용을 추가(~$0.05/hr per VPC attachment + ~$0.02/GB) 할 수 있으므로 비용 절감 효과가 없을 수 있다.
 
