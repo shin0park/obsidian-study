@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ANS/17-TGW-Attachment-DX-Multicast-Centralized traffic inspection.md",
+                "file": "SRE/C21-과부하 처리하기.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "17-TGW-Attachment-DX-Multicast-Centralized traffic inspection"
+              "title": "C21-과부하 처리하기"
             }
           },
           {
@@ -180,6 +180,10 @@
   },
   "active": "7bb59c439a28bb39",
   "lastOpenFiles": [
+    "SRE/images/Pasted image 20250210231434.png",
+    "SRE/images/Pasted image 20250210222930.png",
+    "ANS/17-TGW-Attachment-DX-Multicast-Centralized traffic inspection.md",
+    "SRE/C21-과부하 처리하기.md",
     "ANS/images/Pasted image 20250209230924.png",
     "ANS/images/Pasted image 20250209230908.png",
     "ANS/images/Pasted image 20250209230653.png",
@@ -189,10 +193,7 @@
     "ANS/images/Pasted image 20250209225118.png",
     "ANS/images/Pasted image 20250209225050.png",
     "ANS/images/Pasted image 20250209225029.png",
-    "ANS/images/Pasted image 20250209224816.png",
-    "ANS/images/Pasted image 20250209222704.png",
     "ANS/16-TGW-AZ affinity-peering.md",
-    "ANS/17-TGW-Attachment-DX-Multicast-Centralized traffic inspection.md",
     "SRE/C20-데이터센터의 로드밸런싱.md",
     "SRE/C19-프론트엔드의 로드밸런싱.md",
     "ANS/14-VPC-Gateway-Endpoints.md",
@@ -216,7 +217,6 @@
     "CKA/1-core concept.md",
     "ANS/01-vpc-account-region.md",
     "ANS/04-NAT.md",
-    "ANS/11-vpc-traffic-monitor-troubleshooting-Mirroring.md",
     "ANS/images",
     "ANS",
     "SRE",
