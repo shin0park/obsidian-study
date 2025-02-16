@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SRE/C21-과부하 처리하기.md",
+                "file": "ANS/17-TGW-Attachment-DX-Multicast-Centralized traffic inspection.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "C21-과부하 처리하기"
+              "title": "17-TGW-Attachment-DX-Multicast-Centralized traffic inspection"
             }
           },
           {
@@ -91,8 +91,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "ccec65e2a1eb1233",
@@ -159,13 +158,23 @@
               "icon": "lucide-list",
               "title": "1-core concept 개요"
             }
+          },
+          {
+            "id": "076dc543af8b84cc",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -180,19 +189,19 @@
   },
   "active": "7bb59c439a28bb39",
   "lastOpenFiles": [
-    "SRE/images/Pasted image 20250210231434.png",
-    "SRE/images/Pasted image 20250210222930.png",
-    "ANS/17-TGW-Attachment-DX-Multicast-Centralized traffic inspection.md",
+    "ANS/images/Pasted image 20250217000746.png",
+    "ANS/images/Pasted image 20250216235834.png",
+    "ANS/images/Pasted image 20250216235822.png",
+    "ANS/images/Pasted image 20250216235821.png",
+    "ANS/images/Pasted image 20250216235654.png",
+    "ANS/images/Pasted image 20250216235601.png",
+    "ANS/images/Pasted image 20250216235535.png",
+    "ANS/images/Pasted image 20250216235201.png",
+    "ANS/images/Pasted image 20250216235152.png",
+    "ANS/images/Pasted image 20250216235149.png",
+    "ANS/images/Pasted image 20250216235144.png",
     "SRE/C21-과부하 처리하기.md",
-    "ANS/images/Pasted image 20250209230924.png",
-    "ANS/images/Pasted image 20250209230908.png",
-    "ANS/images/Pasted image 20250209230653.png",
-    "ANS/images/Pasted image 20250209230613.png",
-    "ANS/images/Pasted image 20250209230552.png",
-    "ANS/images/Pasted image 20250209230507.png",
-    "ANS/images/Pasted image 20250209225118.png",
-    "ANS/images/Pasted image 20250209225050.png",
-    "ANS/images/Pasted image 20250209225029.png",
+    "ANS/17-TGW-Attachment-DX-Multicast-Centralized traffic inspection.md",
     "ANS/16-TGW-AZ affinity-peering.md",
     "SRE/C20-데이터센터의 로드밸런싱.md",
     "SRE/C19-프론트엔드의 로드밸런싱.md",

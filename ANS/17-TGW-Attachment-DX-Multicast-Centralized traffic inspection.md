@@ -262,4 +262,125 @@ https://en.wikipedia.org/wiki/Multicast
 - 이 아키텍처는 VPC당 NAT Gateway 비용(e.g. ~$0.045/hr + ~$0.045/GB) 대신 Transit Gateway Attachment 및 데이터 처리 비용을 추가(~$0.05/hr per VPC attachment + ~$0.02/GB) 할 수 있으므로 비용 절감 효과가 없을 수 있다.
 
 ---
+## Centralized traffic inspection with Gateway Load Balancer & Network Appliance
+
+![](images/Pasted%20image%2020250216224145.png)
+- **Gateway Load Balancer (GWLB)**
+	- 방화벽, 침입 탐지 및 방지 시스템, 심층 패킷 검사 시스템과 같은 가상 어플라이언스를 배포, 규모 조정 및 관리할 수 있다. 
+	- 여러 가상 어플라이언스에 트래픽을 분산하는 동시에, 수요에 따라 규모를 늘리거나 줄일 수 있는 단일 게이트웨이를 제공한다.
+    
+- GWLB는 **GENEVE** 프로토콜을 사용하여 트래픽을 캡슐화하고, 네트워크 어플라이언스로 전달한다.
+- GWLB는 간단하고, 낮은 지연 시간, 고가용성, 확장성을 제공한다.
+- **GWLB endpoint(GWLBE)**: 트래픽을 GWLB로 전달하는 역할 수행
+
+    
+![](images/Pasted%20image%2020250216224029.png)
+
+![](images/Pasted%20image%2020250216224123.png)
+- 인터넷으로 나갈때 동일하게 GWLBE까지 온다음 GWLB를 타고 어플라이언스 검사를 한 다음, 다시 GWLBE로 도달. 마치 아무일이 일어나지 않고 GWLB에 머물러 있는 것처럼 동작
+- GWLB RT에 따라 0.0.0.0/0은 Nat GW로 전달 그다음, IGW를 통해 인터넷으로 나감
+
+![](images/Pasted%20image%2020250216224134.png)
+- 인터넷에서 들어올 경우, IGW으로 트래픽이 들어온 다음 Nat GW로 도달. Nat GW RT에 의해 목적지인 10.0.0.0/8은 vpce로 가라했으니, GWLBE에 도달
+- GWLBE RT에 의해 tgw로 전달
+- TGW RT에 10.2.0.0/16 목적지인 경우 tgw-att-vpc-2 로 전달하라고 되어있으니 해당 TGW ENI 타고 B 인스턴스에 도달
+---
+
+#### Centralized inspection with AWS GWLB: Important to know:
+
+- GWLB Endpoint는 AWS PrivateLink를 사용하여 GWLB로 트래픽을 안전하게 전달한다. 추가 구성 없이 가능.
+    
+- **GENEVE 캡슐화**: GWLB는 원본 IP 트래픽을 GENEVE 헤더로 캡슐화하고, UDP 포트 6081을 통해 네트워크 어플라이언스로 전달한다.
+    
+- GWLB는 트래픽 flow를 유지하는 것이 중요하다
+- **세션 고정성**: GWLB는 IP 패킷의 5-tuple 또는 3-tuple을 사용하여 특정 네트워크 어플라이언스에 트래픽을 고정시킨다. 이는 어플라이언스의 전반적인 flow에 고정적인 세션을 생성하여 방화벽 같이 stateful 해야하는 어플라이언스에 필수적이다.
+    
+- Transit Gateway의 appliance 모드와 결합하여, 출발과 목적지 AZ에 관계없이 세션 고정성을 제공한다.
+    
+- Refer to this blog for further details: https://aws.amazon.com/blogs/networking-and-content-delivery/centralized-inspection-architecture-with-aws-gateway-load-balancer-and-aws-transit-gateway/
+---
+## Centralized VPC interface endpoints
+
+![](images/Pasted%20image%2020250216231047.png)
+- **VPC 인터페이스 엔드포인트**는 AWS 서비스(예: KMS, SQS, EC2)에 대한 프라이빗 연결을 제공한다.
+- VPC 내에서 **Private Link**를 사용하여 AWS 서비스와 통신 가능하다. 인터넷 통신, Nat  없이
+- ENI를 서브넷에 프로비전하고 ENI를 통해 프라이빗하게 aws service endpoint에 도달 가능하다.
+
+![](images/Pasted%20image%2020250216231056.png)
+- Transit Gateway를 사용하면 여러 VPC에서 중앙 집중식으로 인터페이스 엔드포인트를 공유할 수 있다.
+- 각 VPC는 Transit Gateway를 통해 중앙 VPC의 인터페이스 엔드포인트에 접근할 수 있다.
+- ![300](images/Pasted%20image%2020250216231904.png)
+  마치hub and spoke 구조와 같으며 각 a,b,c,d VPC는 spoke. central 한 vpc가 위치
+
+### DNS resolution
+
+![](images/Pasted%20image%2020250216232704.png)
+- central vpc에서는 dns resolution이 정상 작동하지만, spoke vpc 에서는 동작하지 않는 문제가 있다.
+
+sqs DNS 질의를 해보자면
+- central vpc에서는 vpc endpoint 생성시 **private DNS**를 enable한다. 그럼 PHZ(private host zone)이 생성되고(api endpoint와 동일한 host로: sqs.ap-south-1.amazonaws.com) 해당 vpc와 연결된다.
+  그럼 해당 vpc 내부의 ec2에서 sqs api를 질의한다면 성공적으로 질의될 것이다. 자동으로 sqs.ap-south-1.amazonaws.com에 vpc endpoint eni의 private ip가 등록되기 때문이다. 
+- spoke vpc에서 만약 sqs api를 질의한다면, 인터넷으로 나가 질의하기에는 인터넷 통신구간이 없으며 그렇다고 sqs에 직접 연결되어있지 않기도 하다. 이때 결국 sqs.ap-south-1~ 도메인을 질의했을때, vpc endpoint private ip가 질의되어야 가능하다.
+
+![](images/Pasted%20image%2020250216232717.png)
+- 해결 방안
+- private DNS 를 disable 한다.
+- own **Private Hosted Zone (PHZ)**을 생성하고, interface endpoint의 DNS에 대한 Alias 레코드를 설정한다.
+- PHZ를 모든 Spoke VPC와 연결하여 DNS resolution을 가능하게 한다.
+
+#### Centralized VPC interface endpoints: Important to know:
+
+- VPC interface endpoints는 regional 과 AZ 레벨의 DNS endpoint들을 제공한다.
+![](images/Pasted%20image%2020250216235152.png)
+- regional DNS endpoint는 모든 AZ의 endpoint에 대한 IP 주소를 제공한다.
+![](images/Pasted%20image%2020250216235201.png)
+- AZ를 구체화하여 질의했을때는 하나의 ip주소만이 나오는 것을 볼 수 있다.
+- AZ 간의 data transfer 비용을 아끼기 위해서(spoke vpc에서 hub vpc로의), AZ specific한 DNS endpoints들을 사용할 수 있다. 
+
+#### 비용
+
+![](images/Pasted%20image%2020250216235535.png)
+- 일반적으로 interface endpoint로만 구성했을때 비용이다
+
+![](images/Pasted%20image%2020250216235601.png)
+- tgw를 사용하여 중앙집중화를 했을경우 각 vpc와 tgw 연결마다 attachment 비용과 data transfer 비용이 든다.
+- 위와 마찬가지로 interface endpoint 비용도 동일하게 들어간다.
+
+![](images/Pasted%20image%2020250216235654.png)
+- 비용적인면에서 peering를 사용하면 tgw를 사용할때의 비용은 들지 않을 것이다.
+- vpc가 많으면 비용을 지불하더라도 tgw가 관리효율에 좋을 수 있기때문에 상황에 맞게 택해야한다.
+
+---
+## Transit Gateway vs VPC Peering
+
+
+![](images/Pasted%20image%2020250216235834.png)
+- AWS 전송 게이트웨이의 보안 그룹 참조 지원 기능 소개 https://aws.amazon.com/ko/blogs/tech/introducing-security-group-referencing-for-aws-transit-gateway/
+
+- **DNS Resolution**: Transit Gateway에 연결된 모든 VPC에서 DNS Resolution 지원
+- Supports resolving ‘public’ DNS names to Private IP’s for EC2
+- TGW can be shared using Resource Access Manager (RAM) across AWS accounts
+- Billed per hour, per attachment
+- data processing 비용: amazon vpc or AWS Site-to-Site VPN 에서 TGW 까지 보낼때 각 GB당 비용 청구된다.
+- **대역폭 제한**: VPN 터널당 1.25Gbps, ECMP를 사용하면 최대 50Gbps까지 지원
+- TGW 5000 attachment 까지 지원
+- **MTU 지원**: VPC, Direct Connect, Transit Gateway Connect, Peering Attachment 간 트래픽의 MTU는 8500바이트를 지원한다. VPN 연결의 MTU는 1500바이트.
+
+---
+## Transit Gateway Sharing
+
+
+![](images/Pasted%20image%2020250217000746.png)
+
+-  **Transit Gateway Sharing**: AWS Resource Access Manager (RAM)을 사용하여 TGW를 여러 AWS 계정 또는 조직과 공유할 수 있다.
+- AWS Site-to-Site VPN attachment 는 TGW를 소유한 AWS 계정에서 생성해야 된다.
+- **Direct Connect Gateway로의 Attachment**는 Direct Connect Gateway와 동일한 AWS 계정에서 생성할 수도 있고, 다른 계정에서 생성할 수도 있다.
+- Transit Gateway가 다른 AWS 계정과 공유되면, 해당 계정은 Transit Gateway의 라우팅 테이블을 생성, 수정 또는 삭제할 수 없다.
+	- 라우팅 테이블의 전파(propagation) 및 연관(association)도 관리할 수 없다.
+	- Transit Gateway의 라우팅 설정을 소유 계정에서만 제어할 수 있음을 의미
+    
+- **Availability Zone ID 사용**: Transit Gateway와 Attachment 엔터티가 서로 다른 계정에 있는 경우, Availability Zone ID를 사용하여 AZ를 고유하고 일관되게 식별할 수 있다.
+    - `us-east-1` 리전의 AZ ID인 `use1-az1`은 모든 AWS 계정에서 동일한 위치를 가리킨다.
+    - 이를 통해 다른 계정 간에 AZ를 일관되게 식별하고 관리할 수 있다.
+    - 즉 다른 계정 간의 attachment를 식별하기 위해 AZ ID를 사용할 수 있다.
 
