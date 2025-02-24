@@ -49,8 +49,7 @@
               "title": "16-TGW-AZ affinity-peering"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -204,22 +203,22 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "ee8578c1650bdc73",
+  "active": "7bb59c439a28bb39",
   "lastOpenFiles": [
+    "SRE/images/Pasted image 20250224224622.png",
+    "SRE/images/Pasted image 20250224223137.png",
+    "SRE/images/Pasted image 20250224223127.png",
+    "ANS/18-Hybrid Network Basics.md",
     "ANS/images/Pasted image 20250224211746.png",
     "ANS/images/Pasted image 20250224211541.png",
     "ANS/images/Pasted image 20250224211504.png",
     "ANS/images/Pasted image 20250224211435.png",
     "SRE/C23-치명적인 상태 관리하기-신뢰성을 위한 분산에 대한 합의.md",
     "SRE/C22-연속적 장애 다루기.md",
-    "ANS/18-Hybrid Network Basics.md",
     "ANS/images/Pasted image 20250223211024.png",
     "ANS/images/Pasted image 20250223211013.png",
     "ANS/images/Pasted image 20250223210952.png",
     "ANS/images/Pasted image 20250223210944.png",
-    "ANS/images/Pasted image 20250223210354.png",
-    "SRE/images/Pasted image 20250223204625.png",
-    "SRE/images/Pasted image 20250217224122.png",
     "SRE/C21-과부하 처리하기.md",
     "SRE/C20-데이터센터의 로드밸런싱.md",
     "ANS/17-TGW-Attachment-DX-Multicast-Centralized traffic inspection.md",
