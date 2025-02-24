@@ -13,12 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SRE/C22-연속적 장애 다루기.md",
+                "file": "SRE/C23-치명적인 상태 관리하기-신뢰성을 위한 분산에 대한 합의.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "C22-연속적 장애 다루기"
+              "title": "C23-치명적인 상태 관리하기-신뢰성을 위한 분산에 대한 합의"
+            }
+          },
+          {
+            "id": "ee8578c1650bdc73",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ANS/18-Hybrid Network Basics.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "18-Hybrid Network Basics"
             }
           },
           {
@@ -35,7 +49,8 @@
               "title": "16-TGW-AZ affinity-peering"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -87,8 +102,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -190,23 +204,25 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "7bb59c439a28bb39",
+  "active": "ee8578c1650bdc73",
   "lastOpenFiles": [
+    "ANS/images/Pasted image 20250224211746.png",
+    "ANS/images/Pasted image 20250224211541.png",
+    "ANS/images/Pasted image 20250224211504.png",
+    "ANS/images/Pasted image 20250224211435.png",
+    "SRE/C23-치명적인 상태 관리하기-신뢰성을 위한 분산에 대한 합의.md",
+    "SRE/C22-연속적 장애 다루기.md",
+    "ANS/18-Hybrid Network Basics.md",
+    "ANS/images/Pasted image 20250223211024.png",
+    "ANS/images/Pasted image 20250223211013.png",
+    "ANS/images/Pasted image 20250223210952.png",
+    "ANS/images/Pasted image 20250223210944.png",
+    "ANS/images/Pasted image 20250223210354.png",
+    "SRE/images/Pasted image 20250223204625.png",
     "SRE/images/Pasted image 20250217224122.png",
     "SRE/C21-과부하 처리하기.md",
-    "SRE/C22-연속적 장애 다루기.md",
     "SRE/C20-데이터센터의 로드밸런싱.md",
     "ANS/17-TGW-Attachment-DX-Multicast-Centralized traffic inspection.md",
-    "ANS/images/Pasted image 20250217000746.png",
-    "ANS/images/Pasted image 20250216235834.png",
-    "ANS/images/Pasted image 20250216235822.png",
-    "ANS/images/Pasted image 20250216235821.png",
-    "ANS/images/Pasted image 20250216235654.png",
-    "ANS/images/Pasted image 20250216235601.png",
-    "ANS/images/Pasted image 20250216235535.png",
-    "ANS/images/Pasted image 20250216235201.png",
-    "ANS/images/Pasted image 20250216235152.png",
-    "ANS/images/Pasted image 20250216235149.png",
     "ANS/16-TGW-AZ affinity-peering.md",
     "SRE/C19-프론트엔드의 로드밸런싱.md",
     "ANS/14-VPC-Gateway-Endpoints.md",
@@ -227,8 +243,6 @@
     "SRE/C03-05-위험요소수용-SLI-SLO-SLA-삽질이란.md",
     "ANS/13-vpc-peering.md",
     "ANS/12-Reachability_Analyzer-Network_Access_Analyzer.md",
-    "CKA/1-core concept.md",
-    "ANS/01-vpc-account-region.md",
     "ANS/images",
     "ANS",
     "SRE",
