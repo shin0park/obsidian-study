@@ -13,12 +13,68 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SRE/C23-치명적인 상태 관리하기-신뢰성을 위한 분산에 대한 합의.md",
+                "file": "ANS/19-Site-to-Site-VPN.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "C23-치명적인 상태 관리하기-신뢰성을 위한 분산에 대한 합의"
+              "title": "19-Site-to-Site-VPN"
+            }
+          },
+          {
+            "id": "5538707e2997db51",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ANS/17-TGW-Attachment-DX-Multicast-Centralized traffic inspection.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "17-TGW-Attachment-DX-Multicast-Centralized traffic inspection"
+            }
+          },
+          {
+            "id": "93a1e2a28e65b0a3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ANS/04-NAT.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "04-NAT"
+            }
+          },
+          {
+            "id": "f5669ef40dc647d3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ANS/05-vpc-secondaryip-ENI-BYOIP.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "05-vpc-secondaryip-ENI-BYOIP"
+            }
+          },
+          {
+            "id": "0bf19727c71c60ab",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ANS/04-NAT.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "04-NAT"
             }
           },
           {
@@ -80,7 +136,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "Destination Check",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -101,7 +157,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -189,8 +246,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -205,23 +261,26 @@
   },
   "active": "7bb59c439a28bb39",
   "lastOpenFiles": [
-    "SRE/images/Pasted image 20250224224622.png",
-    "SRE/images/Pasted image 20250224223137.png",
-    "SRE/images/Pasted image 20250224223127.png",
-    "ANS/18-Hybrid Network Basics.md",
-    "ANS/images/Pasted image 20250224211746.png",
-    "ANS/images/Pasted image 20250224211541.png",
-    "ANS/images/Pasted image 20250224211504.png",
-    "ANS/images/Pasted image 20250224211435.png",
+    "ANS/images/Pasted image 20250309210737.png",
+    "ANS/images/Pasted image 20250309210725.png",
+    "ANS/images/Pasted image 20250309210715.png",
+    "ANS/images/Pasted image 20250309210705.png",
+    "ANS/images/Pasted image 20250309210652.png",
+    "ANS/images/Pasted image 20250309210638.png",
+    "ANS/images/Pasted image 20250309202455.png",
+    "ANS/images/Pasted image 20250309202440.png",
+    "ANS/images/Pasted image 20250309202422.png",
+    "ANS/images/Pasted image 20250309202406.png",
+    "ANS/images/Pasted image 20250309202344.png",
+    "ANS/04-NAT.md",
+    "ANS/05-vpc-secondaryip-ENI-BYOIP.md",
+    "ANS/17-TGW-Attachment-DX-Multicast-Centralized traffic inspection.md",
+    "ANS/19-Site-to-Site-VPN.md",
     "SRE/C23-치명적인 상태 관리하기-신뢰성을 위한 분산에 대한 합의.md",
+    "ANS/18-Hybrid Network Basics.md",
     "SRE/C22-연속적 장애 다루기.md",
-    "ANS/images/Pasted image 20250223211024.png",
-    "ANS/images/Pasted image 20250223211013.png",
-    "ANS/images/Pasted image 20250223210952.png",
-    "ANS/images/Pasted image 20250223210944.png",
     "SRE/C21-과부하 처리하기.md",
     "SRE/C20-데이터센터의 로드밸런싱.md",
-    "ANS/17-TGW-Attachment-DX-Multicast-Centralized traffic inspection.md",
     "ANS/16-TGW-AZ affinity-peering.md",
     "SRE/C19-프론트엔드의 로드밸런싱.md",
     "ANS/14-VPC-Gateway-Endpoints.md",
@@ -233,15 +292,12 @@
     "ANS/08-network-performance.md",
     "ANS/07-VPC DNS Hands on.md",
     "ANS/06-VPC-DNS-DHCP.md",
-    "ANS/05-vpc-secondaryip-ENI-BYOIP.md",
     "ANS/03-securitygroup-nacl.md",
     "ANS/02-VPC-CIDR-RT-IP.md",
     "SRE/C08-09-릴리즈엔지니어링-간소화.md",
     "SRE/C07-구글의 발전된 자동화.md",
     "SRE/C06-분산시스템모니터링.md",
     "SRE/C03-05-위험요소수용-SLI-SLO-SLA-삽질이란.md",
-    "ANS/13-vpc-peering.md",
-    "ANS/12-Reachability_Analyzer-Network_Access_Analyzer.md",
     "ANS/images",
     "ANS",
     "SRE",
