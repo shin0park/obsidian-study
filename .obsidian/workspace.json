@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ANS/19-Site-to-Site-VPN.md",
+                "file": "SRE/C24-크론을 이용한 분산 주기적 스케줄링.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "19-Site-to-Site-VPN"
+              "title": "C24-크론을 이용한 분산 주기적 스케줄링"
             }
           },
           {
@@ -157,8 +157,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -246,7 +245,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -261,6 +261,9 @@
   },
   "active": "7bb59c439a28bb39",
   "lastOpenFiles": [
+    "SRE/images/Pasted image 20250309221751.png",
+    "ANS/19-Site-to-Site-VPN.md",
+    "SRE/C24-크론을 이용한 분산 주기적 스케줄링.md",
     "ANS/images/Pasted image 20250309210737.png",
     "ANS/images/Pasted image 20250309210725.png",
     "ANS/images/Pasted image 20250309210715.png",
@@ -271,11 +274,9 @@
     "ANS/images/Pasted image 20250309202440.png",
     "ANS/images/Pasted image 20250309202422.png",
     "ANS/images/Pasted image 20250309202406.png",
-    "ANS/images/Pasted image 20250309202344.png",
     "ANS/04-NAT.md",
     "ANS/05-vpc-secondaryip-ENI-BYOIP.md",
     "ANS/17-TGW-Attachment-DX-Multicast-Centralized traffic inspection.md",
-    "ANS/19-Site-to-Site-VPN.md",
     "SRE/C23-치명적인 상태 관리하기-신뢰성을 위한 분산에 대한 합의.md",
     "ANS/18-Hybrid Network Basics.md",
     "SRE/C22-연속적 장애 다루기.md",
@@ -297,7 +298,6 @@
     "SRE/C08-09-릴리즈엔지니어링-간소화.md",
     "SRE/C07-구글의 발전된 자동화.md",
     "SRE/C06-분산시스템모니터링.md",
-    "SRE/C03-05-위험요소수용-SLI-SLO-SLA-삽질이란.md",
     "ANS/images",
     "ANS",
     "SRE",
