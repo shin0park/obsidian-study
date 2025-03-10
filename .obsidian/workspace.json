@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SRE/C24-크론을 이용한 분산 주기적 스케줄링.md",
+                "file": "SRE/C25-데이터 처리 파이프라인.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "C24-크론을 이용한 분산 주기적 스케줄링"
+              "title": "C25-데이터 처리 파이프라인"
             }
           },
           {
@@ -261,9 +261,13 @@
   },
   "active": "7bb59c439a28bb39",
   "lastOpenFiles": [
+    "SRE/images/Pasted image 20250310224229.png",
+    "SRE/images/Pasted image 20250310224227.png",
+    "SRE/images/Pasted image 20250310223139.png",
+    "SRE/C24-크론을 이용한 분산 주기적 스케줄링.md",
+    "SRE/C25-데이터 처리 파이프라인.md",
     "SRE/images/Pasted image 20250309221751.png",
     "ANS/19-Site-to-Site-VPN.md",
-    "SRE/C24-크론을 이용한 분산 주기적 스케줄링.md",
     "ANS/images/Pasted image 20250309210737.png",
     "ANS/images/Pasted image 20250309210725.png",
     "ANS/images/Pasted image 20250309210715.png",
@@ -271,9 +275,6 @@
     "ANS/images/Pasted image 20250309210652.png",
     "ANS/images/Pasted image 20250309210638.png",
     "ANS/images/Pasted image 20250309202455.png",
-    "ANS/images/Pasted image 20250309202440.png",
-    "ANS/images/Pasted image 20250309202422.png",
-    "ANS/images/Pasted image 20250309202406.png",
     "ANS/04-NAT.md",
     "ANS/05-vpc-secondaryip-ENI-BYOIP.md",
     "ANS/17-TGW-Attachment-DX-Multicast-Centralized traffic inspection.md",
@@ -297,7 +298,6 @@
     "ANS/02-VPC-CIDR-RT-IP.md",
     "SRE/C08-09-릴리즈엔지니어링-간소화.md",
     "SRE/C07-구글의 발전된 자동화.md",
-    "SRE/C06-분산시스템모니터링.md",
     "ANS/images",
     "ANS",
     "SRE",
