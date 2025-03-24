@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SRE/C26-데이터 무결성.md",
+                "file": "ANS/21-CloudFront.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "C26-데이터 무결성"
+              "title": "21-CloudFront"
             }
           },
           {
@@ -185,8 +185,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -290,19 +289,21 @@
   },
   "active": "7bb59c439a28bb39",
   "lastOpenFiles": [
-    "SRE/C23-치명적인 상태 관리하기-신뢰성을 위한 분산에 대한 합의.md",
+    "ANS/images/Pasted image 20250324223029.png",
+    "ANS/images/Pasted image 20250324223020.png",
+    "ANS/images/Pasted image 20250324222954.png",
+    "ANS/images/Pasted image 20250324222947.png",
+    "ANS/images/Pasted image 20250324222937.png",
+    "ANS/images/Pasted image 20250324221443.png",
+    "ANS/images/Pasted image 20250324220155.png",
+    "ANS/images/Pasted image 20250324220132.png",
+    "ANS/images/Pasted image 20250324220055.png",
+    "ANS/images/Pasted image 20250324220049.png",
+    "ANS/images/Pasted image 20250324215208.png",
     "SRE/C26-데이터 무결성.md",
+    "ANS/21-CloudFront.md",
+    "SRE/C23-치명적인 상태 관리하기-신뢰성을 위한 분산에 대한 합의.md",
     "ANS/20-Site-to-Site-VPN-architecture.md",
-    "ANS/images/Pasted image 20250316220112.png",
-    "ANS/images/Pasted image 20250316213150.png",
-    "ANS/images/Pasted image 20250316213131.png",
-    "ANS/images/Pasted image 20250316213121.png",
-    "ANS/images/Pasted image 20250316213111.png",
-    "ANS/images/Pasted image 20250316213046.png",
-    "ANS/images/Pasted image 20250316212730.png",
-    "ANS/images/Pasted image 20250316211702.png",
-    "ANS/images/Pasted image 20250316205444.png",
-    "ANS/images/Pasted image 20250316204549.png",
     "ANS/17-TGW-Attachment-DX-Multicast-Centralized traffic inspection.md",
     "ANS/18-Hybrid Network Basics.md",
     "ANS/19-Site-to-Site-VPN.md",
@@ -325,8 +326,6 @@
     "ANS/07-VPC DNS Hands on.md",
     "ANS/06-VPC-DNS-DHCP.md",
     "ANS/03-securitygroup-nacl.md",
-    "ANS/02-VPC-CIDR-RT-IP.md",
-    "SRE/C08-09-릴리즈엔지니어링-간소화.md",
     "ANS/images",
     "ANS",
     "SRE",
