@@ -171,4 +171,4 @@ S3 버킷 정책 예시
 
 - ALB 앞에 WAF를 구성하여 filter rule을 설정한다.
 - 해당 custome http header가 있는 경우만 통과시키도록 -> 즉, direct로 alb에 접근할 수가 없다.
-- secretsmanager에 auto-rotate을 설정한 다음, 람다함수를 invoke 시켜 cloudfront의 custom http header와 waf의 rule을 new value로 주기적 업데이트한다.
+- secretsmanager에 auto-rotate을 설정한 다음, 람다 함수를 invoke 시켜 cloudfront의 custom http header와 waf의 rule을 new value로 주기적 업데이트 한다.
