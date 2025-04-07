@@ -368,3 +368,90 @@ S3 버킷 정책 예시
 - 동적으로 api request를 cloudfront로 보내서 cache를 활용한다.
 - 람다함수를 통해 dynamodb에서 쿼리하는 것도 가능.
 - fully global 하며, serverless 인 구조를 제공
+
+---
+
+### Global users for our application
+
+![](images/Pasted%20image%2020250407230045.png)
+
+- 전 세계에 있는 사용자가 배포한 애플리케이션에 접근하고자 한다.
+- 이들은 public internet을 통해 접속하게 되며, 여러 중간 hops들로 인해 latency가 증가할 수 있다.
+- latency를 최소화하기 위해 가능한 빠르게 AWS 내부 네트워크를 통해 전달하고자 한다.
+
+
+---
+
+### Unicast IP vs Anycast IP
+
+![300](images/Pasted%20image%2020250407230109.png)
+
+- Unicast IP: 하나의 서버가 하나의 고유한 IP 주소를 가진다.
+- Anycast IP: 모든 서버가 동일한 IP 주소를 가지며, 클라이언트는 가장 가까운 서버로 라우팅 된다.
+
+
+---
+
+### AWS Global Accelerator
+
+![300](images/Pasted%20image%2020250407230206.png)
+
+- AWS 내부 네트워크를 활용하여 애플리케이션으로 트래픽을 빠르게 라우팅 한다.
+	- india에 있는 애플리케이션을 각 전세계에서 접속한다고 할때
+- 애플리케이션에 대해 **2개의 Anycast IP**가 생성 된다.
+- 그 Anycast IP는 트래픽을 **Edge Locations**으로 직접 전송
+- The Anycast IP send traffic directly to Edge Locations
+- 그 Edge locations은 그 트래픽을 최종적으로 여러분의 애플리케이션으로 전달 한다.
+
+주요 특징
+- **지원 서비스**:Elastic IP, EC2 인스턴스, ALB, NLB (퍼블릭/프라이빗 모두 가능)
+- 일관된 성능 제공: AWS 백본 네트워크를 통해 낮은 지연 시간 보장
+- **지능형 라우팅**: 최저 지연 경로로 트래픽 전송 + 빠른 리전 장애 조치(failover)
+- **클라이언트 캐시 문제 없음**: IP가 변경되지 않아 DNS 캐싱 문제 방지
+	- 도메인 DNS 이름을 IP 주소로 변환하여 사용하는데, 클라이언트는 이를 일정 시간동안 캐시하여 dns 조회하지 않고 바로 접속하고는 한다. 백엔드 서버의 ip가 바뀌면 캐시때문에 접속 오류가 생길 수가 있는데, AWS Global Accelerator 의 경우 ip가 바뀌지 않고 고정이므로 이러한 문제가 발생하지 않는다.
+- 내부 AWS 네트워크 사용
+
+
+Health Checks  
+- Global Accelerator 애플리케이션 health check를 지속적으로 한다.
+- 문제가 발생한 경우, 1분 이내에 다른 정상 리전으로 자동 장애 조치(failover)를 수행
+- 재해 복구(Disaster Recovery)에 유리 (thanks to health check)
+
+Security 
+- 외부에서 접근 가능한 IP는 오직 2개이므로, 화이트리스트 설정이 간단함
+- AWS Shield를 통해 DDoS 공격에 대한 보호 제공
+
+#### AWS Global Accelerator vs. CloudFront
+
+- 둘 다 AWS global network 와 전 세계 edge locations을 활용
+- 두 서비스 모두 AWS Shield와 통합되어 DDoS 보호 제공
+
+- **CloudFront**:
+	- 캐시 가능한 콘텐츠(이미지, 비디오 등) 성능 향상
+	- 동적 콘텐츠(API acceleration, 동적 사이트 전달 등) 지원
+	- 콘텐츠가 edge에서 제공됨
+
+- **Global Accelerator**
+	- **TCP/UDP 기반 애플리케이션** 성능 향상
+	-  엣지에서 패킷을 프록시하여 **한 개 이상의 AWS 리전**에서 실행중인 애플리케이션으로 전달
+	- non-HTTP 워크로드에 적합 (ex. 게임(UDP), IoT(MQTT), VoIP(Voice over IP))
+		- **IoT 센서**: 소량의 데이터를 빠르게 전달 → MQTT (주로 TCP, 때로는 UDP)
+		- VoIP(실시간 음성통신) - UDP
+		- AWS CloudFront은 **HTTP(S)** 요청만 처리할 수 있고, UDP는 지원하지 않는다.
+		- Global Accelerator는 TCP와 UDP를 모두 지원
+	- static IP 주소가 필요한 HTTP 사용 사례에 유용
+		- 보안이나 네트워크 정책상, 외부 접근을 허용하기 위해**정해진 IP만 화이트리스트에 등록**해야 할 때가 있다.
+		- 도메인 이름은 IP가 바뀔 수 있기 때문에 위험
+		- Global Accelerator는 **2개의 고정 IP 제공** → 변경 없음 → 보안/정책 설정에 유리
+	- 결정적이고 빠른 regional failover가 필요한 HTTP 사용 사례에 적합
+		- 1분 미만으로 regional failover를 지원하기에 적합
+		- 클라이언트는 같은 IP로 요청하지만 **AWS 내부에서 라우팅만 바꿔줌**
+---
+
+Hands on
+
+- 지역별로 ec2 생성 
+- AWS Global Accelerator 생성 - 앞서 생성한 ec2를 엔드포인트로 설정 - 엔드포인트 2개 
+- vpn을 변경하면서 가까운 ec2로 로드되는지 테스트
+- 하나의 ec2가 unhealthy 됐을때 다른 ec2로 트래픽이 가는지 테스트
+
