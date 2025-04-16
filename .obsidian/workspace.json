@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ANS/21-CloudFront.md",
+                "file": "ANS/22-Elastic-Load-Balancers.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "21-CloudFront"
+              "title": "22-Elastic-Load-Balancers"
             }
           },
           {
@@ -289,19 +289,20 @@
   },
   "active": "7bb59c439a28bb39",
   "lastOpenFiles": [
-    "ANS/images/Pasted image 20250407230206.png",
-    "ANS/images/Pasted image 20250407230109.png",
-    "ANS/images/Pasted image 20250407230045.png",
-    "ANS/images/Pasted image 20250331224127.png",
-    "ANS/images/Pasted image 20250331224110.png",
-    "ANS/images/Pasted image 20250331224050.png",
-    "ANS/images/Pasted image 20250331223555.png",
-    "ANS/images/Pasted image 20250331223445.png",
-    "ANS/images/Pasted image 20250331223434.png",
-    "ANS/images/Pasted image 20250331222536.png",
-    "ANS/images/Pasted image 20250331214917.png",
-    "SRE/C26-데이터 무결성.md",
+    "ANS/images/Pasted image 20250417004138.png",
+    "ANS/images/Pasted image 20250417003344.png",
+    "ANS/images/Pasted image 20250417003328.png",
+    "ANS/images/Pasted image 20250417003142.png",
+    "ANS/images/Pasted image 20250417002816.png",
+    "ANS/images/Pasted image 20250417000826.png",
+    "ANS/images/Pasted image 20250417000655.png",
+    "ANS/images/Pasted image 20250417000435.png",
+    "ANS/images/Pasted image 20250417000235.png",
+    "ANS/images/Pasted image 20250417000226.png",
+    "ANS/images/Pasted image 20250416235011.png",
     "ANS/21-CloudFront.md",
+    "ANS/22-Elastic-Load-Balancers.md",
+    "SRE/C26-데이터 무결성.md",
     "SRE/C23-치명적인 상태 관리하기-신뢰성을 위한 분산에 대한 합의.md",
     "ANS/20-Site-to-Site-VPN-architecture.md",
     "ANS/17-TGW-Attachment-DX-Multicast-Centralized traffic inspection.md",
@@ -325,7 +326,6 @@
     "ANS/08-network-performance.md",
     "ANS/07-VPC DNS Hands on.md",
     "ANS/06-VPC-DNS-DHCP.md",
-    "ANS/03-securitygroup-nacl.md",
     "ANS/images",
     "ANS",
     "SRE",

@@ -455,3 +455,4 @@ Hands on
 - vpn을 변경하면서 가까운 ec2로 로드되는지 테스트
 - 하나의 ec2가 unhealthy 됐을때 다른 ec2로 트래픽이 가는지 테스트
 
+  [pknbvcxz]
