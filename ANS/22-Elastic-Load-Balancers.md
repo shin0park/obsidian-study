@@ -252,3 +252,194 @@
 	- 파일 업로드 시 시간 초과 방지에 유용
 - EC2 인스턴스의 웹 서버 설정에서 HTTP keep-alive 활성화하여 백엔드 연결 재사용하는 것을 권장
 	- Idle Timeout 설정은 연결 안정성을 유지하며, keep-alive는 성능 최적화에 기여
+
+---
+
+### Request Routing Algorithms
+
+- Least Outstanding Requests
+	- 미완료(보류 중인) 요청 수가 가장 적은 인스턴스를 선택하여 다음 요청을 라우팅
+	- **지원 로드 밸런서**:
+	    - Application Load Balancer (ALB)
+	    - Classic Load Balancer (CLB, HTTP/HTTPS 리스너)
+- round Robin
+	- 타겟 그룹 내 타겟에 요청을 순차적으로 균등 분배
+	- **지원 로드 밸런서**:
+	    - Application Load Balancer (ALB)
+	    - Classic Load Balancer (CLB, TCP 리스너)
+- Flow Hash
+	- protocol, source/destination IP address, source/destination port, and TCP sequence number를 기반으로 타겟 선택
+	- 각 TCP/UDP 연결은 연결 지속 시간 동안 단일 타겟으로 라우팅
+	- **지원 로드 밸런서**:
+	    - Network Load Balancer (NLB)
+	- ![](images/Pasted%20image%2020250421225541.png)
+
+---
+
+### Sticky Sessions (Session Affinity)
+
+- **동일한 클라이언트가 항상 동일한 백엔드 인스턴스로 지속적으로 라우팅되도록** 설정
+- 세션 데이터 유지를 위한 용도 (예: 로그인 상태)
+- ALB, CLB, NLB에서 모두 지원됨
+- CLB 및 ALB: 쿠키를 사용하며, 쿠키 만료 날짜 설정 가능
+- 단점: 백엔드 인스턴스 간 부하 불균형 초래할 수 있음
+- 스티키 세션은 사용자 경험을 향상시키지만, 부하 균형에 영향을 줄 수 있음
+
+#### Sticky Sessions – Cookie Names
+
+- Application-based Cookies
+	- Custom cookie
+		- 타겟(애플리케이션)에서 생성
+		- 애플리케이션 요구에 맞는 사용자 지정 속성 포함 가능
+		- 타겟 그룹별로 쿠키 이름 개별 지정해야한다.
+		- 예약 이름(AWSALB, AWSALBAPP, AWSALBTG) 사용 불가
+	- Application cookie
+		- 로드 밸런서에서 생성
+		- 쿠키 이름: AWSALBAPP
+		- 모든 계층에서 스티키 세션 필요한 경우 사용
+- Duration-based Cookies
+	- 로드 밸런서에서 생성
+	- Cookie name: ALB는 AWSALB, CLB는 AWSELB
+
+---
+
+### Cross-Zone Load Balancing
+
+![](images/Pasted%20image%2020250421230621.png)
+-> 여러 가용 영역(AZ)에 걸쳐 트래픽을 **균등 분산**
+- **비활성화 시** → 로드 밸런서 노드가 속한 AZ 내 인스턴스만 사용
+- **활성화 시** → 모든 AZ에 등록된 인스턴스들에 트래픽 분산
+
+|로드 밸런서 유형|기본 설정|비용 여부|
+|---|---|---|
+|ALB|활성화|❌ (AZ 간 요금 없음)|
+|NLB / GWLB|비활성화|✅ (AZ 간 트래픽 요금 발생)|
+|CLB|비활성화|❌ (요금 없음)|
+
+-> 교차 영역 로드 밸런싱은 고가용성과 부하 분산을 향상시키지만, NLB/GWLB는 비용 고려 필요
+
+---
+### Elastic Load Balancer – SSL Certificates
+
+#### SSL/TLS - Basics
+
+- SSL(TLS) Certificate은 **클라이언트와 로드 밸런서 간 통신을 암호화** 
+	- (in-flight encryption 전송중 암호화)
+- TLS는 SSL의 최신 버전으로, 현재 주로 사용
+- 대부분 TLS를 사용하지만 “SSL”이라는 용어가 아직도 자주 사용됨
+- Public SSL 인증서는 인증기관(CA)에서 발급 
+	- (Comodo, Symantec, GoDaddy, GlobalSign, DigiCert, Let’s Encrypt...)
+- 인증서는 만료 날짜가 있으며, 갱신 필요
+---
+#### Elastic Load Balancer – SSL Certificates
+
+![](images/Pasted%20image%2020250421233239.png)
+
+- **X.509 certificate** 사용 (SSL/TLS server certificate)
+- ACM (AWS Certificate Manager)로 관리 가능
+- 직접 업로드한 인증서도 사용 가능
+    
+- **HTTPS listener**:
+    - default certificate 지정해야함
+    - 여러 도메인 지원을 위한 인증서 목록 추가 가능
+    - **SNI(Server Name Indication)** 사용 시 다중 도메인 지원
+    - **보안 정책(Security Policy)** 설정 가능 (컴플라이언스, 호환성 등)
+
+---
+#### SSL – Server Name Indication (SNI)
+
+![400](images/Pasted%20image%2020250421233647.png)
+
+- SNI는 단일 웹 서버에서 다중 SSL 인증서를 로드하여 여러 웹사이트를 제공하는 문제를 해결
+- 클라이언트가 첫 SSL 핸드셰이크 중 **접속하려는 타겟 호스트 이름을 전달**
+- 서버는 해당 호스트에 맞는 인증서를 응답
+- 지원 대상: **ALB, NLB**
+- CLB는 **SNI 미지원 → 호스트당 별도 CLB 필요**
+- SNI는 다중 도메인 환경에서 인증서 관리를 간소화
+
+#### Elastic Load Balancers – SSL Certificates
+
+- CLB
+	- **단일 SSL 인증서만 지원**
+	- - SSL 인증서에는 여러 도메인을 위한 다중 SAN(Subject Alternate Name) 포함 가능
+	    ➝ ex: `example.com`, `api.example.com`, `www.example.com` 
+	- but, SAN이 **추가/수정/삭제될 때마다 인증서 자체를 교체**해야 함
+	- **여러 도메인에 각각 다른 SSL 인증서**를 사용하려면 **CLB를 여러 개** 생성해야 함
+		- -> 이러한 제약 때문에, **가능하면 ALB를 사용하는 것이 바람직**
+- ALB
+	- **다중 리스너 및 다중 SSL 인증서** 지원
+	- **SNI (Server Name Indication)** 을 사용하여 **도메인 별로 다른 인증서** 매핑 가능
+		- -> 하나의 ALB로 여러 도메인에 SSL 서비스를 제공할 수 있음 
+			- (ex: `app.example.com`, `api.example.com`)
+- NLB
+	- ALB와 마찬가지로 **다중 리스너 및 다중 SSL 인증서** 지원
+	- **SNI** 기반으로 클라이언트가 요청한 호스트명에 맞는 인증서 제공
+		- -> 고성능이 필요한 L4 기반 암호화 트래픽 처리에 적합
+
+---
+#### HTTPS/SSL Listener – Security Policy
+
+Application Load Balancer 보안 정책
+https://docs.aws.amazon.com/ko_kr/elasticloadbalancing/latest/application/describe-ssl-policies.html
+
+- SSL 프로토콜, 암호화 방식(SSL Cipher), 서버 우선순위 옵션을 결합한 정책으로 SSL 협상 시 사용
+- Predefined Security Policies 사용 가능 
+	- `ELBSecurityPolicy-TLS13-1-2-2021-06` 정책은 AWS Management Console을 사용하여 생성한 리스너의 기본 보안 정책
+	- `ELBSecurityPolicy-2016-08` 정책은 AWS CLI를 사용하여 생성한 리스너의 기본 보안 정책
+- HTTPS 리스너를 생성할 때 보안 정책을 선택해야 한다.
+
+- For ALB and NLB
+	- ALB는 사용자 지정 보안 정책을 지원하지 않는다.
+
+	- **프론트엔드 연결**: Predefined Security Policies - 사전 정의된 보안 정책 사용 가능
+		- (ex: `ELBSecurityPolicy-TLS-1-2-2017-01`, `ELBSecurityPolicy-FS`...)
+	- 백엔드 연결: 
+		- HTTPS 리스너 중 하나라도 TLS 1.3 보안 정책을 사용하면 `ELBSecurityPolicy-TLS13-1-0-2021-06` 보안 정책이 사용됨
+			- 그러지 않으면, `ELBSecurityPolicy-2016-08` 보안 정책은 백엔드 연결에 사용됨
+			- **이유**: `ELBSecurityPolicy-2016-08`은 TLS 1.0 이상(TLS 1.0, 1.1, 1.2)을 지원하며, 다양한 백엔드 타겟(EC2 인스턴스, 컨테이너, 온프레미스 서버 등)과의 호환성을 보장하는 정책이다. 이는 운영 간소화와 안정성을 위해 TLS 1.3이 아니라면 이 정책으로 사용된다.
+		- **FIPS 보안 정책 사용 시**: 백엔드 연결에 `ELBSecurityPolicy-TLS13-1-0-FIPS-2023-04` 사용
+			- ```Federal Information Processing Standard(FIPS)는 미국 및 캐나다 정부 보안 표준으로서, 기밀 정보를 보호하는 암호 모듈의 보안 요건을 규정하고 있습니다.```
+			- AWS 클라우드 보안 규정 준수 페이지 [Federal Information Processing Standard(FIPS) 140](https://aws.amazon.com/compliance/fips/)
+
+- Use **ELBSecurityPolicy-TLS**: 
+	- 특정 TLS 프로토콜 버전을 비활성화해야 하는 규정 준수 및 보안 표준을 충족하거나 더 이상 사용되지 않는 암호가 필요한 레거시 클라이언트를 지원하려면 `ELBSecurityPolicy-TLS-` 보안 정책 중 하나를 사용할 수 있다.
+- Use **ELBSecurityPolicy-FS**: FS 지원 정책
+	- Forward Secrecy 제공
+	- FS(순방향 비밀성) 지원 보안 정책: 고유한 랜덤 세션 키를 사용하여 암호화된 데이터를 도청할 수 없도록 추가적인 보호 기능을 제공
+
+- 보안 정책은 보안 및 규제 요구사항을 충족하며, FS 정책은 추가 보안 제공
+
+
+---
+**출제 가능성 높음**
+#### Connection Draining / Deregistration Delay 
+
+연결 종료 처리
+- 사용자 경험을 유지하며, 요청 손실 방지
+
+- **CLB**: Connection Draining
+- **ALB/NLB**: Deregistration Delay
+    
+- 인스턴스가 등록 해제되거나 비정상 상태일 때 진행 중인 요청("in-flight requests")을 완료할 시간 제공
+- **신규 요청은 다른 인스턴스로 전달됨**
+    
+- 설정 범위: **1~3600초 (기본값 300초)**
+	- 비활성화 가능(0으로 설정).
+	- 짧은 요청의 경우 낮은 값 설정 권장
+
+![400](images/Pasted%20image%2020250422002415.png)
+
+---
+#### X-Forwarded Headers (HTTP)
+
+![300](images/Pasted%20image%2020250422002432.png)
+
+- ELB가 클라이언트 정보를 타겟에 전달하기 위해 사용하는 비표준 HTTP 헤더(X-Forwarded 접두사)
+- **지원 로드 밸런서**
+    - Classic Load Balancer (CLB, HTTP/HTTPS)
+    - Application Load Balancer (ALB)
+- **헤더 종류**
+    - **X-Forwarded-For**: 클라이언트 IP 주소 포함(프록시 경유 시 다중 IP 주소 포함, 왼쪽 첫 번째가 클라이언트 IP)
+    - **X-Forwarded-Proto**: 클라이언트와 ELB 간 프로토콜(HTTP/HTTPS)
+    - **X-Forwarded-Port**: 클라이언트가 ELB에 연결한 대상 포트
+- **사용 사례**: 서버에서 클라이언트 요청 로깅
