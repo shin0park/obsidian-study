@@ -22,6 +22,20 @@
             }
           },
           {
+            "id": "d18ed834550a89c4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ANS/22-Elastic-Load-Balancers.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "22-Elastic-Load-Balancers"
+            }
+          },
+          {
             "id": "29de68f8afde94aa",
             "type": "leaf",
             "state": {
@@ -133,7 +147,8 @@
               "title": "16-TGW-AZ affinity-peering"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -152,7 +167,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "파일 탐색기"
@@ -278,17 +294,18 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:퀵 스위처 열기": false,
+      "switcher:빠른 전환기 열기": false,
+      "daily-notes:오늘의 일일 노트 열기": false,
       "graph:그래프 뷰 열기": false,
       "canvas:새 캔버스 만들기": false,
-      "daily-notes:오늘의 데일리 노트 열기": false,
       "templates:템플릿 삽입": false,
       "command-palette:명령어 팔레트 열기": false,
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "7bb59c439a28bb39",
+  "active": "d18ed834550a89c4",
   "lastOpenFiles": [
+    "ANS/images/Pasted image 20250428000405.png",
     "ANS/images/Pasted image 20250422002432.png",
     "ANS/images/Pasted image 20250422002415.png",
     "ANS/images/Pasted image 20250421233647.png",
@@ -299,7 +316,6 @@
     "ANS/images/Pasted image 20250417003344.png",
     "ANS/images/Pasted image 20250417003328.png",
     "ANS/images/Pasted image 20250417003142.png",
-    "ANS/images/Pasted image 20250417002816.png",
     "ANS/21-CloudFront.md",
     "ANS/22-Elastic-Load-Balancers.md",
     "SRE/C26-데이터 무결성.md",

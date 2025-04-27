@@ -241,6 +241,7 @@
 	- For internal load balancers, AWS가 서브넷에서 private ipv4 address를 할당하는 경우에 해당 
 ---
 ### Connection Idle Timeout
+
 ![300](images/Pasted%20image%2020250417004138.png)
 
 - **Idle Timeout period for ELB’s connections**
@@ -254,7 +255,7 @@
 	- Idle Timeout 설정은 연결 안정성을 유지하며, keep-alive는 성능 최적화에 기여
 
 ---
-
+===
 ### Request Routing Algorithms
 
 - Least Outstanding Requests
@@ -440,6 +441,53 @@ https://docs.aws.amazon.com/ko_kr/elasticloadbalancing/latest/application/descri
     - Application Load Balancer (ALB)
 - **헤더 종류**
     - **X-Forwarded-For**: 클라이언트 IP 주소 포함(프록시 경유 시 다중 IP 주소 포함, 왼쪽 첫 번째가 클라이언트 IP)
-    - **X-Forwarded-Proto**: 클라이언트와 ELB 간 프로토콜(HTTP/HTTPS)
+    - **X-Forwarded-Proto**: 클라이언트와 ELB 간 프로토콜(HTTP/HTTPS)π
     - **X-Forwarded-Port**: 클라이언트가 ELB에 연결한 대상 포트
 - **사용 사례**: 서버에서 클라이언트 요청 로깅
+
+---
+### Proxy Protocol
+
+![300](images/Pasted%20image%2020250428000405.png)
+
+- **Proxy Protocol**은 source(클라이언트)에서 destination(서버)으로 연결 요청 시, 원래의 IP 주소와 포트 정보를 전달하는 인터넷 프로토콜이다.
+- 로드 밸런서가 연결을 종료(Terminate)할 경우, **클라이언트의 실제 IP를 유지할 수 없기 때문에** Proxy Protocol을 사용해 보완한다.
+	- 즉, Proxy Protocol은 소스/목적지 IP 주소와 포트 번호를 전달하기 위해 사용된다.
+- 로드 밸런서가 TCP Data 에 **Proxy Protocol 헤더**를 추가하여 전달
+- 지원 대상:
+	- **Classic Load Balancer (TCP/SSL 리스너)**
+		- Proxy Protocol 버전 1 사용
+	- **Network Load Balancer**
+		- Proxy Protocol 버전 2 사용
+- For Network Load Balancer
+	- **타겟이 인스턴스 ID나 ECS 태스크일 경우**: 클라이언트 IP가 자동으로 보존된다.
+	- **타겟이 IP 주소일 경우**:
+	    - **TCP/TLS**: 클라이언트 IP 보존되지 않음 → **Proxy Protocol 활성화 필요**
+	    - **UDP/TCP_UDP**: 클라이언트 IP 보존 가능
+- *주의사항*
+	- 로드 밸런서가 **또 다른 프록시 서버 뒤에 배치되면 안 됨** → 중복 정보로 인해 오류 발생 가능
+	- **Application Load Balancer(ALB)**는 Proxy Protocol이 필요 없음  
+	    (ALB는 자체적으로 **X-Forwarded-For** HTTP 헤더를 삽입)
+
+#### hands-on
+
+target 을 ec2의 ip 주소로 지정한 NLB 생성.
+질의한 결과 client Ip가 아닌 NLB ip가 출력된 것을 확인 할 수 있음.
+client 로 부터 출발된 트래픽인데, 출력된 것으로는 aws 내부에서 트래픽이 시작된 것 처럼 보임
+따라서 proxy protocol 를 활성화 할 필요 있음
+->
+Traffic configuration > check Proxy protocol v2 and Preserve client IP address
+
+---
+### gRPC & ALB
+
+
+---
+### Hybrid Connectivity
+
+
+---
+### Security Groups Outbound Rules & Managed Prefixes
+
+
+---
