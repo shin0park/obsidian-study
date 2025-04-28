@@ -481,13 +481,84 @@ Traffic configuration > check Proxy protocol v2 and Preserve client IP address
 ---
 ### gRPC & ALB
 
+- ALB에서 gRPC 지원
+- **gRPC(Google Remote Procedure Call)**
+	- Google에서 개발한 오픈소스 RPC(원격 프로시저 호출) 프레임워크로, **마이크로서비스 간 통신**에 최적화되어 있다.
+	- **HTTP/2 기반**
+		- 기존 REST API보다 **낮은 지연 시간**과 **높은 처리량**을 제공
+		- HTTP/2 를 전송 프로토콜로 사용하여, 멀티플렉싱(한 TCP 연결에서 여러 요청 병렬 처리), 헤더 압축, 서버 푸시(서버는 요청되지 않았지만 향후 요청에서 예상되는 추가 정보를 클라이언트에 전송할 수 있음) 등 기능을 제공
+	- **프로토콜 버퍼(Protobuf) 사용**
+		- JSON 대신 **이진 형식의 Protobuf**를 사용해 데이터 크기를 줄이고 **직렬화/역직렬화 속도**가 빠름
+	- 양방향 스트리밍 지원
+- **gRPC**는 HTTP/2를 사용하는 마이크로서비스 통합에 널리 사용된다.
+- **Application Load Balancer(ALB)**는 gRPC를 완벽 지원
+    - gRPC **헬스 체크** 지원
+    - 적절한 서비스로 라우팅하기 위한 **Content-Based Routing** 기능을 제공
+	    - **요청의 내용(헤더, 경로, 메서드 등)을 분석해 다른 대상 그룹(Target Group)으로 라우팅**하는 기능
+	    - 단일 ALB로 **다중 gRPC 서비스**를 효율적으로 운영할 수 있음.
+    - **양방향 스트리밍**(bidirectional streaming)을 포함한 모든 종류의 gRPC 통신을 지원
+	- Listener protocol is HTTPS
+		- HTTP/2를 지원
+			- HTTP(80 포트) 리스너: **HTTP/1.1**
+			- HTTPS(443 포트) 리스너: **HTTP/2 자동 활성화** (gRPC 포함)
+    
+> 참고: NLB에서도 gRPC는 동작하지만, **HTTP 관련 기능(라우팅, 헬스 체크 등)** 은 제공되지 않는다.
 
 ---
 ### Hybrid Connectivity
 
+![](images/Pasted%20image%2020250429004937.png)
+- **Application Load Balancer(ALB)**를 통해 **온프레미스 서버**와 **AWS EC2 인스턴스** 모두를 타겟으로 설정 가능
+- 연결 방법:
+    - **AWS Direct Connect** 또는
+    - **VPN 연결**
+- 타겟 그룹에 **사설 IP를 가진 온프레미스 서버** 등록 가능
+
+![](images/Pasted%20image%2020250429004944.png)
+만약 다른 VPC에 있는 EC2를 alb의 타켓으로 지정하고 싶다면?
+두 VPC를 연결해야할 것 -> peering 사용
+- 타겟 그룹은 EC2 인스턴스(또는 사설 IP)로 구성
+
+
+![](images/Pasted%20image%2020250429004950.png)
+
+| 구분                               | 설명                                      |
+| -------------------------------- | --------------------------------------- |
+| **인터넷 공개형(Internet-facing ELB)** | 퍼블릭 서브넷에 배치, IPv4 또는 IPv6(Dualstack) 지원 |
+| **내부 전용(Internal ELB)**          | 프라이빗 서브넷에 배치, IPv4 전용 지원                |
+
+URL 패턴
+- Internet-facing: `name-1234.region.elb.amazonaws.com` 또는 `dualstack.name-1234.region.elb.amazonaws.com`
+- Internal: `internal-name-1234.region.elb.amazonaws.com`
 
 ---
 ### Security Groups Outbound Rules & Managed Prefixes
 
-
+- security group - outbound
+	- default 로 0.0.0.0/0 allow 
+	- 지우거나 특정 prefix로 allow 하도록 수정할 수 있다.
+- Managed Prefix List
+	- 하나 이상의 CIDR block set이다.
+	- sg나 route table 을 관리하ㅣ에 용이하다.
+	- customer-managed prefix list
+		- 사용자가 정의하고 관리하는 CIDR set
+		- aws account나 org에서 공유가능하다.
+		- 많은 sg를 한번에 변경할 수 있다. - prefix를 수정하면 그 prefix를 사용하는 sg에 자동적용되니
+	- aws-managed prefix list
+		- aws service에 대한 CIDR set이다.
+		- 사용자가 생성, 삭제, 공유, 수정 할수 없다.
+		- s3, cloudfront, dynamodb, ground station ....
 ---
+
+#### quiz
+
+5. A company has developed a new web application that processes confidential data that is hosted on Amazon EC2 instances. The application needs to scale and must use certificates to authenticate clients. The application is configured to request a client's certificate and will validate the certificate as part of the initial handshake. Which Elastic Load Balancing (ELB) solution will meet these requirements? 
+   
+   답: configure a nlb that includes a tcp listener on port 443. create an auto scaling group for the ec2 instances. configure the auto scaling group as the target group ofr the nlb. configure tcp as the protocol for the target group
+   
+   mtls - authenticate clients를 애플리케이션에서 직접하고자함. -> nlb의 tls passthrough
+   -> **nlb + TCP 443 리스너 구성**
+   - **왜 TCP인가?**
+     - TLS 암호화된 트래픽을 **디코딩하지 않고 전달** → EC2에서 직접 mTLS 핸드셰이크 수행 가능
+     - TCP 443 = TLS passthrough
+   - ALB의 HTTPS 리스너는 TLS를 종료하므로 **부적합**
