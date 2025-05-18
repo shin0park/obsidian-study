@@ -72,12 +72,14 @@
 			-  CNAME 레코드는 하나의 레코드만 존재할 수 있음
 				- domain name에는 여러 타입의 레코드를 가질 수 있다.
 					- 일반적인 A 레코드 예시
-						-  ``` example.com.  IN  A     192.0.2.1
+						-  ```
+						    example.com.  IN  A     192.0.2.1
 							example.com.  IN  MX    mail.example.com.
 							example.com.  IN  TXT   "v=spf1 ~all"```
 						- A, MX, TXT 등 다양한 레코드 공존 가능.
 					- CNAME은 예외
-						- ```example.com.  IN  CNAME   myloadbalancer.elb.amazonaws.com.
+						- ```
+						    example.com.  IN  CNAME   myloadbalancer.elb.amazonaws.com.
 							example.com.  IN  MX      mail.example.com.   ← ❌ **규칙 위반*```
 					- **CNAME은 '이 이름은 다른 도메인 이름의 별명(alias)이다'** 라고 선언하는 레코드이다. 따라서 **그 이름 자체에 대해 다른 어떤 정보도 존재할 수 없다고 DNS 규격(RFC 1034, RFC 1912)에서 명시**하고 있다.
 			- Zone Apex는 기본적으로 **NS 레코드, SOA 레코드** 등 필수 레코드를 포함해야 하므로, CNAME을 사용하면 **DNS 표준을 위반**하게 됨
