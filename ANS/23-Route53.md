@@ -80,8 +80,8 @@
 					- CNAME은 예외
 						- ```
 						    example.com.  IN  CNAME   myloadbalancer.elb.amazonaws.com.
-							example.com.  IN  MX      mail.example.com.   ← ❌ **규칙 위반*```
-					- **CNAME은 '이 이름은 다른 도메인 이름의 별명(alias)이다'** 라고 선언하는 레코드이다. 따라서 **그 이름 자체에 대해 다른 어떤 정보도 존재할 수 없다고 DNS 규격(RFC 1034, RFC 1912)에서 명시**하고 있다.
+							example.com.  IN  MX      mail.example.com.   ← X **규칙 위반*
+						- **CNAME은 '이 이름은 다른 도메인 이름의 별명(alias)이다'** 라고 선언하는 레코드이다. 따라서 **그 이름 자체에 대해 다른 어떤 정보도 존재할 수 없다고 DNS 규격(RFC 1034, RFC 1912)에서 명시**하고 있다.
 			- Zone Apex는 기본적으로 **NS 레코드, SOA 레코드** 등 필수 레코드를 포함해야 하므로, CNAME을 사용하면 **DNS 표준을 위반**하게 됨
 		- Zone Apex의 경우 AWS의 Alias 레코드를 사용하여 CNAME 처럼 동작할 수 있다.
 	- Example: `www.example.com`은 가능, `example.com`은 불가능.
