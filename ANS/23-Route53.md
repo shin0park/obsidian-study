@@ -1,5 +1,5 @@
 
-### what is DNS?
+### What is DNS?
 
 - **Domain Name System**의 약자로, 사람이 읽기 쉬운 도메인이름 (예: `www.google.com`)을 **기계가 인식 가능한 IP 주소**(예: `172.217.18.36`)로 변환
 - DNS의 중요성: 
@@ -22,6 +22,7 @@
 
 ![400](images/Pasted%20image%2020250518152529.png)
 
+---
 ### How DNS Works
 
 ![](images/Pasted%20image%2020250518152806.png)
@@ -31,6 +32,7 @@
 3. 최종적으로 **도메인의 IP 주소를 반환**
 4. TTL(Time to Live) 동안 결과는 캐시됨
 
+---
 ### Amazon Route 53
 
 ![300](images/Pasted%20image%2020250518152836.png)
@@ -56,6 +58,7 @@
     - (must know) A /AAAA / CNAME / NS
     - (advanced) CAA/ DS/ MX/ NAPTR/ PTR/ SOA/ TXT/ SPF/ SRV
 
+
 #### Route 53 – RecordTypes
 - A – maps a hostname to IPv4
 - AAAA – maps a hostname to IPv6
@@ -75,7 +78,7 @@
 						-  ```
 						    example.com.  IN  A     192.0.2.1
 							example.com.  IN  MX    mail.example.com.
-							example.com.  IN  TXT   "v=spf1 ~all"```
+							example.com.  IN  TXT   "v=spf1 ~all"
 						- A, MX, TXT 등 다양한 레코드 공존 가능.
 					- CNAME은 예외
 						- ```
@@ -88,20 +91,73 @@
 - NS – Name Servers for the Hosted Zone
 	- 트래픽 라우팅 제어
 
-
+---
 #### Route 53 – Hosted Zones
+
+- **도메인 및 서브도메인 트래픽 라우팅 방식을 정의**하는 레코드의 컨테이너
+- 두 가지 유형:
+    - **Public Hosted Zone**: 인터넷에서 라우팅(`application1.mypublicdomain.com`)
+    - **Private Hosted Zone**: VPC 내에서 라우팅 (`application1.company.internal`)
+- 비용: 호스팅 존당 월 $0.50
+
 
 #### Route 53 – Public vs. Private Hosted Zones
 
 ![](images/Pasted%20image%2020250518152931.png)
 
+| 항목    | Public Hosted Zone | Private Hosted Zone       |
+| ----- | ------------------ | ------------------------- |
+| 대상    | 인터넷 상의 클라이언트       | VPC 내부 인스턴스               |
+| 예시    | `www.example.com`  | `db.internal.example.com` |
+| 연결 방식 | 공개 IP 또는 AWS 리소스   | VPC 내 사설 IP               |
+
+---
 #### Route 53 – RecordsTTL (TimeTo Live)
-![](images/Pasted%20image%2020250518152945.png)
 
+![500](images/Pasted%20image%2020250518152945.png)
 
+- TTL은 DNS 결과를 **얼마나 오래 캐시할 것인지**를 정의
+- **High TTL – e.g., 24 hr**:
+    - Less traffic on Route 53
+    - 레코드 변경 반영이 느림
+- **Low TTL – e.g., 60 sec.**:
+    - 빠른 반영 가능
+    - More traffic on Route 53 → 비용 증가
+- 모든 레코드에 TTL 필요 (**Alias 레코드 제외**)
 
+---
 #### CNAME vs Alias
+
+- AWS Resources (Load Balancer, CloudFront...) expose an AWS hostname:
+	- `lb1-1234.us-east-2.elb.amazonaws.com` and you want `myapp.mydomain.com`
+
+- CNAME:  
+	- Points a hostname to any other hostname. (app.mydomain.com => blabla.anything.com)
+	- ONLY FOR NON ROOT DOMAIN (aka. something.mydomain.com)
+- Alias:  
+	- Points a hostname to an AWS Resource (app.mydomain.com => blabla.amazonaws.com)
+	- Works for ROOT DOMAIN and NON ROOT DOMAIN (aka. mydomain.com)  
+	- Free of charge  
+	- Native health check
 
 #### Route 53 – Alias Records
 
+![300](images/Pasted%20image%2020250518164929.png)
+- host name 을 AWS 리소스에 매핑하는 DNS 확장 기능
+- 리소스의 IP 변경이 발생해도 자동으로 추적됨
+- Zone Apex에도 사용 가능
+- Alias Record is always of type A/AAAA for AWS resources (IPv4 / IPv6)
+- TTL 설정 불가 (자동 처리)
+
 #### Route 53 – Alias Records Targets
+
+Alias 레코드는 다음 **AWS 리소스**에만 설정 가능:
+- **Elastic Load Balancer**
+- **CloudFront Distributions**
+- **API Gateway**
+- **Elastic Beanstalk environments**
+- **S3 Websites**
+- **VPC Interface Endpoints**
+- **AWS Global Accelerator**
+- **동일 호스팅 영역 내의 Route 53 레코드**
+- **You cannot set an ALIAS record for an EC2 DNS name**
