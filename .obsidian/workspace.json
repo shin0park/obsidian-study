@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ANS/23-Route53.md",
+                "file": "ANS/24-Route53-policy.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "23-Route53"
+              "title": "24-Route53-policy"
             }
           },
           {
@@ -319,21 +319,22 @@
   },
   "active": "db302f0a2b7b81a4",
   "lastOpenFiles": [
+    "ANS/images/Pasted image 20250525234018.png",
+    "ANS/images/Pasted image 20250525233934.png",
+    "ANS/images/Pasted image 20250525233908.png",
+    "ANS/images/Pasted image 20250525233838.png",
+    "ANS/images/Pasted image 20250525233003.png",
+    "ANS/images/Pasted image 20250525231835.png",
+    "ANS/images/Pasted image 20250525231736.png",
+    "ANS/23-Route53.md",
+    "ANS/24-Route53-policy.md",
     "ANS/images/Pasted image 20250518164929.png",
     "ANS/images/Pasted image 20250518154530.png",
     "ANS/images/Pasted image 20250518154156.png",
     "ANS/images/Pasted image 20250518152945.png",
-    "ANS/images/Pasted image 20250518152931.png",
-    "ANS/images/Pasted image 20250518152836.png",
-    "ANS/images/Pasted image 20250518152806.png",
-    "ANS/images/Pasted image 20250518152529.png",
     "ANS/22-Elastic-Load-Balancers.md",
-    "ANS/23-Route53.md",
     "카카오뱅크.md",
     "카카오뱅크",
-    "ANS/images/Pasted image 20250429004950.png",
-    "ANS/images/Pasted image 20250429004944.png",
-    "ANS/images/Pasted image 20250429004937.png",
     "ANS/21-CloudFront.md",
     "SRE/C26-데이터 무결성.md",
     "SRE/C23-치명적인 상태 관리하기-신뢰성을 위한 분산에 대한 합의.md",
@@ -356,7 +357,6 @@
     "SRE/images",
     "SRE/C17-신뢰성을 위한 테스트.md",
     "ANS/09-Optimizing-EC2-cluster-placement-group-ebs-opti-Enhanced-Networking-DPDK-EFA.md",
-    "ANS/08-network-performance.md",
     "ANS/images",
     "ANS",
     "SRE",
