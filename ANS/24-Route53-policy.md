@@ -187,7 +187,12 @@ us-east-1 리전에 Bias를 50으로 설정한 경우 더 많은 사용자에게
 - 여러 리소스로 트래픽을 라우팅
 - Route 53이 multiple values/resources를 반환
 - Can be associated with Health Checks (return only values for healthy resources)
-- 각 multi-value 쿼리에 대해 최대 8개의 정상 레코드 반환
+- 하나의 다중 값 쿼리에 대해 최대 8개의 정상(Healthy) 리소스만 반환한다.
+	- DNS 응답 크기를 제한하여 성능을 최적화하기 위함
 - Multi-Value는 ELB(Elastic Load Balancer)를 대체하지 않는다
+	-  DNS 레벨에서 동작하며, 클라이언트에게 여러 IP 주소를 제공한다. 클라이언트(예: 브라우저)가 이 중 하나를 선택해 연결한다
+	- 로드 밸런싱 로직은 단순하며, 클라이언트가 무작위로 리소스를 선택하거나 헬스 체크 결과를 기반으로 정상 리소스만 받게된다
+	- 세션 유지(Session Persistence), 고급 로드 밸런싱 알고리즘(예: 최소 연결 수 기반), 동적 부하 분산 등은 지원하지 않기 때문에 ELB를 대체한다고 할 수 없다.
+	- 즉, multi-value 응답은 DNS 쿼리 응답만 처리하며, 실제 라우팅은 클라이언트에 의존하지만, ELB는 서버 상태와 부하를 실시간으로 고려해 최적의 서버로 트래픽을 분배한다.
 - Multi-Value 응답은 여러 리소스의 가용성을 높이는 데 유용하다.
 
