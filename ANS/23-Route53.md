@@ -1,4 +1,4 @@
-
+x
 ### What is DNS?
 
 - **Domain Name System**의 약자로, 사람이 읽기 쉬운 도메인이름 (예: `www.google.com`)을 **기계가 인식 가능한 IP 주소**(예: `172.217.18.36`)로 변환
