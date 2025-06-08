@@ -228,26 +228,75 @@
 	    - CloudWatch Logs로 전송 (기본)
 	    - 필요 시 S3로 추가 내보내기(Export) 가능
 	- ![](images/Pasted%20image%2020250608224053.png)
-    
+
+
 - #### VPC 내부 DNS 쿼리 로깅
 	
 	- VPC 내 모든 리소스의 DNS 쿼리 기록
-	- **포함 대상**:
-	    - 프라이빗 호스팅 영역(Private Hosted Zones)
-	    - 리졸버 인바운드/아웃바운드 엔드포인트
-	    - DNS 방화벽(Resolver DNS Firewall) 활동
+	    - Private Hosted Zones
+	    - Resolver Inbound & Outbound Endpoints
+	    - Resolver DNS Firewall
 	        
 	- **로그 저장 옵션**:
 	    - CloudWatch Logs (실시간 모니터링)
 	    - S3 버킷 (장기 보관)
 	    - Kinesis Data Firehose (스트림 처리)
+	- ![400](images/Pasted%20image%2020250608224248.png)
 
-#### **계정 간 공유**:
-- AWS RAM(Resource Access Manager)을 통해 로깅 설정 공유
-- 중앙 관리 계정에서 다중 계정 로그 집계 가능
+- **계정 간 공유**:
+	- AWS RAM(Resource Access Manager)을 통해 로깅 설정 공유
+	- 중앙 관리 계정에서 다중 계정 로그 집계 가능
 
-#### 주요 특징
-- **보안 감사**: 의심스러운 DNS 요청 추적
-- **트러블슈팅**: DNS 확인 문제 진단 지원
-    
-- **규정 준수**: 감사 요구사항 충족
+- 주요 특징
+	- **보안 감사**: 의심스러운 DNS 요청 추적
+	- **트러블슈팅**: DNS 확인 문제 진단 지원
+	- **규정 준수**: 감사 요구사항 충족
+
+- [공식 문서 - Resolver Query Logging](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver-query-logs.html)
+
+---
+
+- #### Route 53 – Resolver DNS Firewall
+  
+	- **Resolver DNS Firewall**은 **Route 53 Resolver를 통해 VPC에서 외부로 나가는 DNS 요청을 필터링**할 수 있도록 해주는 AWS의 관리형 방화벽 서비스이다.
+	- 주요 기능
+		- **악성 도메인 차단(블랙리스트)** 또는 **신뢰 도메인 허용(화이트리스트)** 방식으로 DNS 요청을 제어할 수 있다
+		- VPC 내부의 애플리케이션이 악성 도메인으로 데이터를 유출하는 행위(**DNS exfiltration**)를 방지할 수 있다
+	- 관리 방식
+		- AWS **Firewall Manager**를 통해 중앙에서 정책을 관리 및 적용할 수 있다
+		- **CloudWatch Logs** 및 **Route 53 Resolver Query Logs** 와 통합되어 로그 기반의 모니터링이 가능하다.
+	- Fail-close vs Fail-Open (DNS Firewall Configuration):
+		- **Fail-Close 모드**: DNS 방화벽 응답 없을 시 쿼리 차단 (보안 우선)
+		- **Fail-Open 모드**: DNS 방화벽 응답 없을 시 쿼리 허용 (가용성 우선)
+		  
+	- ![400](images/Pasted%20image%2020250608224410.png)
+		-  VPC 내 리소스가 도메인 `example.com`에 질의
+		- Firewall 정책에 따라 해당 도메인이 차단된 경우 응답을 `NODATA`로 반환하여 접속 차단
+		- 허용된 도메인은 정상 응답됨
+
+---
+
+#### Route 53 Solution Architecture Split-View DNS (Split-Horizon)
+
+- Use the same domain for internal and external uses
+- Public and Private hosted zones will have the same name (e.g., example.com)
+- Use case: serve different content, require different authentication for internal and external users, ...
+- ![](images/Pasted%20image%2020250608225030.png)
+
+#### Solution Architecture – Multi-Account DNS Management with Route 53 Resolver
+
+![](images/Pasted%20image%2020250608225907.png)
+- hybrid dns 사용하지 않는다고 했을때
+
+- central dns account
+	- 온프램과 연결 - vpn, dx connection, nat gw
+	- classic 아키텍처 구성
+		- private host zone, resolver(inbound/outbount endpoint), 기본 route53 resolver 
+	- forwarding rules 구성
+		- 이 forwarding rule을 계정마다 recrete 하지 않도록, RAM을 통해 shared
+
+- another account
+	- subdomain에 대한 private host zone 생성
+	- ns server을 매치시켜서 central dns account의 host zone과 associated 한다.
+
+---
