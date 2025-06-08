@@ -33,10 +33,13 @@
 - EC2 (IP 연결): `example.com → 54.55.56.57 (A레코드)`
   
 - EC2 (DNS 이름): `app.example.com → ec2-xx.compute.amazonaws.com (CNAME)`
+	- ec2는 alias 미지원
   
 - ALB 연결: 도메인을 AWS provided ALB DNS name에 Alias 설정
-	• `example.com` => `my-load-balancer-1234567890.us-west-2.elb.amazonaws.com` (Alias)  
-	• `lb.example.com` => `my-load-balancer-1234567890.us-west-2.elb.amazonaws.com` (Alias or CNAME)
+	- `example.com` => `my-load-balancer-1234567890.us-west-2.elb.amazonaws.com` (Alias) 
+		- apex type일때 alias 사용. (apex일 경우 CNAME 사용 불가)
+	- `lb.example.com` => `my-load-balancer-1234567890.us-west-2.elb.amazonaws.com` (Alias or CNAME)
+		- apex type이 아닐때, Alias or CNAME 사용
 	
 - CloudFront Distribution: 콘텐츠 경로에 따라 ELB, S3로 라우팅
 	- ![](images/Pasted%20image%2020250608200621.png)
@@ -46,11 +49,16 @@
     
 - RDS: `db.example.com → RDS DB instance DNS name (CNAME만 가능)`
 	- `db.example.com` => `myexampledb.a1b2c3d4wxyz.us-west-2.rds.amazonaws.com` (CNAME)
+		- alias 미지원
     
 - S3 Bucket: `example.com → S3 website endpoint (Alias)`
 	- You must create an Alias record for S3 endpoints 
-	- Bucket name must be the same as domain name 
+	- **Bucket name must be the same as domain name** (매우 중요)
 	- ex) `example.com` => `s3-website-us-west-2.amazonaws.com` (Alias)
+		- 그렇다면, s3 버킷명이 `example.com`여야 하는가. -> yes
+			- https://docs.aws.amazon.com/ko_kr/AmazonS3/latest/userguide/bucketnamingrules.html (s3 범용 버킷 이름 지정 규칙)
+			- ![](images/Pasted%20image%2020250608204343.png)
+			- static web site 이외의 용도에는 권장하지 않는다.
     
 - PrivateLink (VPC Interface Endpoint): 도메인을 VPC Interface Endpoint (AWS PrivateLink)에 Alias 연결
 	- `example.com` => `vpce-1234-abcdev-us-east-1.vpce-svc-123345.us-east-1.vpce.amazonaws.com` (Alias)
@@ -65,4 +73,48 @@
 - 동일 네임스페이스가 겹치는 Public/Private Zone은 가장 구체적인 경로로 트래픽 전달
 
 ---
+### Route 53 – Routing Traffic For Subdomains
 
+![400](images/Pasted%20image%2020250608205253.png)
+
+- Create a Hosted Zone for the Subdomain
+- Known as, either:  
+	- 서브도메인을 Hosted zone, 즉 다른 name server에 위임한다.
+	- “Delegation Responsibility for a Subdomain to a Hosted Zone” 
+	- “Delegating a Subdomain to Another Name Servers”
+    
+- 사용 사례:
+    - 다른 팀이 관리하는 다른 서브도메인
+    - IAM 권한을 사용하여 액세스 제한 (Route 53 레코드에 대한 액세스 제어에는 IAM을 사용할 수 없음)
+      
+- Using Route 53 as the DNS Service for a Subdomain without Migrating the Parent Domain
+	- ![](images/Pasted%20image%2020250608205608.png)
+
+---
+### DNS Poisoning (Spoofing)
+
+![](images/Pasted%20image%2020250608205636.png)
+
+- DNS는 UDP 기반 → 보안에 취약 
+- 암호화된 인증 절차가 없음
+
+#### Route 53 – DNS Security Extensions (DNSSEC)
+
+- DNS 트래픽을 보호하기 위한 프로토콜, DNS 데이터 무결성 및 origin 검증
+    
+- Public Hosted Zone 에서만 작동
+    
+- Route 53은 Domain Registration 및 Signing 모두에 대해 DNSSEC 지원
+    
+- DNSSEC Signing
+	- DNS 응답이 실제 Route 53에서 생성된 것이며, **변조되지 않았음을 검증**
+	- Route 53은 Hosted Zone 내 **각 레코드에 대해 암호화된 서명**을 생성
+	- 두 가지 키:
+	    - 사용자가 관리: Key-signing Key (KSK) 
+		    - AWS KMS(키 관리 서비스)의 비대칭 CMK(고객 마스터 키)를 기반으로 함
+		    - https://docs.aws.amazon.com/ko_kr/kms/latest/cryptographic-details/basic-concepts.html (aws kms 기본개념)
+	    - AWS가 관리: Zone-signing Key (ZSK)
+        
+- 활성화하면 Route 53은 호스팅 영역의 모든 레코드에 대해 1주의 TTL을 적용
+
+#### Route 53 – Enable DNSSEC on a hosted zone
