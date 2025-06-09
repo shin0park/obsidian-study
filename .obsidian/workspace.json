@@ -192,6 +192,9 @@
   },
   "active": "211e16fa067d3ec2",
   "lastOpenFiles": [
+    "ANS/images/HandsOn-Hybrid-DNS-commands-and-configurations.txt",
+    "ANS/images/HandsOn-Hybrid-DNS-Slides 1.pdf",
+    "ANS/images/HandsOn-Hybrid-DNS-Slides.pdf",
     "ANS/images/Pasted image 20250608225907.png",
     "ANS/images/Pasted image 20250608225030.png",
     "ANS/images/Pasted image 20250608224410.png",
@@ -202,7 +205,6 @@
     "ANS/images/Pasted image 20250608220811.png",
     "ANS/images/Pasted image 20250608215901.png",
     "ANS/images/Pasted image 20250608215733.png",
-    "ANS/images/Pasted image 20250608205636.png",
     "ANS/23-Route53.md",
     "ANS/25-route53-DNS-Resolver.md",
     "ANS/22-Elastic-Load-Balancers.md",
@@ -235,8 +237,6 @@
     "SRE",
     "CKAD",
     "CKA",
-    "Study",
-    "ANS/images",
-    "ANS"
+    "Study"
   ]
 }
