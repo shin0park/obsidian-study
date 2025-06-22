@@ -128,3 +128,110 @@
 - **Pod IP 할당**
     - EKS는 Pod에 대해 **IPv4 또는 IPv6 주소를 할당**할 수 있다
     - 단, **IPv4와 IPv6를 동시에 사용하는 듀얼스택(Dualstack)은 지원하지 않는다
+
+
+
+![](images/Pasted%20image%2020250622230653.png)
+- 누구나 컨트롤 플레인에 접근가능하다는 의미
+- CIDR 블록을 사용하여 화이트리스트로 제한 할 수도 있다.
+
+![](images/Pasted%20image%2020250622230713.png)
+
+
+![](images/Pasted%20image%2020250622230723.png)
+- public access 완전히 비활성화 하고 오직 private하게 
+
+![](images/Pasted%20image%2020250622230734.png)
+- PrivateLink(VPC 인터페이스 엔드포인트)를 통해 API 트래픽을 AWS 네트워크 내에서 유지
+- vpn이나 DX의 타켓을 VPC interface Endpoint로만 잡으면 됨.
+
+![](images/Pasted%20image%2020250622231900.png)
+
+- **Public Subnet**
+	- **Elastic Load Balancer (ELB)** 배포 용도로 사용
+	    - 외부에 Kubernetes 서비스를 노출할 때 필요
+	- **NAT Gateway** 배포 용도로 사용
+	    - **IPv4 기반 인터넷 접근** 허용
+	    - IPv6의 경우 **Egress 전용 IGW** 사용
+
+---
+
+### Amazon EKS Pod Networking - CNI
+
+### Kubernetes Network Model (CNCF 표준) - CNI
+
+- 각 **Pod는 고유한 IP 주소**를 할당받음
+- 같은 Pod 내부의 컨테이너들은 동일한 IP를 공유
+- 모든 Pod는 NAT 없이 서로 통신 가능
+- 모든 노드는 NAT 없이 모든 Pod와 통신 가능
+- Pod가 인식하는 자신의 IP와 외부에서 보는 IP는 동일함 (즉, pod 접속하고자하면 해당 pod ip로 접속하는 것이 동일하다는 의미)
+
+> → **CNI (Container Network Interface)** 표준 기반의 네트워크 모델
+
+### Amazon VPC CNI plugin
+
+![500](images/Pasted%20image%2020250622233807.png)
+
+- **Amazon VPC CNI**:
+    - **ENI**를 워커 노드에 생성 및 연결
+    - Pod에 **ENI의 secondary IP**를 할당
+        
+- EKS는 Amazon VPC CNI를 기본 지원함
+    
+- 그 외 호환 CNI 플러그인:
+    - **Calico**, **Cilium**, **Weave Net**, **Antrea**
+
+---
+### Maximum Pods per node
+
+![](images/Pasted%20image%2020250622234009.png)
+- 파드에 secondary IP**를 할당하기 때문에 -> ips per network interface 에서 -1
+- +2: 노드마다 추가 파드들 : kubelet, kube-proxy
+
+---
+### Increased available IP addresses for Pods
+
+![](images/Pasted%20image%2020250622234145.png)
+
+- AWS Nitro 기반 인스턴스에서만 지원
+- **Prefix Delegation** 방식: 각각의 ENI에 IP주소 대신 CIDR 블록을 할당 할 수 있음
+	- 각 ENI에 `/28 (IPv4)` → 16개 IP
+	- `/80 (IPv6)` → 대량 IP 가능
+- 쿠버네티스 자체에도 일종의 제약이 있기 때문에 최대 몇개의 파드를 둘 것을 권장하고 있다. = 110
+	- 노드의 상태를 관리하고 파드 스케쥴링 등의 작업들을 고려
+
+---
+### Assigning IPv6 addresses to pods and services
+
+![500](images/Pasted%20image%2020250622234202.png)
+
+**Supported with AWS Nitro-based instances & Fargate**
+
+- 기본은 IPv4지만, 설정 시 IPv6 사용 가능
+- **EKS는 dual-stack(IPv4+IPv6) 미지원**
+	- 하나의 Pod 또는 서비스가 동시에 IPv4와 IPv6를 사용하는 것은 불가능
+- **Amazon EC2 인스턴스에서 IPv6 사용 시 조건**:
+    - **Amazon VPC CNI add-on**을 설치 및 구성해야 함
+    - **IP Prefix Delegation** 기능을 함께 활성화해야 함
+- **IPv4 주소도 반드시 설정되어야 함**
+	- VPC와 서브넷에 **IPv4 주소가 필수 조건**
+ - **서브넷은 반드시 IPv6 자동 할당(auto-assign)을 활성화**해야 함
+- **Windows Pod 및 서비스는 IPv6 미지원**
+
+---
+### Pod to Pod communication
+
+![](images/Pasted%20image%2020250622234228.png)
+
+- 동일 VPC 내에 존재하는 경우, **Pod IP를 통해 직접 통신** 가능
+- 별도의 NAT, 게이트웨이, 라우팅 없이도 VPC 내에서 **Pod ↔ Pod 통신 가능**
+
+---
+
+|항목|설명|
+|---|---|
+|**CNI 플러그인**|Pod에 IP 할당, ENI 연결 관리|
+|**Pod 간 통신**|NAT 없이 가능, Pod IP 직접 사용|
+|**IPv6 지원**|Nitro/Fargate, 단일 스택만 가능|
+|**ENI 한계**|인스턴스 타입별 ENI 및 IP 수로 Pod 수 제한|
+|**Prefix Delegation**|IP 수 확장 기능, Nitro에서만 가능|
