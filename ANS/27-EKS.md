@@ -346,38 +346,119 @@
 ![600](images/Pasted%20image%2020250701002758.png)
 
 - #### ClusterIP
-	- 기본 서비스 타입으로, 클러스터 내부에서만 접근 가능한 가상 IP를 할당한다
-	- EKS는 기본적으로 `10.100.0.0/16` 또는 `172.20.0.0/16` 대역에서 이 IP를 할당한다.
-	- 각 노드의 `kube-proxy`가 ClusterIP와 실제 Pod IP 간의 트래픽 라우팅을 담당한다
-	- `<service-name>.<namespace-name>.svc.cluster.local` 형태의 DNS 이름으로 접근할 수 있다
+	- 기본 서비스 유형으로, 클러스터 내부에서만 접근 가능한 가상 IP를 할당한다. 이 IP는 클러스터 외부에는 노출되지 않는다.
+	- 가상 IP는  `kube-apiserver`의 `--service-cluster-ip-range` 파라미터로 구성된 풀에서 할당된다.
+		- 명시적으로 구성되지 않으면, EKS는 기본적으로 `10.100.0.0/16` 또는 `172.20.0.0/16` 대역에서 이 IP를 할당한다.
+	- 각 노드의 `kube-proxy`데몬이 `iptables` 규칙을 사용하여 ClusterIP와 실제 Pod IP 간의 매핑을 정의하여 트래픽 라우팅 하도록 한다.
+	- `<service-name>.<namespace-name>.svc.cluster.local` 형태의 프라이빗 DNS 이름으로 접근가능 하다.
 	  
 - #### NodePort
-	- 클러스터 외부에서 서비스에 접근할 수 있도록 각 워커 노드의 IP에 고정된 포트(30000-32767)를 노출한다
-	- 내부적으로는 ClusterIP 서비스를 사용하여 요청을 라우팅
-	- 클라이언트가 노드의 IP를 직접 알아야 하므로 외부 서비스 노출용으로는 비효율적일 수 있다
-    
+	- NodePort는 Kubernetes 서비스를 클러스터 외부에서 접근 가능하게 하는 데 사용된다. 
+	- 서비스는 각 워커 노드의 IP에 정적 포트(NodePort)로 노출되며, 포트 범위는 `30000-32767`이다.
+	- NodePort는 내부적으로 ClusterIP를 사용하여 NodeIP/Port 요청을 ClusterIP 서비스로 라우팅한다.
+	- 클라이언트가 노드의 IP를 직접 알아야 하므로 외부 서비스 노출용으로는 비효율적일 수 있다.
+	  
+- #### LoadBalancer
+	- AWS의 로드 밸런서를 프로비저닝하여 서비스를 외부에 노출
+	- **Kubernetes Controller Manager(legacy)** - 쿠버네티스에 내장된 컨트롤러로, CLB(기본값) 또는 NLB를 '인스턴스(instance)' 모드로 배포한다.
+		- CLB는 Layer 4/Layer 7 트래픽(TCP, SSL/TLS, HTTP, HTTPS)을 지원 
+		- NLB는 Layer 4 트래픽(TCP, UDP, TLS)을 인스턴스 모드에서만 지원. 
+		- LoadBalancer 서비스는 NodePort 서비스 위에 구축된다.
+	- **AWS Load Balancer Controller (권장):**
+	    - NLB를 '인스턴스(instance)' 또는 'IP' 모드로 프로비저닝할 수 있다.
+		- 각 서비스마다 전용 NLB가 필요하여 서비스 수가 많아지면 확장성 및 관리에 어려움이 있을 수 있다.
 
-#### LoadBalancer
+- #### Ingress
+	- ![500](images/Pasted%20image%2020250701003621.png)
+	- HTTP 및 HTTPS 경로를 기반으로 외부 트래픽을 클러스터 내부 서비스로 라우팅한다.
+		- 트래픽 라우팅은 Ingress 리소스에 정의된 규칙에 의해 제어된다.
+	- **AWS Load Balancer Controller**를 사용하여 ALB를 프로비저닝한다
+	- Ingress는 ALB Target Group을 사용하여 단일 ALB 뒤에 여러 서비스를 추가할 수 있어 비용과 복잡성을 절감한다.
 
-- AWS의 로드 밸런서(CLB, NLB)를 프로비저닝하여 서비스를 외부에 노출합니다.
-    
-- **레거시 컨트롤러:** 쿠버네티스에 내장된 컨트롤러로, CLB(기본값) 또는 NLB를 '인스턴스(instance)' 모드로 배포합니다.
-    
-- **AWS Load Balancer Controller (권장):**
-    
-    - NLB를 '인스턴스(instance)' 또는 'IP' 모드로 프로비저닝할 수 있습니다.
-        
-    - 각 서비스마다 전용 NLB가 필요하여 서비스 수가 많아지면 확장성 및 관리에 어려움이 있을 수 있습니다.
-        
+#### AWS Load Balancer Controller
+-  AWS Load Balancer Controller는 Ingress 컨트롤러의 AWS 구현체이다.
+	- 이는 Ingress rule, 파라미터, 어노테이션을 ALB 구성으로 변환하여 리스너와 Target Group을 생성하고 백엔드 서비스에 연결한다. 
+	- Target으로 인스턴스 또는 Pod IP를 지원하며 , `kubernetes.io/ingress.class: alb` 어노테이션이 사용된다. 
+	- 여러 서비스와 ALB를 공유하려면  `alb.ingress.kubernetes.io/group.name: my-group` 어노테이션을 사용한다.
+	- IPv6 트래픽은 IP 대상에 대해서만 지원되며,  `alb.ingress.kubernetes.io/ip-address-type: dualstack` 어노테이션을 사용한다.
+	- IPv6 트래픽은 IP 타겟에서만 지원된다.
 
-#### Ingress
+![](images/Pasted%20image%2020250701003611.png)
 
-- HTTP 및 HTTPS 경로를 기반으로 외부 트래픽을 클러스터 내부 서비스로 라우팅합니다.
+- 각 Kubernetes 서비스 유형은 특정 사용 사례와 트래픽 패턴에 최적화되어 있다. 
+- ClusterIP는 내부 통신에, NodePort는 개발/테스트 환경의 임시 노출에 적합하며, LoadBalancer는 L4 트래픽의 외부 노출에, Ingress는 L7 트래픽의 고급 라우팅 및 비용 효율적인 노출에 사용된다.
+- AWS Load Balancer Controller와 Ingress 리소스의 조합은 단일 ALB로 여러 서비스를 관리할 수 있게 하여 운영 효율성과 비용 절감이라는 중요한 이점을 제공한다. 
+- 서비스 유형의 선택은 단순한 기술적 결정이 아니라, 애플리케이션 아키텍처와 비즈니스 요구사항을 반영하는 전략적 결정이다. 
+	- 예를 들어, 내부 마이크로서비스 간 통신에는 ClusterIP가 최적이며, 웹 애플리케이션의 외부 노출에는 Ingress가 가장 효율적이다. 
+	- LoadBalancer 서비스는 NLB를 통해 고성능 L4 트래픽을 처리하는 데 유용하지만, 서비스별 NLB는 관리 오버헤드를 증가시킬 수 있다. 
+
+|서비스 유형|접근성|사용 사례|로드 밸런서 유형|주요 특징/제한 사항|
+|---|---|---|---|---|
+|ClusterIP|클러스터 내부|내부 마이크로서비스 통신|없음 (가상 IP)|기본 유형, 클러스터 내부에서만 접근, `kube-proxy`를 통한 라우팅|
+|NodePort|클러스터 외부 (노드 IP 통해)|개발/테스트 환경의 임시 노출|없음 (노드 포트)|각 노드의 정적 포트 노출, 노드 IP 변경 시 추적 필요, 외부 노출에 비효율적|
+|LoadBalancer|클러스터 외부|L4 트래픽의 외부 노출|AWS CLB/NLB|CLB (L4/L7), NLB (L4, 인스턴스 모드), 각 서비스에 전용 LB 필요 가능, 관리 오버헤드|
+|Ingress|클러스터 외부 (HTTP/HTTPS)|L7 트래픽의 고급 라우팅, 비용 효율적 노출|AWS ALB|단일 ALB로 여러 서비스 관리, 경로 기반 라우팅, `X-Forwarded-For` 헤더로 클라이언트 IP 보존|
+
+---
+
+#### 클라이언트 IP 보존 (Preserving Client IP)
+
+![500](images/Pasted%20image%2020250701010201.png)
+
+- **NLB (LoadBalancer 서비스):** 
+	- 서비스 명세에서 `externalTrafficPolicy`스펙은 클러스터 내에서 로드 밸런싱이 어떻게 발생하는지 정의한다.
+	- 즉, `externalTrafficPolicy`는 노드에 도달한 후 트래픽이 라우팅되는 방식 을 지시한다.
+	- 초기 노드의 선택은 `externalTrafficPolicy` 자체에 의해 직접 제어되는 것이 아니라, 상위 로드 밸런서에 의해 결정된다. `externalTrafficPolicy`는 이후 2차 라우팅 결정 계층으로 작동한다.
+		- `externalTrafficPolicy=Cluster`로 설정
+			- 트래픽이 다른 노드로 전송될 수 있으며 소스 IP가 노드의 IP 주소로 변경되어 클라이언트 IP가 보존되지 않는다. 
+				- 로드밸런서 자체의 알고리즘을 통해 초기 노드에 도착했지만, 대상 Pod가 해당 노드에 없을 경우, 다른 노드로 트래픽을 전달한다. 이때 소스 IP가 출발지점의 노드의 IP 주소로 변경된다 - 원본 클라이언트 IP 손실
+			- 그러나 이 설정은 로드를 노드 전체에 고르게 분산시킨다.  
+				- Pod가 실패하거나 다른 노드로 재스케줄링되더라도, `kube-proxy`는 `iptables` 규칙을 자동으로 업데이트하며, 트래픽은 다른 정상 Pod로 계속 흐른다.
+		- `externalTrafficPolicy=Local`로 설정 
+			- 트래픽이 노드 외부로 라우팅되지 않고 클라이언트 IP 주소가 최종 Pod로 전파된다. 
+				- 트래픽이 노드 간에 전달되지 않으므로, 일반적으로 클라이언트 IP를 노드 IP로 대체하는 Source NAT (SNAT) 작업이 방지된다. 따라서 원본 클라이언트 IP 주소는 보존되어 대상 Pod로 직접 전달된다.
+				- `Local`을 사용하는 주된 이유이다.
+			- 이는 클라이언트 IP를 보존하지만, 트래픽이 고르지 않게 분산될 수 있다.
+			- 수신 노드의 `kube-proxy`는 `iptables` 규칙을 구성하여 외부 트래픽이 해당 특정 노드에 상주하는 Pod로만 _엄격하게_ 전달되도록 한다.
+				- 만약 노드가 서비스에 대한 트래픽을 수신했지만 해당 서비스와 연결된 로컬 Pod가 없다면, `kube-proxy`는 트래픽을 다른 노드로 전달하지 않는다. 대신, 트래픽은 드롭된다.
+				- `Local` 서비스의 경우, `kube-proxy`의 헬스 체크 엔드포인트는 정상이며 해당 노드에 서비스에 대한 로컬 엔드포인트(Pod)가 하나 이상 있는 경우에만 200 OK를 반환한다. 이를 통해 로드 밸런서는 로컬 엔드포인트가 없는 노드를 대상 그룹에서 제거하여 트래픽 드롭을 완화할 수 있다.
+	- 기본값인 `Cluster`는 트래픽 분산을 최적화하지만, 소스 IP가 노드의 IP로 변경되어 특정 보안 기능이나 분석 도구의 효율성을 저해할 수 있다.
+	- `Local`은 클라이언트 IP를 보존하여 세밀한 제어와 로깅을 가능하게 하지만, 트래픽 불균형을 초래할 수 있어 노드 자원 활용에 비효율성을 야기할 수 있다.
     
-- **AWS Load Balancer Controller**를 사용하여 ALB(Application Load Balancer)를 프로비저닝합니다.
-    
-- 단일 ALB를 여러 서비스가 공유할 수 있어 비용 효율적이고 관리가 용이합니다.
-    
-- '인스턴스(instance)'와 'IP' 타겟 타입을 모두 지원합니다.
-    
-- IPv6 트래픽은 IP 타겟에서만 지원됩
+- **ALB (Ingress 서비스):** `X-Forwarded-For` HTTP 헤더를 통해 클라이언트의 원본 IP를 확인할 수 있다
+	- ALB는 클라이언트 IP를 직접 보존하지는 않는다. 
+		- 대신, 클라이언트의 원본 IP 주소를 `X-Forwarded-For` HTTP 헤더에 삽입한다. 
+		- Pod에서 실행되는 애플리케이션은 이 헤더를 파싱하여 실제 클라이언트 IP를 검색하도록 구성되어야 한다.
+	- ALB Target Group이 노드 IP를 대상으로 구성된 경우, ALB는 라우팅 알고리즘에 따라 정상 노드에 트래픽을 분산한다. 
+	- ALB Target Group이 Pod IP를 직접 대상으로 하도록 구성할 수 있다. 
+		- ALB의 라우팅 알고리즘이 개별 Pod IP로 트래픽을 직접 분산한다. 
+	
+---
+### EKS 사용자 지정 네트워킹 (Custom Networking)
+
+![](images/Pasted%20image%2020250701010226.png)
+
+- 제한된 IP 공간 문제점
+	- VPC의 기본 IP 대역이 제한적인 경우, 실행할 수 있는 Pod의 수가 제약될 수 있다. 
+		- 예를 들어 `/24` CIDR은 251개의 고유 IPv4 주소만 가진다.
+
+- 해결책: 보조 VPC CIDR 및 Custom Networking 활성화
+	- VPC에 `100.64.0.0/16`과 같은 Secondary VPC CIDR 블록을 추가한다.
+		- 이 CIDR은 약 65,000개의 IP를 제공하며, VPC 내에서만 라우팅 가능하다.
+	- Custom Networking 활성화
+		- `kubectl set env daemonset aws-node -n kube-system AWS_VPC_K8S_CNI_CUSTOM_NETWORK_CFG=true` 
+		- **동작 방식:** VPC CNI 플러그인은 별도의 서브넷에 보조 ENI를 생성한다. Pod에는 이 보조 ENI에서 할당된 IP만 지정된다.
+		- Custom Networking은 SNAT와 조합하여 사용할 수 있다.
+			-  **Pod 시작 트래픽:** `AWS_VPC_K8S_CNI_EXTERNALSNAT=false`일 때, 소스 IP는 Primary ENI IP 로 VPC 내부, 피어링된 VPC, 또는 Transit Gateway를 통한 통신 시 보존된다. 
+			- **외부 트래픽에서 Pod로:** Custom Networking 구성에서 Pod로 향하는 외부 트래픽은 일반적으로 노드의 기본 ENI IP 또는 구성된 Elastic Load Balancer를 통해 라우팅된다.
+
+---
+
+### EKS 네트워킹 요약
+
+- EKS 컨트롤 플레인은 AWS 관리형 VPC에, 워커 노드는 고객 VPC에 배포된다
+- EKS는 두 플레인 간의 통신을 위해 고객 VPC에 ENI를 프로비저닝한다.
+- **VPC CNI**는 노드 ENI의 보조 IP를 Pod에 할당하는 역할을 한다.
+- **Prefix Delegation** 기능을 사용하면 Nitro 기반 인스턴스에서 노드당 Pod 수를 늘릴 수 있다.
+- **사용자 지정 네트워킹(Custom Networking)**은 보조 VPC CIDR을 활용하여 Pod를 위한 더 큰 규모의 IPv4 주소 공간을 제공한다
+- **SNAT** 설정을 통해 Pod가 인터넷 게이트웨이 또는 NAT 게이트웨이를 통해 외부 인터넷에 접근하는 방식을 제어할 수 있다.
