@@ -250,15 +250,50 @@
 	- 퍼블릭 서브넷 (Public Subnet) 내 노드
 		- ![](images/Pasted%20image%2020250630221553.png)
 		- `AWS_VPC_K8S_CNI_EXTERNALSNAT=false`
-			- 주로 Public Subnet에 위치한 노드에서 사용
-		- VPC 피어링, TGW(Transit Gateway), VPN 또는 DX(Direct Connect)를 통해 다른 네트워크와 통신할 때, 트래픽의 소스 IP는 Pod의 IP 주소로 유지
-		- 인터넷으로 나가는 트래픽은 노드의 ENI에 할당된 Public IP 또는 Elastic IP를 통해 NAT 처리
+		- VPC 피어링 또는 VPN/Direct Connect와 같은 VPC 내 통신에서는, 소스 IP는 노드 ENI의 기본 IP로 유지된다
+		- 인터넷으로 나가는 트래픽은 노드의 ENI에 할당된 Public IP 로 변환된다.
+		- Problem:
+			- 외부에서 봤을때 노드IP 만 볼 수 있고, Pod IP는 가려지게 된다. 즉, Pod IP가 외부에 노출되지 않는다.
+				- 따라서 외부에서 Pod IP로 직접 접근할 수가 없다. 
+			- 일반적으로 Worker Node는 Private Subnet에 위치해야한다.
 		- IPv6는 NAT 변환 없이 **직접 통신 가능**
 		- `kubectl set env daemonset aws-node -n kube-system AWS_VPC_K8S_CNI_EXTERNALSNAT=false`
 	- 프라이빗 서브넷 (Private Subnet) 내 노드
 		- ![](images/Pasted%20image%2020250630222035.png)
 		- `AWS_VPC_K8S_CNI_EXTERNALSNAT=true`
-			- 주로 Private Subnet에 위치한 노드에서 사용
-		- Pod가 인터넷과 통신할 때, 트래픽은 Public Subnet에 위치한 NAT 게이트웨이를 통해 라우팅
-			- 이때 트래픽의 소스 IP는 NAT 게이트웨이의 Elastic IP로 변환
+			- 개별 Pod IP가 보이도록
+		- VPC 피어링 또는 VPN/Direct Connect와 같은 VPC 내 통신에서는, 트래픽의 소스 IP는 Pod의 IP 주소로 유지
+		- 인터넷으로 나가는 트래픽은 Public Subnet에 위치한 NAT 게이트웨이를 통해 라우팅
+			- 이때 소스 IP는 NAT 게이트웨이의 Elastic IP로 변환
 		- `kubectl set env daemonset aws-node -n kube-system AWS_VPC_K8S_CNI_EXTERNALSNAT=true`
+	- 외부 네트워크에서 Pod로의 통신 (External network to Pod communication)
+		- ![](images/Pasted%20image%2020250630222310.png)
+		- `AWS_VPC_K8S_CNI_EXTERNALSNAT`가 `true`로 설정된 경우, 외부 트래픽은 Pod의 프라이빗 IPv4 주소로 도달할 수 있다. 
+			- 이 통신은 노드가 퍼블릭 서브넷에 있을 경우 퍼블릭 ENI를 통해, 
+			- 노드가 프라이빗 서브넷에 있고 트래픽이 인터넷에서 오는 경우 NAT Gateway를 통해, 또는 Transit Gateway 연결, VPC 피어링, VPN/Direct Connect를 통해 발생할 수 있다.
+	- `EXTERNALSNAT` 설정은 단순히 IP 변환 여부를 결정하는 것을 넘어선다
+		- `false` 설정은 Pod의 외부 통신이 노드의 IP로 통합되므로, 외부에서는 Pod 개별 IP를 알 수 없게 되어 보안 측면에서 일종의 추상화 계층을 제공한다. 
+			- 장점: 외부 공격 표면을 줄이고, 노드 수준에서 보안 그룹 관리를 간소화할 수 있다. 
+			- 단점: Pod별 트래픽 식별이 어려워질 수 있다. 
+		- `true` 설정은 Pod IP를 보존하여 VPC 내부 또는 연결된 네트워크에서 Pod에 대한 직접적인 가시성을 제공한다. 
+			- 장점: `EXTERNALSNAT=true`는 Pod별 보안 정책 적용이나 감사 추적에 유리
+			- 단점: Pod IP가 노출될 수 있어 추가적인 보안 고려사항(예: 네트워크 ACL, Pod 보안 그룹)이 필요하다. 
+---
+### Multi-homed Pods with Multus CNI
+
+![500](images/Pasted%20image%2020250630225409.png)
+
+- **Multus CNI**는 Pod에 여러 개의 네트워크 인터페이스를 연결할 수 있게 해주는 CNI 플러그인이다.
+- 이를 통해 단일 Pod가 여러 개의 네트워크 인터페이스를 가질 수 있는 멀티호밍(multi-homed) Pod를 생성할 수 있다.
+- AWS는 VPC CNI를 통해 Multus에 대한 지원을 제공한다.
+- Multus를 사용하지 않는 일반적인 Pod는 하나의 `eth0` 인터페이스를 가지며, 이는 `aws-cni`에 의해 관리된다. 그러나 Multus를 사용하는 Pod는 `eth0`, `net0`, `net1` 등 여러 인터페이스를 가질 수 있다
+- EKS 환경에서 고급 네트워킹 시나리오를 가능하게 하여, 통신, 미디어, 금융 등 고급 네트워킹이 필요한 산업에서 유용
+	- 다만 여러 CNI를 함께 쓰면 네트워크 구성이 복잡해지므로 **신중한 설계와 운영 지식이 필요**
+
+---
+### Security Groups in EKS
+
+![](images/Pasted%20image%2020250630225901.png)
+
+
+	
