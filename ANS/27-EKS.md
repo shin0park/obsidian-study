@@ -432,6 +432,7 @@
 	- ALB Target Group이 노드 IP를 대상으로 구성된 경우, ALB는 라우팅 알고리즘에 따라 정상 노드에 트래픽을 분산한다. 
 	- ALB Target Group이 Pod IP를 직접 대상으로 하도록 구성할 수 있다. 
 		- ALB의 라우팅 알고리즘이 개별 Pod IP로 트래픽을 직접 분산한다. 
+		- ALB가 트래픽을 워커 노드의 IP 주소로 보낸 다음 `kube-proxy`가 Pod로 전달하는 대신, ALB가 Pod의 IP 주소로 직접 트래픽을 라우팅
 	
 ---
 ### EKS 사용자 지정 네트워킹 (Custom Networking)
