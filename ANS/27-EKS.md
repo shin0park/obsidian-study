@@ -294,6 +294,90 @@
 ### Security Groups in EKS
 
 ![](images/Pasted%20image%2020250630225901.png)
+- EKS 클러스터를 생성하면 기본 보안 그룹이 함께 생성된다.
+- EKS associates this SG with:
+    - ENIs created by EKS in Customer VPC
+    - ENIs of the nodes in Managed Node group
+- 기본 규칙
+	- **인바운드:** 자기 자신(Self)으로부터의 모든 프로토콜, 모든 포트 허용.
+    - **아웃바운드:** 모든 대상(0.0.0.0/0 또는 ::/0)으로의 모든 프로토콜, 모든 포트 허용.
+- Pod 보안 그룹의 문제점
+	- 기본적으로 보안 그룹(Security Group)은 개별 Pod가 아닌 노드의 ENI에 할당된다
+	- 따라서 같은 ENI를 공유하는 모든 Pod들은 동일한 보안 그룹 규칙을 적용받게 된다.
+	- 이는 Pod별로 세분화된 네트워크 보안 정책을 적용하기 어렵게 만드는 단점이 있다
+	- 이러한 문제를 해결하기 위한 대안으로 Calico와 같은 네트워크 정책 엔진을 사용하여 `iptables` 기반의 Pod 간 트래픽 제한을 구현하거나, EKS native 옵션인 Trunk 및 Branch ENI를 사용하는 방법이 있다
+	  
+### Pod 보안 그룹 해결책: Trunk & Branch ENI
+
+  ![400](images/Pasted%20image%2020250630232528.png)
+
+- 각 Pod에 전용 ENI(Branch ENI)를 할당하여 독립적인 보안 그룹을 적용할 수 있게 한다.
+- `kubectl set env daemonset aws-node -n kube-system ENABLE_POD_ENI=true` 명령어로 활성화
+    
+- **동작 방식:**
+    - `amazon-vpc-resource-controller-k8s`라는 addon 이 기능을 관리
+    - VPC 리소스 컨트롤러는 "aws-k8s-trunk-eni"라는 특수 네트워크 인터페이스를 생성하여 노드에 연결한다. 
+    - 컨트롤러는 또한 "aws-k8s-branch-eni" 인터페이스를 생성하고 이를 트렁크 인터페이스와 연결한다.
+      
+- Trunk 및 Branch ENI는 EKS 환경에서 애플리케이션의 보안 태세를 크게 강화할 수 있는 중요한 기능이다
+- 그러나 이 기능을 활성화하면 ENI 수가 증가하고, 각 Pod에 대한 보안 그룹을 개별적으로 관리해야 하므로, 자동화된 보안 정책 관리 도구(예: Kubernetes Network Policies, GitOps 기반 보안 정책 관리)의 도입이 필수적이다. 이는 보안 강화와 운영 복잡성 증가 사이의 균형점을 찾는 중요한 결정이 된다.
+        
+- **제약사항:**
+    - Windows 노드에서는 사용할 수 없다.
+    - IPv6 클러스터에서는 Fargate 노드에서만 작동한다.
+    - 대부분의 Nitro 기반 인스턴스에서 지원되지만, t 계열 인스턴스 등 일부는 지원되지 않는다
+
+---
+
+### Exposing EKS services
+
+- Pod의 IP를 직접 사용하는 것은 비추천(anti-pattern)이다.
+	- Pods are non-permanent objects
+	- Pods may be created and destroyed  
+	- 스케일링, 노드 교체 등으로 노드간에 파드가 이동될 수도 있다.
+- 즉, Pod는 일시적인 리소스이므로, 안정적인 서비스 접근을 위해 Kubernetes Service 는 Pod 집합을 네트워크 서비스로 노출하는 방법을 제공한다
+- Service Type
+	- **ClusterIP**: 클러스터 내부에서만 접근 가능한 가상 IP를 제공
+	- **NodePort**: 노드의 고정 포트를 통해 외부에서 접근 가능
+	- **LoadBalancer**: CLB/NLB(네트워크 로드 밸런서, Layer 4)를 통해 외부 접근 제공
+	- **Ingress**: ALB(애플리케이션 로드 밸런서, Layer 7)를 통해 외부 접근 제공
 
 
-	
+![600](images/Pasted%20image%2020250701002758.png)
+
+- #### ClusterIP
+	- 기본 서비스 타입으로, 클러스터 내부에서만 접근 가능한 가상 IP를 할당한다
+	- EKS는 기본적으로 `10.100.0.0/16` 또는 `172.20.0.0/16` 대역에서 이 IP를 할당한다.
+	- 각 노드의 `kube-proxy`가 ClusterIP와 실제 Pod IP 간의 트래픽 라우팅을 담당한다
+	- `<service-name>.<namespace-name>.svc.cluster.local` 형태의 DNS 이름으로 접근할 수 있다
+	  
+- #### NodePort
+	- 클러스터 외부에서 서비스에 접근할 수 있도록 각 워커 노드의 IP에 고정된 포트(30000-32767)를 노출한다
+	- 내부적으로는 ClusterIP 서비스를 사용하여 요청을 라우팅
+	- 클라이언트가 노드의 IP를 직접 알아야 하므로 외부 서비스 노출용으로는 비효율적일 수 있다
+    
+
+#### LoadBalancer
+
+- AWS의 로드 밸런서(CLB, NLB)를 프로비저닝하여 서비스를 외부에 노출합니다.
+    
+- **레거시 컨트롤러:** 쿠버네티스에 내장된 컨트롤러로, CLB(기본값) 또는 NLB를 '인스턴스(instance)' 모드로 배포합니다.
+    
+- **AWS Load Balancer Controller (권장):**
+    
+    - NLB를 '인스턴스(instance)' 또는 'IP' 모드로 프로비저닝할 수 있습니다.
+        
+    - 각 서비스마다 전용 NLB가 필요하여 서비스 수가 많아지면 확장성 및 관리에 어려움이 있을 수 있습니다.
+        
+
+#### Ingress
+
+- HTTP 및 HTTPS 경로를 기반으로 외부 트래픽을 클러스터 내부 서비스로 라우팅합니다.
+    
+- **AWS Load Balancer Controller**를 사용하여 ALB(Application Load Balancer)를 프로비저닝합니다.
+    
+- 단일 ALB를 여러 서비스가 공유할 수 있어 비용 효율적이고 관리가 용이합니다.
+    
+- '인스턴스(instance)'와 'IP' 타겟 타입을 모두 지원합니다.
+    
+- IPv6 트래픽은 IP 타겟에서만 지원됩
