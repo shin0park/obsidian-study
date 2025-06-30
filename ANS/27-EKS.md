@@ -235,3 +235,30 @@
 |**IPv6 지원**|Nitro/Fargate, 단일 스택만 가능|
 |**ENI 한계**|인스턴스 타입별 ENI 및 IP 수로 Pod 수 제한|
 |**Prefix Delegation**|IP 수 확장 기능, Nitro에서만 가능|
+
+---
+### Amazon EKS Pod Networking – traffic between Pod and external network
+
+- Pod 간 통신 (Pod to Pod communication)
+	- 동일한 VPC 내에 있는 Pod들은 별도의 변환 없이 각자의 Pod IP 주소를 사용하여 직접 통신할 수 있다.
+- Pod와 외부 네트워크 간 트래픽 (Pod and external network traffic)
+	- = Pod가 VPC의 CIDR 블록에 속하지 않는 외부 IPv4 주소와 통신할 때
+	- **기본 동작 (IPv4):** *Amazon VPC CNI 플러그인*은 Pod의 IPv4 주소를 해당 Pod가 실행 중인 노드의 Primary ENI의 Primary private IPv4 주소로 변환(SNAT)한다.
+	- **IPv6:** IPv6 주소는 네트워크 주소 변환(NAT)을 하지 않으므로 이 동작이 적용되지 않는다.
+- 외부 통신을 위한 Source NAT(SNAT) 설정
+	- EKS에서는 `AWS_VPC_K8S_CNI_EXTERNALSNAT` 설정을 통해 Pod의 외부 통신 방식을 제어할 수 있다.
+	- 퍼블릭 서브넷 (Public Subnet) 내 노드
+		- ![](images/Pasted%20image%2020250630221553.png)
+		- `AWS_VPC_K8S_CNI_EXTERNALSNAT=false`
+			- 주로 Public Subnet에 위치한 노드에서 사용
+		- VPC 피어링, TGW(Transit Gateway), VPN 또는 DX(Direct Connect)를 통해 다른 네트워크와 통신할 때, 트래픽의 소스 IP는 Pod의 IP 주소로 유지
+		- 인터넷으로 나가는 트래픽은 노드의 ENI에 할당된 Public IP 또는 Elastic IP를 통해 NAT 처리
+		- IPv6는 NAT 변환 없이 **직접 통신 가능**
+		- `kubectl set env daemonset aws-node -n kube-system AWS_VPC_K8S_CNI_EXTERNALSNAT=false`
+	- 프라이빗 서브넷 (Private Subnet) 내 노드
+		- ![](images/Pasted%20image%2020250630222035.png)
+		- `AWS_VPC_K8S_CNI_EXTERNALSNAT=true`
+			- 주로 Private Subnet에 위치한 노드에서 사용
+		- Pod가 인터넷과 통신할 때, 트래픽은 Public Subnet에 위치한 NAT 게이트웨이를 통해 라우팅
+			- 이때 트래픽의 소스 IP는 NAT 게이트웨이의 Elastic IP로 변환
+		- `kubectl set env daemonset aws-node -n kube-system AWS_VPC_K8S_CNI_EXTERNALSNAT=true`
