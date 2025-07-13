@@ -228,13 +228,13 @@
 
 ---
 
-|항목|설명|
-|---|---|
-|**CNI 플러그인**|Pod에 IP 할당, ENI 연결 관리|
-|**Pod 간 통신**|NAT 없이 가능, Pod IP 직접 사용|
-|**IPv6 지원**|Nitro/Fargate, 단일 스택만 가능|
-|**ENI 한계**|인스턴스 타입별 ENI 및 IP 수로 Pod 수 제한|
-|**Prefix Delegation**|IP 수 확장 기능, Nitro에서만 가능|
+| 항목                    | 설명                            |
+| --------------------- | ----------------------------- |
+| **CNI 플러그인**          | Pod에 IP 할당, ENI 연결 관리         |
+| **Pod 간 통신**          | NAT 없이 가능, Pod IP 직접 사용       |
+| **IPv6 지원**           | Nitro/Fargate, 단일 스택만 가능      |
+| **ENI 한계**            | 인스턴스 타입별 ENI 및 IP 수로 Pod 수 제한 |
+| **Prefix Delegation** | IP 수 확장 기능, Nitro에서만 가능       |
 
 ---
 ### Amazon EKS Pod Networking – traffic between Pod and external network
