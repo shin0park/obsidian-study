@@ -107,7 +107,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "ccec65e2a1eb1233",
@@ -206,6 +207,10 @@
   },
   "active": "aa7a7893c9368785",
   "lastOpenFiles": [
+    "MLS/images/Pasted image 20250714142930.png",
+    "MLS/images/Pasted image 20250714142606.png",
+    "MLS/images/Pasted image 20250714142554.png",
+    "MLS/images",
     "ANS/27-EKS.md",
     "MLS/s3.md",
     "MLS",
@@ -217,8 +222,6 @@
     "ANS/images/Pasted image 20250630232528.png",
     "ANS/images/Pasted image 20250630225901.png",
     "ANS/images/Pasted image 20250630225409.png",
-    "ANS/images/Pasted image 20250630222310.png",
-    "ANS/images/Pasted image 20250630222035.png",
     "ANS/25-route53-DNS-Resolver.md",
     "ANS/images/HandsOn-Hybrid-DNS-commands-and-configurations.txt",
     "ANS/images/HandsOn-Hybrid-DNS-Slides 1.pdf",
@@ -246,11 +249,9 @@
     "SRE/C19-프론트엔드의 로드밸런싱.md",
     "ANS/14-VPC-Gateway-Endpoints.md",
     "ANS/15-VPC-Interface-Endpoint-(PrivateLink).md",
-    "SRE/C18-SRE 조직의 소프트웨어 엔지니어링.md",
     "SRE/images",
     "ANS/images",
     "ANS",
-    "SRE",
-    "CKAD"
+    "SRE"
   ]
 }
