@@ -160,6 +160,6 @@ https://aws.amazon.com/blogs/machine-learning/analyze-live-video-at-scale-in-rea
 - **Kinesis Data Stream**: 실시간 머신러닝 애플리케이션 개발
 	- 데이터의 실시간 수집, 보존 및 재처리 기능을 통해 ML 모델의 실시간 추론 및 지속적인 학습을 지원
 - **Data Firehose**: 대량의 데이터 수집 및 S3 등으로 전달
-	- ML 모델 학습을 위한 대규모 데π이터 세트를 효율적으로 데이터 레이크나 데이터 웨어하우스로 로드하는 데 필수적
+	- ML 모델 학습을 위한 대규모 데이터 세트를 효율적으로 데이터 레이크나 데이터 웨어하우스로 로드하는 데 필수적
 - **Kinesis Analytics**: 실시간 ETL 및 ML 알고리즘 실행
 - **Kinesis Video Stream**: 비디오 기반 ML 애플리케이션 구성
