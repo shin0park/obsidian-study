@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MLS/s3.md",
+                "file": "MLS/Kinesis Data Stream-Firehose-Apache Flink.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "s3"
+              "title": "Kinesis Data Stream-Firehose-Apache Flink"
             }
           },
           {
@@ -207,20 +207,21 @@
   },
   "active": "aa7a7893c9368785",
   "lastOpenFiles": [
+    "MLS/images/Pasted image 20250720235030.png",
+    "MLS/images/Pasted image 20250720234956.png",
+    "MLS/images/Pasted image 20250720234824.png",
+    "MLS/images/Pasted image 20250720234809.png",
+    "MLS/images/Pasted image 20250720232659.png",
+    "MLS/images/Pasted image 20250720232117.png",
+    "MLS/s3.md",
+    "MLS/Kinesis Data Stream-Firehose-Apache Flink.md",
     "MLS/images/Pasted image 20250714175459.png",
     "MLS/images/Pasted image 20250714175354.png",
     "MLS/images/Pasted image 20250714175313.png",
     "MLS/images/Pasted image 20250714175220.png",
     "MLS/images/Pasted image 20250714175047.png",
-    "MLS/images/Pasted image 20250714175007.png",
-    "MLS/images/Pasted image 20250714174813.png",
-    "MLS/images/Pasted image 20250714174718.png",
-    "MLS/images/Pasted image 20250714170845.png",
-    "MLS/images/Pasted image 20250714142930.png",
-    "MLS/images/Pasted image 20250714142606.png",
     "MLS/images",
     "ANS/27-EKS.md",
-    "MLS/s3.md",
     "MLS",
     "ANS/25-route53-DNS-Resolver.md",
     "ANS/images/HandsOn-Hybrid-DNS-commands-and-configurations.txt",
@@ -248,7 +249,6 @@
     "ANS/16-TGW-AZ affinity-peering.md",
     "SRE/C19-프론트엔드의 로드밸런싱.md",
     "ANS/14-VPC-Gateway-Endpoints.md",
-    "ANS/15-VPC-Interface-Endpoint-(PrivateLink).md",
     "SRE/images",
     "ANS/images",
     "ANS",
