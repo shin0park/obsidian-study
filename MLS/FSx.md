@@ -97,6 +97,11 @@
 
 - AWS에서 제공하는 **NetApp ONTAP 파일 시스템의 관리형 서비스**
 - 지원 프로토콜: **NFS(Network File System), SMB, iSCSI(Internet Small Computer Systems Interface)**
+	- iSCSI
+		- **블록 단위 스토리지 프로토콜**  
+		    → 실제 로컬 디스크처럼 인식하게 만듦 (디스크 자체를 통째로 공유)
+		- 이건 파일이 아니라 **디스크 자체를 네트워크를 통해 붙이는 방식**
+		- ex. 서버에 `/dev/sdb` 같은 블록 장치가 생김
 - ONTAP 또는 NAS(Network Attached Storage) 워크로드를 AWS로 손쉽게 이전 가능
 - **호환 환경**: Linux, Windows, MacOS, VMware Cloud on AWS, AppStream 2.0, WorkSpaces, EC2, ECS, EKS
 - **스토리지 자동 확장/축소 지원**
@@ -118,3 +123,13 @@
     - 스냅샷, 압축 및 낮은 비용 기능을 제공
     - **Point-in-time Clone 기능** 
 
+---
+
+ ### 주요 Amazon FSx 서비스 비교
+
+| 서비스                             | 주요 프로토콜                  | 주요 사용 사례                                               | 스토리지 옵션  | 주요 특징                                                                    | 주요 호환성                                                                                                |
+| ------------------------------- | ------------------------ | ------------------------------------------------------ | -------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| **FSx for Windows File Server** | SMB, NTFS                | 데이터베이스, 미디어 처리, 데이터 분석, 홈 디렉터리, CMS, 온프레미스 통합          | SSD, HDD | 완전 관리형, AD 통합, DFS 네임스페이스, Multi-AZ, S3 백업, 수십 GB/s, 수백만 IOPS, 수백 PB 확장성 | Linux EC2, 온프레미스 (VPN/Direct Connect)                                                                 |
+| **FSx for Lustre**              | POSIX (파일 시스템 인터페이스)     | 머신러닝(ML), 고성능 컴퓨팅(HPC), 비디오 처리, 금융 모델링, 전자 설계 자동화(EDA) | SSD, HDD | 병렬 분산, S3 통합, 수백 GB/s, 수백만 IOPS, 서브 밀리초 지연 시간, 스크래치/영구 배포 옵션             | 온프레미스 (VPN/Direct Connect)                                                                            |
+| **FSx for NetApp ONTAP**        | NFS, SMB, iSCSI          | ONTAP/NAS 워크로드 마이그레이션, 개발/테스트 환경, 다목적 공유 스토리지          | 자동 확장/축소 | 스냅샷, 복제, 압축, 데이터 중복 제거, 즉각적인 클로닝                                         | Linux, Windows, macOS, VMware Cloud on AWS, Amazon Workspaces, AppStream 2.0, EC2, ECS, EKS           |
+| **FSx for OpenZFS**             | NFS (v3, v4, v4.1, v4.2) | ZFS 워크로드 마이그레이션, 고성능 파일 스토리지, 개발/테스트 환경, 다목적 공유 스토리지   | 저비용 스토리지 | 최대 1,000,000 IOPS, 0.5ms 미만 지연 시간, 스냅샷, 압축, 즉각적인 클로닝                     | Linux, Windows, macOS, VMware Cloud on AWS, Amazon Workspaces, AppStream 2.0, EC2, ECS, EKS, 온프레미스 서버 |
