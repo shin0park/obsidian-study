@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MLS/FSx.md",
+                "file": "MLS/Glue Data Catalog & Crawler.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "FSx"
+              "title": "Glue Data Catalog & Crawler"
             }
           },
           {
@@ -207,8 +207,9 @@
   },
   "active": "aa7a7893c9368785",
   "lastOpenFiles": [
-    "MLS/Kinesis Data Stream-Firehose-Apache Flink.md",
     "MLS/FSx.md",
+    "MLS/Glue Data Catalog & Crawler.md",
+    "MLS/Kinesis Data Stream-Firehose-Apache Flink.md",
     "MLS/images/Pasted image 20250720235030.png",
     "MLS/images/Pasted image 20250720234956.png",
     "MLS/images/Pasted image 20250720234824.png",
@@ -248,7 +249,6 @@
     "SRE/C20-데이터센터의 로드밸런싱.md",
     "ANS/16-TGW-AZ affinity-peering.md",
     "SRE/C19-프론트엔드의 로드밸런싱.md",
-    "ANS/14-VPC-Gateway-Endpoints.md",
     "SRE/images",
     "ANS/images",
     "ANS",
