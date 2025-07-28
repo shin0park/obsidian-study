@@ -96,8 +96,126 @@
     - 변환을 통해 데이터 이상 감지, 형식 변환, 유효하지 않은 값 수정 등의 작업 자동화 가능
 - DataBrew는 시각적 인터페이스와 사전 정의된 변환을 통해 이 과정을 간소화하고, 데이터 과학자가 코딩 대신 모델링에 집중할 수 있도록 한다
 - https://aws.amazon.com/glue/features/databrew/
+- ![](images/Pasted%20image%2020250728223916.png)
 
 ---
 
-### Athena
+### AWS Data Stores for Machine Learning
 
+- **Redshift**: Data Warehousing, SQL 분석 
+	- 특히 OLAP(Online analytical processing) 분석 전용 DB
+	- S3에서 데이터 로드 가능
+    - Redshift Spectrum을 사용하여 S3의 데이터 직접 쿼리 가능하여, 데이터 로딩없이 분석이 가능하다.
+    - column base
+- **RDS, Aurora**: 관계형 DB
+	- OLTP(Online Transaction Processing) 
+	-  사전 프로비저닝 필요
+	- row base
+- **DynamoDB**: NoSQL
+	- serverless
+		- read/write capacity 만 정하면 됨
+	- ML 모델 저장에 적합
+- **S3**: 객체 스토리지
+	- serverless
+	- 무제한 용량
+	- 대부분 AWS 서비스와 통합
+- **OpenSearch**: (이전 ElasticSearch)
+	- indexing of data
+	- data point 검색
+	- Clickstream 분석
+- **ElastiCache**: 캐시용, ML 직접용은 아님
+
+---
+### AWS Data Pipeline Features
+
+- AWS Data Pipeline은 AWS 서비스의 다양한 목적지로 데이터를 전송할 수 있다.
+- 대상: S3, RDS, DynamoDB, Redshift, EMR
+- **작업 간 의존성 관리** 하여 올바른 순서로 작업이 실행 되도록 보장한다.
+- 실패 시 재시도 및 알림 지원
+- 온프레미스 데이터 소스도 사용 가능
+- 고가용성 보장
+- 코드를 실행하는 컴퓨팅 리소스에 대한 더 많은 제어권을 제공하며, EC2 또는 EMR 인스턴스에 접근할 수 있다. 
+	- 컴퓨팅 리소스는 사용자의 계정 내에 생성된다.
+
+### Data Pipeline Example
+
+![](images/Pasted%20image%2020250728223927.png)
+- EC2 인스턴스가 Glue 또는 SageMaker와 함께 데이터 처리 수행
+
+### AWS Data Pipeline vs Glue
+
+- AWS Data Pipeline과 AWS Glue의 핵심 차이는 "제어 수준"과 "서비스의 주된 목적"에 있다
+- Data Pipeline
+	- 데이터 이동 및 오케스트레이션에 중점을 두며 사용자에게 컴퓨팅 리소스에 대한 더 많은 제어권을 제공
+	- EC2 또는 EMR 인스턴스에 접근할 수 있도록 허용
+- Glue
+	- Apache Spark 코드를 실행하는 ETL(Extract, Transform, Load)에 중점을 둔다
+	- 서버리스 ETL에 특화되어 인프라 관리 부담을 최소화한다. 
+
+|특징|AWS Glue|AWS Data Pipeline|
+|---|---|---|
+|**주요 목적**|서버리스 ETL (데이터 변환, 정제, 보강)|데이터 이동 및 오케스트레이션 (다양한 작업 조율)|
+|**컴퓨팅 환경**|완전 관리형 서버리스 Spark 플랫폼|사용자의 EC2/EMR 인스턴스에 대한 제어권 제공|
+|**리소스 관리**|AWS에서 관리 (사용자는 걱정할 필요 없음)|사용자가 컴퓨팅 리소스에 대해 더 많은 제어|
+|**코드 기반**|Apache Spark (Scala, Python)|다양한 스크립트 및 작업 유형 (사용자 정의 가능)|
+|**주요 사용 사례**|대규모 데이터 ETL, 데이터 레이크 구축|복잡한 데이터 파이프라인 오케스트레이션, 온프레미스 통합|
+|**비용 모델**|사용한 리소스에 대해서만 지불|사용자의 EC2/EMR 인스턴스 비용 + 서비스 비용|
+
+
+---
+
+### AWS Batch
+
+- 수십만 개의 컴퓨팅 작업을 AWS에서 효율적으로 실행할 수 있도록 지원하는 서비스
+- AWS Batch는 배치 작업을 Docker 이미지 형태로 실행한다
+- EC2 & Spot 인스턴스를 **동적 프로비저닝**
+	- 작업의 볼륨과 요구 사항에 따라 최적의 수량과 유형의 리소스를 결정하여 할당한다.
+- 클러스터 관리 불필요 (서버리스)
+- 비용: 기본 EC2 인스턴스 사용량에 대해서만 비용을 지불
+- **CloudWatch Events**를 사용하여 스케줄링 가능
+- **AWS Step Functions**를 사용하여 배치 작업을 오케스트레이션할 수 있다.
+    
+### AWS Batch vs Glue 
+
+- Glue는 데이터 변환(ETL)에 특화된 반면, Batch는 Docker 이미지를 기반으로 하는 "모든 종류의 컴퓨팅 작업"에 대한 범용 배치 처리 서비스이다
+- AWS가 특정 도메인에 최적화된 서비스(Glue) / 광범위한 컴퓨팅 요구 사항을 충족하는 범용 서비스(Batch)
+- ETL과 관련 없는 작업의 경우 Batch가 더 나은 선택일 수 있다
+- Docker 이미지의 사용은 Batch가 언어나 프레임워크에 구애받지 않고 어떤 코드든 실행할 수 있는 유연성을 제공한다는 것을 의미한다
+
+| 특징           | AWS Glue                     | AWS Batch                                     |
+| ------------ | ---------------------------- | --------------------------------------------- |
+| **주요 목적**    | 서버리스 ETL (데이터 변환, 정제, 보강)    | 범용 배치 컴퓨팅 (어떤 작업이든 Docker 이미지로 실행)            |
+| **컴퓨팅 환경**   | 완전 관리형 서버리스 Spark 플랫폼        | 사용자의 계정에 생성된 EC2/Spot 인스턴스 (Batch가 관리)        |
+| **리소스 관리**   | AWS에서 관리 (사용자는 걱정할 필요 없음)    | Batch가 인스턴스 동적 프로비저닝 및 관리                     |
+| **코드 기반**    | Apache Spark (Scala, Python) | Docker 이미지 (어떤 언어/프레임워크든 가능)                  |
+| **주요 사용 사례** | 대규모 데이터 ETL, 데이터 레이크 데이터 준비  | ML 모델 학습, 시뮬레이션, 과학 컴퓨팅, 이미지 처리 등 비-ETL 작업 () |
+| **비용 모델**    | 사용한 리소스에 대해서만 지불             | 기본 EC2 인스턴스 사용량에 대해서만 지불                      |
+
+---
+
+### DMS – Database Migration Service
+
+![300](images/Pasted%20image%2020250728225151.png)
+
+- 데이터베이스를 AWS로 빠르고 안전하게 마이그레이션하도록 돕는 서비스
+- 서비스는 탄력적으로 설계되었으며, 스스로 문제를 감지하고 복구할 수 있는 자가 치유 기능을 제공
+- 마이그레이션 중에도 소스 DB 사용 가능
+- 지원 유형:
+    - 동종 마이그레이션 (예: Oracle → Oracle)
+    - 이종 마이그레이션 (예: SQL Server → Aurora)
+- **CDC(Change Data Capture)**로 실시간 복제 지원
+- 복제 작업을 수행하기 위해 EC2 인스턴스를 생성해야 한다
+    
+### AWS DMS vs Glue
+
+- DMS는 데이터를 '이동'하고 '복제'하는 데 특화되어 있으며 변환 기능이 없는 반면, Glue는 '변환'에 특화되어 있다. 
+- DMS의 핵심 기능은 데이터베이스를 한 위치(온프레미스 또는 다른 AWS DB)에서 다른 위치(AWS DB)로 옮기거나 동기화하는 것이다. 이 과정에서 데이터의 구조나 내용은 크게 변경하지 않는다.
+
+|특징|AWS Glue|AWS Database Migration Service (DMS)|
+|---|---|---|
+|**주요 목적**|서버리스 ETL (데이터 변환, 정제, 보강)|데이터베이스 마이그레이션 및 연속 데이터 복제|
+|**데이터 변환**|**수행 (핵심 기능)**|**수행하지 않음** (주로 원본 데이터 유지)|
+|**소스/대상**|S3, JDBC, Glue Data Catalog 등|다양한 관계형/NoSQL 데이터베이스 (동종/이종)|
+|**실행 환경**|완전 관리형 서버리스 Spark 플랫폼|복제 작업을 위한 EC2 인스턴스 필요|
+|**주요 사용 사례**|데이터 레이크 구축, 데이터 웨어하우스 로딩, ML 데이터 준비|온프레미스 DB를 AWS로 마이그레이션, 실시간 DB 복제|
+|**상호 보완 관계**|DMS로 마이그레이션된 데이터를 변환하는 데 사용|Glue를 사용하여 변환하기 전에 데이터를 AWS로 이동|
