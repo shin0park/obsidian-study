@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MLS/Exploratory Data Analysis (EDA).md",
+                "file": "MLS/06. Exploratory Data Analysis (EDA).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Exploratory Data Analysis (EDA)"
+              "title": "06. Exploratory Data Analysis (EDA)"
             }
           },
           {
@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MLS/Exploratory Data Analysis (EDA).md",
+                "file": "MLS/07. Data basic & Athena & Quicksight.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Exploratory Data Analysis (EDA)"
+              "title": "07. Data basic & Athena & Quicksight"
             }
           }
         ],
@@ -206,9 +206,15 @@
   },
   "active": "222ef24361d81af6",
   "lastOpenFiles": [
+    "MLS/08. EMR.md",
+    "MLS/07. Data basic & Athena & Quicksight.md",
+    "MLS/06. Exploratory Data Analysis (EDA).md",
+    "MLS/05. Data Engineering(Step Function, pipeline, datasync, MQTT).md",
+    "MLS/04. FSx.md",
+    "MLS/03. Glue Data Catalog & Crawler.md",
+    "MLS/02. Kinesis Data Stream-Firehose-Apache Flink.md",
+    "MLS/01. s3.md",
     "MLS/Exploratory Data Analysis (EDA) 1.md",
-    "MLS/Exploratory Data Analysis (EDA).md",
-    "MLS/Data Engineering(Step Function, pipeline, datasync, MQTT).md",
     "ANS/23-Route53.md",
     "MLS/images/Pasted image 20250804205413.png",
     "MLS/images/Pasted image 20250804205335.png",
@@ -219,13 +225,9 @@
     "MLS/images/Pasted image 20250804202809.png",
     "MLS/images/Pasted image 20250804202008.png",
     "읽다지/월급쟁이 부자로 은퇴하라.md",
-    "MLS/Glue Data Catalog & Crawler.md",
     "읽다지",
     "MLS/images/Pasted image 20250728225151.png",
     "MLS/images/Pasted image 20250728223927.png",
-    "MLS/FSx.md",
-    "MLS/Kinesis Data Stream-Firehose-Apache Flink.md",
-    "MLS/s3.md",
     "MLS/images",
     "ANS/27-EKS.md",
     "MLS",
@@ -247,8 +249,6 @@
     "SRE/C25-데이터 처리 파이프라인.md",
     "SRE/C24-크론을 이용한 분산 주기적 스케줄링.md",
     "ANS/04-NAT.md",
-    "ANS/05-vpc-secondaryip-ENI-BYOIP.md",
-    "SRE/C22-연속적 장애 다루기.md",
     "SRE/images",
     "ANS/images",
     "ANS"
