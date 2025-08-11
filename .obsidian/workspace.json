@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MLS/07. Athena & Quicksight.md",
+                "file": "MLS/08. EMR.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "07. Athena & Quicksight"
+              "title": "08. EMR"
             }
           }
         ],
@@ -107,7 +107,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "ccec65e2a1eb1233",
@@ -206,6 +207,7 @@
   },
   "active": "222ef24361d81af6",
   "lastOpenFiles": [
+    "MLS/07. Athena & Quicksight.md",
     "MLS/images/Pasted image 20250812005223.png",
     "MLS/images/Pasted image 20250812005218.png",
     "MLS/images/Pasted image 20250812005204.png",
@@ -216,9 +218,7 @@
     "MLS/images/Pasted image 20250812005049.png",
     "MLS/images/Pasted image 20250812005044.png",
     "MLS/images/Pasted image 20250812004944.png",
-    "MLS/images/Pasted image 20250812004936.png",
     "MLS/06. Exploratory Data Analysis (EDA).md",
-    "MLS/07. Athena & Quicksight.md",
     "MLS/08. EMR.md",
     "MLS/05. Data Engineering(Step Function, pipeline, datasync, MQTT).md",
     "MLS/04. FSx.md",
