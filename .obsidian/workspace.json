@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MLS/08. EMR.md",
+                "file": "MLS/09. Feature Engineering, Curse of Dimensionality.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "08. EMR"
+              "title": "09. Feature Engineering, Curse of Dimensionality"
             }
           }
         ],
@@ -207,6 +207,12 @@
   },
   "active": "222ef24361d81af6",
   "lastOpenFiles": [
+    "MLS/images/Pasted image 20250818224836.png",
+    "MLS/images/Pasted image 20250818224817.png",
+    "MLS/images/Pasted image 20250818222947.png",
+    "MLS/images/Pasted image 20250818222023.png",
+    "MLS/08. EMR.md",
+    "MLS/09. Feature Engineering, Curse of Dimensionality.md",
     "MLS/images/Pasted image 20250812014518.png",
     "MLS/images/Pasted image 20250812014514.png",
     "MLS/images/Pasted image 20250812014232.png",
@@ -214,13 +220,8 @@
     "MLS/images/Pasted image 20250812013609.png",
     "MLS/images/Pasted image 20250812013552.png",
     "MLS/images/Pasted image 20250812013434.png",
-    "MLS/images/Pasted image 20250812013201.png",
-    "MLS/images/Pasted image 20250812011549.png",
-    "MLS/images/Pasted image 20250812011537.png",
     "MLS/07. Athena & Quicksight.md",
-    "MLS/images/Pasted image 20250812005223.png",
     "MLS/06. Exploratory Data Analysis (EDA).md",
-    "MLS/08. EMR.md",
     "MLS/05. Data Engineering(Step Function, pipeline, datasync, MQTT).md",
     "MLS/04. FSx.md",
     "MLS/03. Glue Data Catalog & Crawler.md",
@@ -249,7 +250,6 @@
     "ANS/18-Hybrid Network Basics.md",
     "ANS/19-Site-to-Site-VPN.md",
     "SRE/C25-데이터 처리 파이프라인.md",
-    "SRE/C24-크론을 이용한 분산 주기적 스케줄링.md",
     "SRE/images",
     "ANS/images",
     "ANS"
