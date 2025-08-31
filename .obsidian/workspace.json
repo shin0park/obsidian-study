@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MLS/10. Deep Learning.md",
+                "file": "MLS/11. Deep Learning - Regularization, L1, L2, confusion matrix.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "10. Deep Learning"
+              "title": "11. Deep Learning - Regularization, L1, L2, confusion matrix"
             }
           }
         ],
@@ -196,6 +196,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:새 베이스 생성하기": false,
       "switcher:빠른 전환기 열기": false,
       "daily-notes:오늘의 일일 노트 열기": false,
       "graph:그래프 뷰 열기": false,
@@ -207,6 +208,11 @@
   },
   "active": "222ef24361d81af6",
   "lastOpenFiles": [
+    "MLS/images/Pasted image 20250901005907.png",
+    "MLS/images/Pasted image 20250901005645.png",
+    "MLS/images/Pasted image 20250901005310.png",
+    "MLS/10. Deep Learning.md",
+    "MLS/11. Deep Learning - Regularization, L1, L2, confusion matrix.md",
     "MLS/images/Pasted image 20250826235134.png",
     "MLS/images/Pasted image 20250826235112.png",
     "MLS/images/Pasted image 20250826013701.png",
@@ -215,11 +221,7 @@
     "MLS/images/Pasted image 20250826013638.png",
     "MLS/images/Pasted image 20250826013627.png",
     "MLS/images/Pasted image 20250826013625.png",
-    "MLS/images/Pasted image 20250826013615.png",
-    "MLS/images/Pasted image 20250826013604.png",
-    "MLS/images/Pasted image 20250826013551.png",
     "MLS/09. Feature Engineering, Curse of Dimensionality.md",
-    "MLS/10. Deep Learning.md",
     "MLS/08. EMR.md",
     "MLS/07. Athena & Quicksight.md",
     "MLS/06. Exploratory Data Analysis (EDA).md",
@@ -249,7 +251,6 @@
     "ANS/20-Site-to-Site-VPN-architecture.md",
     "ANS/17-TGW-Attachment-DX-Multicast-Centralized traffic inspection.md",
     "ANS/18-Hybrid Network Basics.md",
-    "ANS/19-Site-to-Site-VPN.md",
     "SRE/images",
     "ANS/images",
     "ANS"
