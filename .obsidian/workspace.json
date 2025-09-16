@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MLS/11. Deep Learning - Regularization, L1, L2, confusion matrix.md",
+                "file": "MLS/12. SageMaker.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "11. Deep Learning - Regularization, L1, L2, confusion matrix"
+              "title": "12. SageMaker"
             }
           }
         ],
@@ -208,19 +208,20 @@
   },
   "active": "222ef24361d81af6",
   "lastOpenFiles": [
+    "MLS/images/Pasted image 20250916232718.png",
+    "MLS/images/Pasted image 20250916232209.png",
+    "MLS/images/Pasted image 20250916232157.png",
+    "MLS/images/Pasted image 20250916231511.png",
+    "MLS/11. Deep Learning - Regularization, L1, L2, confusion matrix.md",
+    "MLS/12. SageMaker.md",
     "MLS/images/Pasted image 20250902004408.png",
     "MLS/images/Pasted image 20250902003831.png",
     "MLS/images/Pasted image 20250901230143.png",
     "MLS/images/Pasted image 20250901224737.png",
     "MLS/images/Pasted image 20250901224725.png",
     "MLS/10. Deep Learning.md",
-    "MLS/11. Deep Learning - Regularization, L1, L2, confusion matrix.md",
     "MLS/images/Pasted image 20250901223342.png",
     "MLS/images/Pasted image 20250901223153.png",
-    "MLS/images/Pasted image 20250901223148.png",
-    "MLS/images/Pasted image 20250901223146.png",
-    "MLS/images/Pasted image 20250901222949.png",
-    "MLS/images/Pasted image 20250901222941.png",
     "MLS/09. Feature Engineering, Curse of Dimensionality.md",
     "MLS/08. EMR.md",
     "MLS/07. Athena & Quicksight.md",
@@ -250,7 +251,6 @@
     "SRE/C23-치명적인 상태 관리하기-신뢰성을 위한 분산에 대한 합의.md",
     "ANS/20-Site-to-Site-VPN-architecture.md",
     "ANS/17-TGW-Attachment-DX-Multicast-Centralized traffic inspection.md",
-    "ANS/18-Hybrid Network Basics.md",
     "SRE/images",
     "ANS/images",
     "ANS"
