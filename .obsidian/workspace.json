@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MLS/11. Deep Learning - Regularization, L1, L2, confusion matrix.md",
+                "file": "MLS/12. SageMaker.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "11. Deep Learning - Regularization, L1, L2, confusion matrix"
+              "title": "12. SageMaker"
             }
           }
         ],
@@ -213,10 +213,10 @@
   },
   "active": "222ef24361d81af6",
   "lastOpenFiles": [
-    "MLS/11. Deep Learning - Regularization, L1, L2, confusion matrix.md",
     "MLS/12. SageMaker.md",
-    "MLS/10. Deep Learning.md",
+    "MLS/11. Deep Learning - Regularization, L1, L2, confusion matrix.md",
     "MLS/13. 중간점검 quiz.md",
+    "MLS/10. Deep Learning.md",
     "MLS/09. Feature Engineering, Curse of Dimensionality.md",
     "MLS/06. Exploratory Data Analysis (EDA).md",
     "MLS/images/Pasted image 20250917231411.png",
