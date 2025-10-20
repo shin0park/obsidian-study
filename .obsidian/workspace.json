@@ -27,12 +27,24 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MLS/16. Automatic Model Tuning & SageMaker (spark, modern, Debugger, Autopilot AutoML).md",
+                "file": "MLS/17. Sagemaker Canvas.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "16. Automatic Model Tuning & SageMaker (spark, modern, Debugger, Autopilot AutoML)"
+              "title": "17. Sagemaker Canvas"
+            }
+          },
+          {
+            "id": "8e6f5506b079e7e9",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.9.14"
+              },
+              "icon": "lucide-book-up",
+              "title": "릴리즈 노트 1.9.14"
             }
           }
         ],
@@ -194,13 +206,14 @@
   },
   "active": "a981383b2863c8f3",
   "lastOpenFiles": [
+    "MLS/16. Automatic Model Tuning & SageMaker (spark, modern, Debugger, Autopilot AutoML).md",
+    "MLS/17. Sagemaker Canvas.md",
     "MLS/images/Pasted image 20251013224653.png",
     "MLS/images/Pasted image 20251013224636.png",
     "MLS/images/Pasted image 20251013224622.png",
     "MLS/images/Pasted image 20251013224620.png",
     "MLS/images/Pasted image 20251013224050.png",
     "MLS/15. Reinforcement Learning -강화학습.md",
-    "MLS/16. Automatic Model Tuning & SageMaker (spark, modern, Debugger, Autopilot AutoML).md",
     "MLS/images/Pasted image 20251013215120.png",
     "MLS/14. SageMaker Algorithm.md",
     "MLS/images/Pasted image 20250930013205.png",
@@ -213,7 +226,6 @@
     "MLS/10. Deep Learning.md",
     "MLS/09. Feature Engineering, Curse of Dimensionality.md",
     "MLS/06. Exploratory Data Analysis (EDA).md",
-    "MLS/images/Pasted image 20250917231411.png",
     "MLS/08. EMR.md",
     "MLS/07. Athena & Quicksight.md",
     "MLS/05. Data Engineering(Step Function, pipeline, datasync, MQTT).md",
