@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MLS/17. Sagemaker Canvas.md",
+                "file": "MLS/17. Sagemaker Canvas, Training Compiler, Feature Store, ML Lineage, Data Wrangler.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "17. Sagemaker Canvas"
+              "title": "17. Sagemaker Canvas, Training Compiler, Feature Store, ML Lineage, Data Wrangler"
             }
           },
           {
@@ -206,8 +206,13 @@
   },
   "active": "a981383b2863c8f3",
   "lastOpenFiles": [
+    "MLS/images/Pasted image 20251021013401.png",
+    "MLS/images/Pasted image 20251021013228.png",
+    "MLS/images/Pasted image 20251021013138.png",
+    "MLS/images/Pasted image 20251021013126.png",
+    "MLS/images/Pasted image 20251021013102.png",
     "MLS/16. Automatic Model Tuning & SageMaker (spark, modern, Debugger, Autopilot AutoML).md",
-    "MLS/17. Sagemaker Canvas.md",
+    "MLS/17. Sagemaker Canvas, Training Compiler, Feature Store, ML Lineage, Data Wrangler.md",
     "MLS/images/Pasted image 20251013224653.png",
     "MLS/images/Pasted image 20251013224636.png",
     "MLS/images/Pasted image 20251013224622.png",
@@ -216,10 +221,6 @@
     "MLS/15. Reinforcement Learning -강화학습.md",
     "MLS/images/Pasted image 20251013215120.png",
     "MLS/14. SageMaker Algorithm.md",
-    "MLS/images/Pasted image 20250930013205.png",
-    "MLS/images/Pasted image 20250930013145.png",
-    "MLS/images/Pasted image 20250930013053.png",
-    "MLS/images/Pasted image 20250928231731.png",
     "MLS/12. SageMaker.md",
     "MLS/13. 중간점검 quiz.md",
     "MLS/11. Deep Learning - Regularization, L1, L2, confusion matrix.md",
@@ -248,7 +249,6 @@
     "ANS/24-Route53-policy.md",
     "카카오뱅크.md",
     "카카오뱅크",
-    "ANS/21-CloudFront.md",
     "SRE/images",
     "ANS/images",
     "ANS"
