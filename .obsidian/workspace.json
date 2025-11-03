@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MLS/AWS Personalize & Other AWS ML Services.md",
+                "file": "MLS/19. AWS Personalize & Other AWS ML Services.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AWS Personalize & Other AWS ML Services"
+              "title": "19. AWS Personalize & Other AWS ML Services"
             }
           },
           {
@@ -119,8 +119,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 326.5024719238281,
-    "collapsed": true
+    "width": 326.5024719238281
   },
   "right": {
     "id": "ccec65e2a1eb1233",
@@ -221,7 +220,7 @@
   "active": "5cbd9fb6d03f9d60",
   "lastOpenFiles": [
     "MLS/18. high-level ml.md",
-    "MLS/AWS Personalize & Other AWS ML Services.md",
+    "MLS/19. AWS Personalize & Other AWS ML Services.md",
     "MLS/images/Pasted image 20251027221537.png",
     "MLS/images/Pasted image 20251027221528.png",
     "MLS/images/Pasted image 20251027221504.png",
