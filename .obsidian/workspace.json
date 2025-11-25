@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MLS/19. AWS Personalize & Other AWS ML Services.md",
+                "file": "MLS/20. ML implementation and operations.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "19. AWS Personalize & Other AWS ML Services"
+              "title": "20. ML implementation and operations"
             }
           },
           {
@@ -119,7 +119,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 326.5024719238281
+    "width": 326.5024719238281,
+    "collapsed": true
   },
   "right": {
     "id": "ccec65e2a1eb1233",
@@ -219,20 +220,22 @@
   },
   "active": "5cbd9fb6d03f9d60",
   "lastOpenFiles": [
-    "MLS/18. high-level ml.md",
+    "MLS/images/Pasted image 20251125232602.png",
+    "MLS/images/Pasted image 20251125232548.png",
+    "MLS/images/Pasted image 20251125232520.png",
+    "MLS/images/Pasted image 20251125232459.png",
+    "MLS/images/Pasted image 20251125232445.png",
+    "MLS/images/Pasted image 20251125232354.png",
+    "MLS/images/Pasted image 20251125232250.png",
+    "MLS/images/Pasted image 20251125232225.png",
+    "MLS/images/Pasted image 20251125232153.png",
     "MLS/19. AWS Personalize & Other AWS ML Services.md",
+    "MLS/20. ML implementation and operations.md",
+    "MLS/18. high-level ml.md",
     "MLS/images/Pasted image 20251027221537.png",
     "MLS/images/Pasted image 20251027221528.png",
-    "MLS/images/Pasted image 20251027221504.png",
-    "MLS/images/Pasted image 20251027221449.png",
     "MLS/17. Sagemaker Canvas, Training Compiler, Feature Store, ML Lineage, Data Wrangler.md",
-    "MLS/images/Pasted image 20251021013401.png",
-    "MLS/images/Pasted image 20251021013228.png",
-    "MLS/images/Pasted image 20251021013138.png",
-    "MLS/images/Pasted image 20251021013126.png",
-    "MLS/images/Pasted image 20251021013102.png",
     "MLS/16. Automatic Model Tuning & SageMaker (spark, modern, Debugger, Autopilot AutoML).md",
-    "MLS/images/Pasted image 20251013224653.png",
     "MLS/15. Reinforcement Learning -강화학습.md",
     "MLS/14. SageMaker Algorithm.md",
     "MLS/12. SageMaker.md",
@@ -259,8 +262,6 @@
     "ANS/images/HandsOn-Hybrid-DNS-commands-and-configurations.txt",
     "ANS/images/HandsOn-Hybrid-DNS-Slides 1.pdf",
     "ANS/images/HandsOn-Hybrid-DNS-Slides.pdf",
-    "ANS/22-Elastic-Load-Balancers.md",
-    "ANS/24-Route53-policy.md",
     "카카오뱅크",
     "SRE/images",
     "ANS/images",
