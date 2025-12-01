@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MLS/20. ML implementation and operations.md",
+                "file": "MLS/21. SageMaker-Edge computing, security, Kubernetes, MLOps.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "20. ML implementation and operations"
+              "title": "21. SageMaker-Edge computing, security, Kubernetes, MLOps"
             }
           },
           {
@@ -220,20 +220,21 @@
   },
   "active": "5cbd9fb6d03f9d60",
   "lastOpenFiles": [
+    "MLS/images/Pasted image 20251201225921.png",
+    "MLS/images/Pasted image 20251201225857.png",
+    "MLS/images/Pasted image 20251201225506.png",
+    "MLS/images/Pasted image 20251201225440.png",
+    "MLS/images/Pasted image 20251201225430.png",
+    "MLS/images/Pasted image 20251201225426.png",
+    "MLS/20. ML implementation and operations.md",
+    "MLS/21. SageMaker-Edge computing, security, Kubernetes, MLOps.md",
     "MLS/images/Pasted image 20251125232602.png",
     "MLS/images/Pasted image 20251125232548.png",
     "MLS/images/Pasted image 20251125232520.png",
     "MLS/images/Pasted image 20251125232459.png",
     "MLS/images/Pasted image 20251125232445.png",
-    "MLS/images/Pasted image 20251125232354.png",
-    "MLS/images/Pasted image 20251125232250.png",
-    "MLS/images/Pasted image 20251125232225.png",
-    "MLS/images/Pasted image 20251125232153.png",
     "MLS/19. AWS Personalize & Other AWS ML Services.md",
-    "MLS/20. ML implementation and operations.md",
     "MLS/18. high-level ml.md",
-    "MLS/images/Pasted image 20251027221537.png",
-    "MLS/images/Pasted image 20251027221528.png",
     "MLS/17. Sagemaker Canvas, Training Compiler, Feature Store, ML Lineage, Data Wrangler.md",
     "MLS/16. Automatic Model Tuning & SageMaker (spark, modern, Debugger, Autopilot AutoML).md",
     "MLS/15. Reinforcement Learning -강화학습.md",
@@ -258,7 +259,6 @@
     "MLS/images",
     "ANS/27-EKS.md",
     "MLS",
-    "ANS/25-route53-DNS-Resolver.md",
     "ANS/images/HandsOn-Hybrid-DNS-commands-and-configurations.txt",
     "ANS/images/HandsOn-Hybrid-DNS-Slides 1.pdf",
     "ANS/images/HandsOn-Hybrid-DNS-Slides.pdf",
