@@ -53,16 +53,18 @@
             "id": "8e6f5506b079e7e9",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.9.14"
+                "file": "MLS/22. Transformer and Generative AI.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-book-up",
-              "title": "릴리즈 노트 1.9.14"
+              "icon": "lucide-file",
+              "title": "22. Transformer and Generative AI"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -218,8 +220,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "5cbd9fb6d03f9d60",
+  "active": "8e6f5506b079e7e9",
   "lastOpenFiles": [
+    "MLS/22. Transformer and Generative AI.md",
     "MLS/images/Pasted image 20251216012823.png",
     "MLS/images/Pasted image 20251216010041.png",
     "MLS/images/Pasted image 20251201225921.png",
@@ -232,7 +235,6 @@
     "MLS/21. SageMaker-Edge computing, security, Kubernetes, MLOps.md",
     "MLS/images/Pasted image 20251125232602.png",
     "MLS/images/Pasted image 20251125232548.png",
-    "MLS/images/Pasted image 20251125232520.png",
     "MLS/19. AWS Personalize & Other AWS ML Services.md",
     "MLS/18. high-level ml.md",
     "MLS/17. Sagemaker Canvas, Training Compiler, Feature Store, ML Lineage, Data Wrangler.md",
