@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 326.5024719238281
+    "width": 326.5024719238281,
+    "collapsed": true
   },
   "right": {
     "id": "ccec65e2a1eb1233",
@@ -178,6 +179,18 @@
   },
   "active": "16f66e12bde1549d",
   "lastOpenFiles": [
+    "Linux-Kernel/images/Pasted image 20260127001414.png",
+    "Linux-Kernel/images/Pasted image 20260127001243.png",
+    "Linux-Kernel/images/Pasted image 20260127000348.png",
+    "Linux-Kernel/images/Pasted image 20260127000303.png",
+    "Linux-Kernel/images/Pasted image 20260127000103.png",
+    "Linux-Kernel/images/Pasted image 20260127000047.png",
+    "Linux-Kernel/images/Pasted image 20260127000024.png",
+    "Linux-Kernel/images/Pasted image 20260126235937.png",
+    "Linux-Kernel/images/Pasted image 20260126235522.png",
+    "Linux-Kernel/images/Pasted image 20260126235224.png",
+    "Linux-Kernel/images/Pasted image 20260126235052.png",
+    "Linux-Kernel/images",
     "Linux-Kernel/0. 스터디.md",
     "Linux-Kernel/1. 시스템 구성 정보 확인하기.md",
     "Linux-Kernel",
@@ -186,17 +199,7 @@
     "MLS/21. SageMaker-Edge computing, security, Kubernetes, MLOps.md",
     "MLS/18. high-level ml.md",
     "MLS/15. Reinforcement Learning -강화학습.md",
-    "MLS/images/Pasted image 20251229002125.png",
-    "MLS/images/Pasted image 20251229000640.png",
-    "MLS/images/Pasted image 20251228234742.png",
     "MLS/22. Transformer and Generative AI.md",
-    "MLS/images/Pasted image 20251222223351.png",
-    "MLS/images/Pasted image 20251222223249.png",
-    "MLS/images/Pasted image 20251222223207.png",
-    "MLS/images/Pasted image 20251222222705.png",
-    "MLS/images/Pasted image 20251221212111.png",
-    "MLS/images/Pasted image 20251221211739.png",
-    "MLS/images/Pasted image 20251221211714.png",
     "MLS/20. ML implementation and operations.md",
     "MLS/19. AWS Personalize & Other AWS ML Services.md",
     "MLS/17. Sagemaker Canvas, Training Compiler, Feature Store, ML Lineage, Data Wrangler.md",
@@ -214,7 +217,6 @@
     "MLS/04. FSx.md",
     "MLS/03. Glue Data Catalog & Crawler.md",
     "MLS/02. Kinesis Data Stream-Firehose-Apache Flink.md",
-    "MLS/01. s3.md",
     "읽다지",
     "MLS/images",
     "MLS",
@@ -222,7 +224,6 @@
     "ANS/images/HandsOn-Hybrid-DNS-Slides 1.pdf",
     "ANS/images/HandsOn-Hybrid-DNS-Slides.pdf",
     "카카오뱅크",
-    "SRE/images",
-    "ANS/images"
+    "SRE/images"
   ]
 }
