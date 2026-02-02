@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linux-Kernel/1. 시스템 구성 정보 확인하기.md",
+                "file": "Linux-Kernel/2. top을 통해 살펴보는 프로세스 정보들.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1. 시스템 구성 정보 확인하기"
+              "title": "2. top을 통해 살펴보는 프로세스 정보들"
             }
           }
         ]
@@ -179,6 +179,8 @@
   },
   "active": "16f66e12bde1549d",
   "lastOpenFiles": [
+    "Linux-Kernel/1. 시스템 구성 정보 확인하기.md",
+    "Linux-Kernel/2. top을 통해 살펴보는 프로세스 정보들.md",
     "Linux-Kernel/images/Pasted image 20260127002507.png",
     "Linux-Kernel/images/Pasted image 20260127001414.png",
     "Linux-Kernel/images/Pasted image 20260127001243.png",
@@ -189,10 +191,8 @@
     "Linux-Kernel/images/Pasted image 20260127000024.png",
     "Linux-Kernel/images/Pasted image 20260126235937.png",
     "Linux-Kernel/images/Pasted image 20260126235522.png",
-    "Linux-Kernel/images/Pasted image 20260126235224.png",
     "Linux-Kernel/images",
     "Linux-Kernel/0. 스터디.md",
-    "Linux-Kernel/1. 시스템 구성 정보 확인하기.md",
     "Linux-Kernel",
     "MLS/24. Bedrock, CodeWhisper, Healthscribe.md",
     "MLS/23. Lab-SageMaker ,Genai, data engineering.md",
