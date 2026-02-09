@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linux-Kernel/2. top을 통해 살펴보는 프로세스 정보들.md",
+                "file": "Linux-Kernel/3. Load Average와 시스템 부하.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2. top을 통해 살펴보는 프로세스 정보들"
+              "title": "3. Load Average와 시스템 부하"
             }
           }
         ]
@@ -179,6 +179,9 @@
   },
   "active": "16f66e12bde1549d",
   "lastOpenFiles": [
+    "Linux-Kernel/images/Pasted image 20260210001238.png",
+    "Linux-Kernel/2. top을 통해 살펴보는 프로세스 정보들.md",
+    "Linux-Kernel/3. Load Average와 시스템 부하.md",
     "Linux-Kernel/images/Pasted image 20260203002417.png",
     "Linux-Kernel/images/Pasted image 20260203002049.png",
     "Linux-Kernel/images/Pasted image 20260203001929.png",
@@ -189,9 +192,7 @@
     "Linux-Kernel/images/Pasted image 20260202235744.png",
     "Linux-Kernel/images/Pasted image 20260202235720.png",
     "Linux-Kernel/1. 시스템 구성 정보 확인하기.md",
-    "Linux-Kernel/2. top을 통해 살펴보는 프로세스 정보들.md",
     "Linux-Kernel/images/Pasted image 20260127002507.png",
-    "Linux-Kernel/images/Pasted image 20260127001414.png",
     "Linux-Kernel/images",
     "Linux-Kernel/0. 스터디.md",
     "Linux-Kernel",
@@ -216,7 +217,6 @@
     "MLS/07. Athena & Quicksight.md",
     "MLS/05. Data Engineering(Step Function, pipeline, datasync, MQTT).md",
     "MLS/04. FSx.md",
-    "MLS/03. Glue Data Catalog & Crawler.md",
     "읽다지",
     "MLS/images",
     "MLS",
