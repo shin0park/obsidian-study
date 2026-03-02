@@ -13,6 +13,20 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "Linux-Kernel/5. swap 메모리 증설의 포인트.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "5. swap 메모리 증설의 포인트"
+            }
+          },
+          {
+            "id": "c73e5b87a75cab40",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "Linux-Kernel/4. free 명령이 숨기고 있는 것들.md",
                 "mode": "source",
                 "source": false
@@ -179,10 +193,13 @@
   },
   "active": "16f66e12bde1549d",
   "lastOpenFiles": [
+    "Linux-Kernel/images/Pasted image 20260302212935.png",
+    "Linux-Kernel/images/Pasted image 20260302210449.png",
+    "Linux-Kernel/4. free 명령이 숨기고 있는 것들.md",
+    "Linux-Kernel/5. swap 메모리 증설의 포인트.md",
     "Linux-Kernel/images/Pasted image 20260224003407.png",
     "Linux-Kernel/images/Pasted image 20260223234853.png",
     "Linux-Kernel/3. Load Average와 시스템 부하.md",
-    "Linux-Kernel/4. free 명령이 숨기고 있는 것들.md",
     "Linux-Kernel/images/Pasted image 20260210001238.png",
     "Linux-Kernel/2. top을 통해 살펴보는 프로세스 정보들.md",
     "Linux-Kernel/images/Pasted image 20260203002417.png",
@@ -191,8 +208,6 @@
     "Linux-Kernel/images/Pasted image 20260203001732.png",
     "Linux-Kernel/images/Pasted image 20260203001702.png",
     "Linux-Kernel/images/Pasted image 20260203001524.png",
-    "Linux-Kernel/images/Pasted image 20260203001520.png",
-    "Linux-Kernel/images/Pasted image 20260202235744.png",
     "Linux-Kernel/1. 시스템 구성 정보 확인하기.md",
     "Linux-Kernel/images",
     "Linux-Kernel/0. 스터디.md",
@@ -216,7 +231,6 @@
     "MLS/06. Exploratory Data Analysis (EDA).md",
     "MLS/08. EMR.md",
     "MLS/07. Athena & Quicksight.md",
-    "MLS/05. Data Engineering(Step Function, pipeline, datasync, MQTT).md",
     "읽다지",
     "MLS/images",
     "MLS",
