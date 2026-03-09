@@ -25,12 +25,14 @@
             "id": "8319adf2a7a3e99f",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.12.4"
+                "file": "Linux-Kernel/6. NUMA, 메모리 관리의 새로운 세계.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-book-up",
-              "title": "릴리즈 노트 1.12.4"
+              "icon": "lucide-file",
+              "title": "6. NUMA, 메모리 관리의 새로운 세계"
             }
           },
           {
@@ -101,8 +103,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -207,6 +208,9 @@
   },
   "active": "8319adf2a7a3e99f",
   "lastOpenFiles": [
+    "Linux-Kernel/images/Pasted image 20260310003640.png",
+    "Linux-Kernel/images/Pasted image 20260310003605.png",
+    "Linux-Kernel/6. NUMA, 메모리 관리의 새로운 세계.md",
     "Linux-Kernel/images/Pasted image 20260302212935.png",
     "Linux-Kernel/images/Pasted image 20260302210449.png",
     "Linux-Kernel/4. free 명령이 숨기고 있는 것들.md",
@@ -220,8 +224,6 @@
     "Linux-Kernel/images/Pasted image 20260203002049.png",
     "Linux-Kernel/images/Pasted image 20260203001929.png",
     "Linux-Kernel/images/Pasted image 20260203001732.png",
-    "Linux-Kernel/images/Pasted image 20260203001702.png",
-    "Linux-Kernel/images/Pasted image 20260203001524.png",
     "Linux-Kernel/1. 시스템 구성 정보 확인하기.md",
     "Linux-Kernel/images",
     "Linux-Kernel/0. 스터디.md",
@@ -244,7 +246,6 @@
     "MLS/09. Feature Engineering, Curse of Dimensionality.md",
     "MLS/06. Exploratory Data Analysis (EDA).md",
     "MLS/08. EMR.md",
-    "MLS/07. Athena & Quicksight.md",
     "읽다지",
     "MLS/images",
     "MLS",
