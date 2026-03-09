@@ -22,6 +22,18 @@
             }
           },
           {
+            "id": "8319adf2a7a3e99f",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.12.4"
+              },
+              "icon": "lucide-book-up",
+              "title": "릴리즈 노트 1.12.4"
+            }
+          },
+          {
             "id": "c73e5b87a75cab40",
             "type": "leaf",
             "state": {
@@ -35,7 +47,8 @@
               "title": "4. free 명령이 숨기고 있는 것들"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -192,7 +205,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "16f66e12bde1549d",
+  "active": "8319adf2a7a3e99f",
   "lastOpenFiles": [
     "Linux-Kernel/images/Pasted image 20260302212935.png",
     "Linux-Kernel/images/Pasted image 20260302210449.png",
