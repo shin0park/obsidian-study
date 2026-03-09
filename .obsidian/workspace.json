@@ -36,6 +36,30 @@
             }
           },
           {
+            "id": "555311d055107e45",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "Linux-Kernel/images/Pasted image 20260310014504.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20260310014504"
+            }
+          },
+          {
+            "id": "80b63b2c66b9db5f",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "Linux-Kernel/images/Pasted image 20260310014504.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20260310014504"
+            }
+          },
+          {
             "id": "c73e5b87a75cab40",
             "type": "leaf",
             "state": {
@@ -208,9 +232,12 @@
   },
   "active": "8319adf2a7a3e99f",
   "lastOpenFiles": [
+    "Linux-Kernel/images/Pasted image 20260310014632.png",
+    "Linux-Kernel/images/Pasted image 20260310014602.png",
+    "Linux-Kernel/images/Pasted image 20260310014504.png",
+    "Linux-Kernel/6. NUMA, 메모리 관리의 새로운 세계.md",
     "Linux-Kernel/images/Pasted image 20260310003640.png",
     "Linux-Kernel/images/Pasted image 20260310003605.png",
-    "Linux-Kernel/6. NUMA, 메모리 관리의 새로운 세계.md",
     "Linux-Kernel/images/Pasted image 20260302212935.png",
     "Linux-Kernel/images/Pasted image 20260302210449.png",
     "Linux-Kernel/4. free 명령이 숨기고 있는 것들.md",
@@ -221,9 +248,6 @@
     "Linux-Kernel/images/Pasted image 20260210001238.png",
     "Linux-Kernel/2. top을 통해 살펴보는 프로세스 정보들.md",
     "Linux-Kernel/images/Pasted image 20260203002417.png",
-    "Linux-Kernel/images/Pasted image 20260203002049.png",
-    "Linux-Kernel/images/Pasted image 20260203001929.png",
-    "Linux-Kernel/images/Pasted image 20260203001732.png",
     "Linux-Kernel/1. 시스템 구성 정보 확인하기.md",
     "Linux-Kernel/images",
     "Linux-Kernel/0. 스터디.md",
