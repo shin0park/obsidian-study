@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linux-Kernel/8..md",
+                "file": "Linux-Kernel/8. TCP Keepalive를 이용한 세션 유지.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "8."
+              "title": "8. TCP Keepalive를 이용한 세션 유지"
             }
           },
           {
@@ -232,8 +232,11 @@
   },
   "active": "8319adf2a7a3e99f",
   "lastOpenFiles": [
+    "Linux-Kernel/images/IMG_9225.jpg",
+    "Linux-Kernel/images/IMG_9223.jpg",
+    "Linux-Kernel/images/Pasted image 20260324014612.png",
     "Linux-Kernel/7. TIME_WAIT 소켓이 서비스에 미치는 영향.md",
-    "Linux-Kernel/8..md",
+    "Linux-Kernel/8. TCP Keepalive를 이용한 세션 유지.md",
     "Linux-Kernel/images/IMG_9088.jpg",
     "Linux-Kernel/images/IMG_9087.jpg",
     "Linux-Kernel/images/IMG_9085.jpg",
@@ -243,8 +246,6 @@
     "Linux-Kernel/6. NUMA, 메모리 관리의 새로운 세계.md",
     "Linux-Kernel/images/Pasted image 20260310014632.png",
     "Linux-Kernel/images/Pasted image 20260310014602.png",
-    "Linux-Kernel/images/Pasted image 20260310014504.png",
-    "Linux-Kernel/images/Pasted image 20260310003640.png",
     "Linux-Kernel/4. free 명령이 숨기고 있는 것들.md",
     "Linux-Kernel/5. swap 메모리 증설의 포인트.md",
     "Linux-Kernel/3. Load Average와 시스템 부하.md",
@@ -269,7 +270,6 @@
     "MLS/11. Deep Learning - Regularization, L1, L2, confusion matrix.md",
     "MLS/10. Deep Learning.md",
     "MLS/09. Feature Engineering, Curse of Dimensionality.md",
-    "MLS/06. Exploratory Data Analysis (EDA).md",
     "읽다지",
     "MLS/images",
     "MLS",
