@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linux-Kernel/11. I.O 스케줄러.md",
+                "file": "Linux-Kernel/11. IO 스케줄러.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "11. I.O 스케줄러"
+              "title": "11. IO 스케줄러"
             }
           }
         ]
@@ -179,10 +179,11 @@
   },
   "active": "16f66e12bde1549d",
   "lastOpenFiles": [
+    "Linux-Kernel/images/IMG_0023.jpg",
     "Linux-Kernel/images/Pasted image 20260420222055.png",
     "Linux-Kernel/images/Pasted image 20260420222042.png",
     "Linux-Kernel/10. dirty page가 IO에 끼치는 영향.md",
-    "Linux-Kernel/11. I.O 스케줄러.md",
+    "Linux-Kernel/11. IO 스케줄러.md",
     "Linux-Kernel/5. swap 메모리 증설의 포인트.md",
     "Linux-Kernel/4. free 명령이 숨기고 있는 것들.md",
     "Linux-Kernel/images/IMG_9723.jpg",
@@ -195,7 +196,6 @@
     "Linux-Kernel/9. TCP 재전송과 타임아웃.md",
     "Linux-Kernel/images/mermaid-diagram.svg",
     "Linux-Kernel/images/mermaid-diagram (2).svg",
-    "Linux-Kernel/images/mermaid-diagram-1.svg",
     "Linux-Kernel/7. TIME_WAIT 소켓이 서비스에 미치는 영향.md",
     "Linux-Kernel/6. NUMA, 메모리 관리의 새로운 세계.md",
     "Linux-Kernel/3. Load Average와 시스템 부하.md",
