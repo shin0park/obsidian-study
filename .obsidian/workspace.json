@@ -179,6 +179,8 @@
   },
   "active": "16f66e12bde1549d",
   "lastOpenFiles": [
+    "Linux-Kernel/images/IMG_0027.jpg",
+    "Linux-Kernel/images/Pasted image 20260421003246.png",
     "Linux-Kernel/images/IMG_0023.jpg",
     "Linux-Kernel/images/Pasted image 20260420222055.png",
     "Linux-Kernel/images/Pasted image 20260420222042.png",
@@ -194,8 +196,6 @@
     "Linux-Kernel/images/Pasted image 20260330230103.png",
     "Linux-Kernel/8. TCP Keepalive를 이용한 세션 유지.md",
     "Linux-Kernel/9. TCP 재전송과 타임아웃.md",
-    "Linux-Kernel/images/mermaid-diagram.svg",
-    "Linux-Kernel/images/mermaid-diagram (2).svg",
     "Linux-Kernel/7. TIME_WAIT 소켓이 서비스에 미치는 영향.md",
     "Linux-Kernel/6. NUMA, 메모리 관리의 새로운 세계.md",
     "Linux-Kernel/3. Load Average와 시스템 부하.md",
