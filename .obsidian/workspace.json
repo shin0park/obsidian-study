@@ -13,15 +13,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linux-Kernel/11. IO 스케줄러.md",
+                "file": "Linux-Kernel/7. TIME_WAIT 소켓이 서비스에 미치는 영향.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "11. IO 스케줄러"
+              "title": "7. TIME_WAIT 소켓이 서비스에 미치는 영향"
+            }
+          },
+          {
+            "id": "e17f7e41f12a1a5b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Linux-Kernel/12. 애플리케이션 성능 측정과 튜닝.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "12. 애플리케이션 성능 측정과 튜닝"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -53,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "rss",
+                "query": "Connection Pool",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -177,8 +192,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "16f66e12bde1549d",
+  "active": "e17f7e41f12a1a5b",
   "lastOpenFiles": [
+    "Linux-Kernel/7. TIME_WAIT 소켓이 서비스에 미치는 영향.md",
+    "Linux-Kernel/12. 애플리케이션 성능 측정과 튜닝.md",
+    "Linux-Kernel/11. IO 스케줄러.md",
     "Linux-Kernel/images/IMG_0033.jpg",
     "Linux-Kernel/images/IMG_0027.jpg",
     "Linux-Kernel/images/Pasted image 20260421003246.png",
@@ -186,17 +204,14 @@
     "Linux-Kernel/images/Pasted image 20260420222055.png",
     "Linux-Kernel/images/Pasted image 20260420222042.png",
     "Linux-Kernel/10. dirty page가 IO에 끼치는 영향.md",
-    "Linux-Kernel/11. IO 스케줄러.md",
     "Linux-Kernel/5. swap 메모리 증설의 포인트.md",
     "Linux-Kernel/4. free 명령이 숨기고 있는 것들.md",
     "Linux-Kernel/images/IMG_9723.jpg",
     "Linux-Kernel/images/IMG_9707.jpg",
     "Linux-Kernel/images/IMG_9397.jpg",
     "Linux-Kernel/images/IMG_9386.jpg",
-    "Linux-Kernel/images/IMG_9381.jpg",
     "Linux-Kernel/8. TCP Keepalive를 이용한 세션 유지.md",
     "Linux-Kernel/9. TCP 재전송과 타임아웃.md",
-    "Linux-Kernel/7. TIME_WAIT 소켓이 서비스에 미치는 영향.md",
     "Linux-Kernel/6. NUMA, 메모리 관리의 새로운 세계.md",
     "Linux-Kernel/3. Load Average와 시스템 부하.md",
     "Linux-Kernel/2. top을 통해 살펴보는 프로세스 정보들.md",
