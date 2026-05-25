@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linux-Kernel/02. top을 통해 살펴보는 프로세스 정보들.md",
+                "file": "Linux-Kernel/03. Load Average와 시스템 부하.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "02. top을 통해 살펴보는 프로세스 정보들"
+              "title": "03. Load Average와 시스템 부하"
             }
           }
         ],
@@ -193,27 +193,27 @@
   },
   "active": "e17f7e41f12a1a5b",
   "lastOpenFiles": [
+    "Linux-Kernel/12. 애플리케이션 성능 측정과 튜닝.md",
+    "Linux-Kernel/11. IO 스케줄러.md",
+    "Linux-Kernel/10. dirty page가 IO에 끼치는 영향.md",
+    "Linux-Kernel/09. TCP 재전송과 타임아웃.md",
     "Linux-Kernel/08. TCP Keepalive를 이용한 세션 유지.md",
+    "Linux-Kernel/07. TIME_WAIT 소켓이 서비스에 미치는 영향.md",
+    "Linux-Kernel/06. NUMA, 메모리 관리의 새로운 세계.md",
+    "Linux-Kernel/05. swap 메모리 증설의 포인트.md",
     "Linux-Kernel/04. free 명령이 숨기고 있는 것들.md",
     "Linux-Kernel/03. Load Average와 시스템 부하.md",
-    "Linux-Kernel/12. 애플리케이션 성능 측정과 튜닝.md",
-    "Linux-Kernel/07. TIME_WAIT 소켓이 서비스에 미치는 영향.md",
-    "Linux-Kernel/11. IO 스케줄러.md",
+    "Linux-Kernel/02. top을 통해 살펴보는 프로세스 정보들.md",
     "Linux-Kernel/images/IMG_0033.jpg",
     "Linux-Kernel/images/IMG_0027.jpg",
     "Linux-Kernel/images/Pasted image 20260421003246.png",
     "Linux-Kernel/images/IMG_0023.jpg",
     "Linux-Kernel/images/Pasted image 20260420222055.png",
     "Linux-Kernel/images/Pasted image 20260420222042.png",
-    "Linux-Kernel/10. dirty page가 IO에 끼치는 영향.md",
-    "Linux-Kernel/05. swap 메모리 증설의 포인트.md",
     "Linux-Kernel/images/IMG_9723.jpg",
     "Linux-Kernel/images/IMG_9707.jpg",
     "Linux-Kernel/images/IMG_9397.jpg",
     "Linux-Kernel/images/IMG_9386.jpg",
-    "Linux-Kernel/09. TCP 재전송과 타임아웃.md",
-    "Linux-Kernel/06. NUMA, 메모리 관리의 새로운 세계.md",
-    "Linux-Kernel/02. top을 통해 살펴보는 프로세스 정보들.md",
     "Linux-Kernel/01. 시스템 구성 정보 확인하기.md",
     "Linux-Kernel/images",
     "Linux-Kernel/0. 스터디.md",
