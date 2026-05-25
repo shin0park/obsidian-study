@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linux-Kernel/08. TCP Keepalive를 이용한 세션 유지.md",
+                "file": "Linux-Kernel/02. top을 통해 살펴보는 프로세스 정보들.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "08. TCP Keepalive를 이용한 세션 유지"
+              "title": "02. top을 통해 살펴보는 프로세스 정보들"
             }
           }
         ],
@@ -191,8 +191,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "75d5618a0dca06df",
+  "active": "e17f7e41f12a1a5b",
   "lastOpenFiles": [
+    "Linux-Kernel/08. TCP Keepalive를 이용한 세션 유지.md",
     "Linux-Kernel/04. free 명령이 숨기고 있는 것들.md",
     "Linux-Kernel/03. Load Average와 시스템 부하.md",
     "Linux-Kernel/12. 애플리케이션 성능 측정과 튜닝.md",
@@ -210,7 +211,6 @@
     "Linux-Kernel/images/IMG_9707.jpg",
     "Linux-Kernel/images/IMG_9397.jpg",
     "Linux-Kernel/images/IMG_9386.jpg",
-    "Linux-Kernel/08. TCP Keepalive를 이용한 세션 유지.md",
     "Linux-Kernel/09. TCP 재전송과 타임아웃.md",
     "Linux-Kernel/06. NUMA, 메모리 관리의 새로운 세계.md",
     "Linux-Kernel/02. top을 통해 살펴보는 프로세스 정보들.md",
