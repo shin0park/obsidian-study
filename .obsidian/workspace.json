@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linux-Kernel/13. 1~6장 정리본.md",
+                "file": "Linux-Kernel/14. 7-12장 정리본.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "13. 1~6장 정리본"
+              "title": "14. 7-12장 정리본"
             }
           }
         ],
@@ -193,9 +193,10 @@
   },
   "active": "e17f7e41f12a1a5b",
   "lastOpenFiles": [
+    "Linux-Kernel/13. 1~6장 정리본.md",
+    "Linux-Kernel/14. 7-12장 정리본.md",
     "Linux-Kernel/06. NUMA, 메모리 관리의 새로운 세계.md",
     "Linux-Kernel/05. swap 메모리 증설의 포인트.md",
-    "Linux-Kernel/13. 1~6장 정리본.md",
     "Linux-Kernel/04. free 명령이 숨기고 있는 것들.md",
     "Linux-Kernel/03. Load Average와 시스템 부하.md",
     "Linux-Kernel/02. top을 통해 살펴보는 프로세스 정보들.md",
@@ -230,7 +231,6 @@
     "MLS/17. Sagemaker Canvas, Training Compiler, Feature Store, ML Lineage, Data Wrangler.md",
     "MLS/16. Automatic Model Tuning & SageMaker (spark, modern, Debugger, Autopilot AutoML).md",
     "MLS/14. SageMaker Algorithm.md",
-    "MLS/12. SageMaker.md",
     "읽다지",
     "MLS/images",
     "MLS",
