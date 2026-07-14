@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "부동산/송희구/송희구 작가 - 기초강의.md",
+                "file": "부동산/럭키.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "송희구 작가 - 기초강의"
+              "title": "럭키"
             }
           }
         ],
@@ -193,11 +193,11 @@
   },
   "active": "e17f7e41f12a1a5b",
   "lastOpenFiles": [
+    "부동산/송희구/송희구 작가 - 기초강의.md",
+    "부동산/럭키.md",
     "부동산/송희구/images/A아파트, B아파트 비교.heic",
     "부동산/송희구/images",
     "Linux-Kernel/14. 7-12장 정리본.md",
-    "부동산/송희구/송희구 작가 - 기초강의.md",
-    "부동산/무제.md",
     "부동산/송희구",
     "부동산",
     "Linux-Kernel/13. 1~6장 정리본.md",
@@ -237,7 +237,6 @@
     "읽다지",
     "MLS/images",
     "MLS",
-    "ANS/images/HandsOn-Hybrid-DNS-commands-and-configurations.txt",
-    "ANS/images/HandsOn-Hybrid-DNS-Slides 1.pdf"
+    "ANS/images/HandsOn-Hybrid-DNS-commands-and-configurations.txt"
   ]
 }
